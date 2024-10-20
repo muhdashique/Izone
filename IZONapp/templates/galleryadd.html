@@ -1,0 +1,209 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload and View Gallery</title>
+    
+    <!-- Inline CSS for styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .gallery-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .gallery-form {
+            margin-bottom: 40px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item h3 {
+            margin: 15px 0 5px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .gallery-item p {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Modal for viewing full image */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+        }
+
+        .modal img {
+            width: 100%;
+            height: auto;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 35px;
+            color: white;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .gallery-item img {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="gallery-container">
+    <h1>Image Gallery</h1>
+
+    <!-- Form to upload image -->
+    <div class="gallery-form">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Upload Image</button>
+        </form>
+    </div>
+
+    <!-- Display uploaded images -->
+    <div class="gallery-grid">
+        {% for image in images %}
+            <div class="gallery-item">
+                <img src="{{ image.image.url }}" alt="{{ image.title }}">
+                <h3>{{ image.title }}</h3>
+                <p>{{ image.description }}</p>
+            </div>
+        {% empty %}
+            <p>No images uploaded yet.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Inline JavaScript for modal functionality -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        const modal = document.createElement('div');
+        modal.classList.add('modal');
+        document.body.appendChild(modal);
+
+        modal.innerHTML = `
+            <span class="close">&times;</span>
+            <div class="modal-content">
+                <img id="modal-image" src="" alt="">
+            </div>
+        `;
+
+        const modalImage = document.getElementById('modal-image');
+        const closeModal = document.querySelector('.close');
+
+        // Event listener to open the modal with the clicked image
+        galleryItems.forEach((item) => {
+            item.addEventListener('click', () => {
+                modalImage.src = item.src;
+                modal.style.display = 'block';
+            });
+        });
+
+        // Event listener to close the modal
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Close the modal if clicked outside the image
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

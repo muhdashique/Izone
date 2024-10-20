@@ -1,0 +1,60 @@
+/* Style for the header section */
+.header {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+/* Header image styling */
+.header-image {
+    width: 100%;      /* Makes the image span the entire width of its container */
+    height: 300px;    /* Sets a fixed height for the image */
+    /* Ensures the image covers the space without distortion */
+    
+}
+.header-image img{
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+}
+/* Header title styling */
+.header .container h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* Navigation styling */
+.nav {
+    margin-top: 1rem;
+}
+
+.nav-link {
+    color: white;
+    text-transform: uppercase;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+/* Add some padding to the sections */
+.intro, .components, .footer {
+    padding: 2rem 0;
+}
+
+/* Footer style */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+.footer a {
+    color: white;
+}

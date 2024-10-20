@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .form-section {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 300px; /* Prevents forms from getting too small */
+            margin: 10px; /* Adds space between sections */
+        }
+
+        form p {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            text-align: center;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .gallery-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Product</h1>
+    <div class="container">  
+        <!-- Product Form Section -->
+        <div class="form-section">
+            <h2>Product Form</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Add Product</button>
+            </form>
+        </div>
+    
+        <!-- Image Upload Section -->
+        <div class="form-section">
+            <h2>Image Gallery</h2>
+            <form action="{% url 'upload_image' %}" method="POST">
+                {% csrf_token %}
+                <div class="gallery-images">
+                    {% for image in images %}
+                        <div class="gallery-image">
+                            <input type="checkbox" name="selected_images" value="{{ image.id }}">
+                            <img src="{{ image.image.url }}" alt="Gallery Image" style="width:100%; height:auto;">
+                        </div>
+                    {% empty %}
+                        
+                    {% endfor %}
+                </div>
+                <button type="submit">Add Images</button>
+            </form>
+        </div>
+        
+    </div>     
+
+    <a class="nav-link" href="{% url 'home' %}">Back to Product List</a>
+</body>
+</html>

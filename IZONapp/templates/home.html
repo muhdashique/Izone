@@ -1,0 +1,286 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Hardware</title>
+    <!-- Load Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Load your custom CSS file -->
+    <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}">
+
+    <style>
+        /* General styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+
+        h2 {
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #4CAF50;
+        }
+
+        /* Header image styling */
+        .header-image img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        /* Cards styling */
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-img-top {
+            border-bottom: 2px solid #ddd;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .card-body {
+            background-color: #f9f9f9;
+        }
+
+        /* Footer styling */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .intro {
+            margin-top: 40px;
+            text-align: justify;
+        }
+
+        .content {
+            padding: 20px 0;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .header-image img {
+                max-height: 300px;
+            }
+
+            .navbar-nav .nav-item {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <style>
+                    .text-left {
+                        text-align: left;
+                    }
+                </style>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <a class="nav-link" href="{% url 'home' %}">HOME</a>
+                        <li class="nav-item"><a class="nav-link" href="/about/">ABOUT</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PRODUCT</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/product_lap/">Laptops</a>
+                                <a class="dropdown-item" href="/product_desk/">Desktops</a>
+                                <a class="dropdown-item" href="/product_print/">Printers</a>
+                                <a class="dropdown-item" href="/product_thermal/">Thermal printers</a>
+                                <a class="dropdown-item" href="/product_barcod/">Barcode Printers</a>
+                                <a class="dropdown-item" href="/product_sccanner/">Scanners</a>
+                                <a class="dropdown-item" href="/product_cctv/">CCTV</a>
+                                <a class="dropdown-item" href="/product_rollsribbon/">Rolls and Ribbons</a>
+                                <a class="dropdown-item" href="/product_secusystem/">Security System</a>
+                                <a class="dropdown-item" href="/product_accessories/">Accessories</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="/gallery/">GALLERY</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">CAREER</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/contactus/">CONTACT US</a></li>
+                        <a href="{% url 'login' %}" class="login-btn">Login</a>
+
+                        <style>
+                            .login-btn {
+                                background-color: #4CAF50;
+                                color: white;
+                                padding: 10px 20px;
+                                font-size: 16px;
+                                border: none;
+                                border-radius: 5px;
+                                cursor: pointer;
+                                transition: background-color 0.3s ease;
+                            }
+
+                            .login-btn:hover {
+                                background-color: #45a049;
+                            }
+                        </style>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Add header image -->
+    <div class="header-image">
+        <img src="{% static 'images/bgimage.jpg' %}" alt="Header Image">
+    </div>
+
+    <!-- Introduction Section -->
+    <section class="intro container">
+    </section>
+    <div class="content">
+        <div>
+            <h2>About Us</h2>
+            <p>
+                Computer hardware refers to the physical components that make up a computer system. Unlike software,
+                hardware is the tangible part of the computer, and it includes various components such as the processor,
+                memory, storage devices, and peripherals.
+            </p>
+        </div>
+    </div>
+
+    <!-- Components Section -->
+    <section class="components container">
+        <h2 class="text-center mb-4">Products</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <!-- Load laptop image from static folder -->
+                    <img src="{% static 'images/laptop.jpg' %}" alt="Laptops" class="card-img-top img-fluid">
+                    <div class="card-body">
+                        <h5 class="card-title">1. Laptops</h5>
+                        <p class="card-text">Laptops are designed to be easy to carry around and can be used in a variety
+                            of settings.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <!-- Load desktop image from static folder -->
+                    <img src="{% static 'images/desktop.png' %}" alt="Desktop" class="card-img-top img-fluid">
+                    <div class="card-body">
+                        <h5 class="card-title">2. Desktop</h5>
+                        <p class="card-text">All-in-one desktops are an ideal choice for people looking for
+                            space-efficient computers.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <!-- Load printer image from static folder -->
+                    <img src="{% static 'images/printer.png' %}" alt="Printer" class="card-img-top img-fluid">
+                    <div class="card-body">
+                        <h5 class="card-title">3. Printer</h5>
+                        <p class="card-text">Perfect for home & business, choose from top brands like HP, Brother,
+                            Canon, and more.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <style>
+        /* Custom styles for cards and images */
+        .card {
+            height: 350px; /* Fixed height for cards */
+            display: flex;
+            flex-direction: column; /* Stack children vertically */
+        }
+    
+        .card-img-top {
+            height: 200px; /* Fixed height for images */
+            object-fit: cover; /* Crop images to fit */
+        }
+    
+        .card-body {
+            flex-grow: 1; /* Allow the body to take remaining space */
+        }
+    </style>
+    
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Computer Hardware Guide | <a href="#">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <!-- Load Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Example: Add a toggle effect on the dropdown
+document.querySelector('.dropdown-toggle').addEventListener('click', function () {
+    let dropdownMenu = document.querySelector('.dropdown-menu');
+    dropdownMenu.classList.toggle('show');
+});
+    </script>
+        // Smooth scroll for navbar links
+       

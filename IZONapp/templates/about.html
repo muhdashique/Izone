@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+        /* Styles for the About page */
+.about-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+}
+
+p {
+    color: #555;
+    font-size: 1.2em;
+    line-height: 1.6;
+    text-align: justify;
+    margin: 20px 0;
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+ul li {
+    font-size: 1.1em;
+    color: #555;
+    margin: 10px 0;
+}
+
+/* Button/link back to home */
+.back-to-home {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.back-to-home a {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.back-to-home a:hover {
+    background-color: #555;
+}
+
+/* Responsive Design for the About Page */
+@media screen and (max-width: 768px) {
+    .about-container {
+        padding: 10px;
+    }
+
+    h1, h2 {
+        font-size: 1.5em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    ul li {
+        font-size: 1em;
+    }
+}
+
+    </style>
+    <div class="about-container">
+        <h1>About Our Computer Hardware Solutions</h1>
+        <p>
+            Welcome to our hub for cutting-edge computer hardware. We specialize in delivering high-performance components and accessories to help you build, upgrade, and enhance your computing systems. Whether you're a gamer, a creative professional, or a business owner, our wide range of hardware products is designed to meet your needs.
+        </p>
+        
+        <h2>Our Mission</h2>
+        <p>
+            At [Your Brand Name], our mission is to provide top-quality computer hardware that combines performance, reliability, and value. We are passionate about technology and are committed to helping you get the best out of your computing experience. From processors and graphics cards to memory and storage solutions, we ensure that our products keep you ahead of the curve.
+        </p>
+        
+        <h2>Why Choose Us?</h2>
+        <ul>
+            <li><strong>Top-Notch Components:</strong> We only offer hardware from leading brands known for their innovation and quality.</li>
+            <li><strong>Expert Support:</strong> Our team of hardware specialists is here to provide advice and guidance every step of the way.</li>
+            <li><strong>Competitive Pricing:</strong> We provide premium products at prices that won't break your budget.</li>
+            <li><strong>Customer Satisfaction:</strong> Your satisfaction is our priority, and we are always ready to assist with any questions or concerns.</li>
+        </ul>
+
+        <h2>Our Products</h2>
+        <p>
+            We offer a wide range of computer hardware products, including:
+        </p>
+        <ul>
+            <li>Processors (CPUs)</li>
+            <li>Graphics Cards (GPUs)</li>
+            <li>Motherboards</li>
+            <li>Memory (RAM)</li>
+            <li>Storage Devices (SSD/HDD)</li>
+            <li>Power Supplies</li>
+            <li>Cooling Solutions</li>
+            <li>Peripherals & Accessories</li>
+        </ul>
+        
+        <h2>Contact Us</h2>
+        <p>
+            Have any questions or need help with your computer hardware? Reach out to us!
+        </p>
+        <ul>
+            <li>Email: support@hardwarestore.com</li>
+            <li>Phone: +123-456-7890</li>
+            <li>Address: 123 Tech Street, Silicon Valley, CA</li>
+        </ul>
+
+        <div class="back-to-home">
+            <a class="nav-link" href="{% url 'home' %}">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
