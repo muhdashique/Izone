@@ -5,6 +5,12 @@ from django.contrib.auth import authenticate, login as auth_login
 from IZONapp.forms import ProductForm
 from .forms import GalleryImageForm, LoginForm
 from .models import GalleryImage, LoginAttempt
+from .models import Product
+
+
+
+
+# login_fuction
 
 def login(request):
     if request.method == 'POST':
@@ -33,63 +39,14 @@ def login(request):
 
 
 def home(request):
-    return render(request, 'home.html')
-
-
-
-def product_lap(request):
-    return render(request, 'product/laptop.html') 
-
-
-
-def product_desk(request):
-    return render(request, 'product/desktop.html')
-
-
-
-def product_print(request):
-    return render(request, 'product/printer.html')
-
-
-
-def product_thermal(request):
-    return render(request, 'product/theprint.html')
-
-
-def product_barcod(request):
-    return render(request, 'product/barprinter.html')
-
-
-def product_scanner(request):
-    return render(request, 'product/scanner.html')
-
-
-
-
-def product_cctv(request):
-    return render(request, 'product/cctv.html')
-
-
-
-
-def product_rollsribbon(request):
-    return render(request, 'product/rollsribbon.html')
-
-
-
-def product_secusystem(request):
-    return render(request, 'product/secusystem.html')
-
-
-
-
-def product_accessories(request):
-    return render(request, 'product/accessories.html')
+    products = Product.objects.all()
+    return render(request, 'home.html', {'products': products})
 
 
 
 def gallery(request):
-    return render(request, 'gallery.html')
+    images = GalleryImage.objects.all()  # Fetch all images
+    return render(request, 'gallery.html', {'images': images})
 
 
 
@@ -98,7 +55,7 @@ def about(request):
 
 
 
-
+# product_adding
 
 def add_product(request):
     if request.method == 'POST':
@@ -118,18 +75,15 @@ def contactus(request):
 
 
 
-from django.shortcuts import render, redirect
-from .models import GalleryImage
-from .forms import GalleryImageForm
 
 def upload_image(request):
     if request.method == 'POST':
         form = GalleryImageForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('gallery')  # Redirect to the gallery page after upload
+            return redirect('gallery')  
 
-    # Retrieve all gallery images
+   
     images = GalleryImage.objects.all()
 
    
@@ -144,9 +98,8 @@ def gallery_list(request):
         form = GalleryImageForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('gallery')  # Redirect after saving to prevent duplicate submissions
-    else:
+            return redirect('gallery')  
         form = GalleryImageForm()
 
-    images = GalleryImage.objects.all()  # Fetch all uploaded images
+    images = GalleryImage.objects.all()  
     return render(request, 'gallery.html', {'form': form, 'images': images})

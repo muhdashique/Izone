@@ -1,229 +1,135 @@
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer Hardware</title>
-    <!-- Load Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Load your custom CSS file -->
-    <link rel="stylesheet" type="text/css" href="{% static 'style/style.css' %}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Computer Hardware</title>
+        
+        <!-- Load Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
 
-    <style>
-        /* General styling */
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-        }
-
-        h2 {
-            color: #333;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .navbar-dark .navbar-nav .nav-link {
-            color: #fff;
-            font-size: 18px;
-        }
-
-        .navbar-dark .navbar-nav .nav-link:hover {
-            color: #4CAF50;
-        }
-
-        /* Header image styling */
-        .header-image img {
-            width: 100%;
-            height: auto;
-            max-height: 400px;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
-
-        /* Cards styling */
-        .card {
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: none;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .card-img-top {
-            border-bottom: 2px solid #ddd;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .card-title {
-            font-size: 1.2rem;
-            color: #333;
-        }
-
-        .card-body {
-            background-color: #f9f9f9;
-        }
-
-        /* Footer styling */
-        .footer {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-
-        .footer a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        .intro {
-            margin-top: 40px;
-            text-align: justify;
-        }
-
-        .content {
-            padding: 20px 0;
-        }
-
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            .header-image img {
-                max-height: 300px;
-            }
-
-            .navbar-nav .nav-item {
-                margin-bottom: 10px;
-            }
-        }
-    </style>
-
-</head>
-
-<body>
-    <!-- Header Section -->
-    <header class="header">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <style>
-                    .text-left {
-                        text-align: left;
-                    }
-                </style>
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <a class="nav-link" href="{% url 'home' %}">HOME</a>
-                        <li class="nav-item"><a class="nav-link" href="/about/">ABOUT</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PRODUCT</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/product_lap/">Laptops</a>
-                                <a class="dropdown-item" href="/product_desk/">Desktops</a>
-                                <a class="dropdown-item" href="/product_print/">Printers</a>
-                                <a class="dropdown-item" href="/product_thermal/">Thermal printers</a>
-                                <a class="dropdown-item" href="/product_barcod/">Barcode Printers</a>
-                                <a class="dropdown-item" href="/product_sccanner/">Scanners</a>
-                                <a class="dropdown-item" href="/product_cctv/">CCTV</a>
-                                <a class="dropdown-item" href="/product_rollsribbon/">Rolls and Ribbons</a>
-                                <a class="dropdown-item" href="/product_secusystem/">Security System</a>
-                                <a class="dropdown-item" href="/product_accessories/">Accessories</a>
-                            </div>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="/gallery/">GALLERY</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">CAREER</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/contactus/">CONTACT US</a></li>
-                        <a href="{% url 'login' %}" class="login-btn">Login</a>
-
-                        <style>
-                            .login-btn {
-                                background-color: #4CAF50;
-                                color: white;
-                                padding: 10px 20px;
-                                font-size: 16px;
-                                border: none;
-                                border-radius: 5px;
-                                cursor: pointer;
-                                transition: background-color 0.3s ease;
-                            }
-
-                            .login-btn:hover {
-                                background-color: #45a049;
-                            }
-                        </style>
-
-                    </ul>
+     <!-- Section 1 -->
+<section class="w-full px-8 text-gray-700 bg-white">
+    <div class="container flex flex-col flex-wrap items-center justify-between py-5 mx-auto md:flex-row max-w-7xl">
+        <div class="relative flex flex-col md:flex-row">
+            <a href="#_" class="flex items-center mb-5 font-medium text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0">
+                <span class="mx-auto text-xl font-black leading-none text-gray-900 select-none">IZONE<span class="text-indigo-600">.</span></span>
+            </a>
+            <nav class="flex flex-wrap items-center mb-5 text-base md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-gray-200">
+                <!-- Mobile Menu Button -->
+                <div class="block lg:hidden">
+                    <button class="flex items-center px-3 py-2 text-gray-600 border border-gray-600 rounded focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
                 </div>
-            </div>
-        </nav>
-    </header>
+            
+                <div class="hidden lg:flex lg:flex-grow lg:items-center">
+                    <a href="{% url 'home' %}" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="/about/" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">About</a>
+                    
+                    <!-- Products Dropdown Menu -->
+                    <div class="relative group">
+                        <button class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900 focus:outline-none">
+                            Products
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded mt-2">
+                            {% for product in products %}
+                                <a class="block px-4 py-2 text-gray-700 hover:bg-gray-100" href="#">{{ product.name }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <a href="/gallery/" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Gallery</a>
+                    <a href="#_" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Career</a>
+                </div>
+            </nav>
+            
+            
+        </div>
 
-    <!-- Add header image -->
-    <div class="header-image">
-        <img src="{% static 'images/bgimage.jpg' %}" alt="Header Image">
-    </div>
-
-    <!-- Introduction Section -->
-    <section class="intro container">
-    </section>
-    <div class="content">
-        <div>
-            <h2>About Us</h2>
-            <p>
-                Computer hardware refers to the physical components that make up a computer system. Unlike software,
-                hardware is the tangible part of the computer, and it includes various components such as the processor,
-                memory, storage devices, and peripherals.
-            </p>
+        <div class="inline-flex items-center ml-5 space-x-6 lg:justify-end">
+           
+            <a href="{% url 'login' %}" class="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
+                Login
+            </a>
         </div>
     </div>
+</section>
 
-    <!-- Components Section -->
-    <section class="components container">
-        <h2 class="text-center mb-4">Products</h2>
-        <div class="row">
-            <div class="col-md-4 mb-4">
+<!-- Section 2 -->
+<section class="px-2 py-32 bg-white md:px-0">
+  <div class="container items-center max-w-6xl px-8 mx-auto xl:px-5">
+    <div class="flex flex-wrap items-center sm:-mx-3">
+      <div class="w-full md:w-1/2 md:px-3">
+        <div class="w-full pb-6 space-y-6 sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0">
+          <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl">
+            <span class="block xl:inline">Useful Tools to</span>
+            <span class="block text-indigo-600 xl:inline">Help You Build Faster.</span>
+          </h1>
+          <p class="mx-auto text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl">It's never been easier to build beautiful websites that convey your message and tell your story.</p>
+          <div class="relative flex flex-col sm:flex-row sm:space-x-4">
+            <a href="/contactus/" class="flex items-center w-full px-6 py-3 mb-3 text-lg text-white bg-indigo-600 rounded-md sm:mb-0 hover:bg-indigo-700 sm:w-auto">
+              Connect with us
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+                
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-1/2">
+        <div class="w-full h-auto overflow-hidden rounded-md shadow-xl sm:rounded-xl">
+            <img src="https://images.unsplash.com/photo-1498049860654-af1a5c566876?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+        
+
+        <!-- Introduction Section -->
+        <section class="intro container mx-auto px-4 py-8">
+            <div >
+                <h2 class="text-3xl font-bold text-gray-900 mb-4" style="text-align: center;">About Us</h2>
+                <p class="text-gray-700 leading-relaxed">
+                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+                </p>
+            </div>
+        </section>
+
+        <!-- Components Section -->
+        <section class="container mx-auto px-4 py-8">
+            <h2 class="text-3xl font-bold text-center mb-6">Products</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Product 1: Laptops -->
                 <div class="card">
-                    <!-- Load laptop image from static folder -->
-                    <img src="{% static 'images/laptop.jpg' %}" alt="Laptops" class="card-img-top img-fluid">
+                    <img src="{% static 'images/laptop.jpg' %}" alt="Laptops" class="w-full">
                     <div class="card-body">
                         <h5 class="card-title">1. Laptops</h5>
                         <p class="card-text">Laptops are designed to be easy to carry around and can be used in a variety
                             of settings.</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4">
+
+                <!-- Product 2: Desktop -->
                 <div class="card">
-                    <!-- Load desktop image from static folder -->
-                    <img src="{% static 'images/desktop.png' %}" alt="Desktop" class="card-img-top img-fluid">
+                    <img src="{% static 'images/desktop.png' %}" alt="Desktop" class="w-full">
                     <div class="card-body">
                         <h5 class="card-title">2. Desktop</h5>
                         <p class="card-text">All-in-one desktops are an ideal choice for people looking for
                             space-efficient computers.</p>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4">
+
+                <!-- Product 3: Printer -->
                 <div class="card">
-                    <!-- Load printer image from static folder -->
-                    <img src="{% static 'images/printer.png' %}" alt="Printer" class="card-img-top img-fluid">
+                    <img src="{% static 'images/printer.png' %}" alt="Printer" class="w-full">
                     <div class="card-body">
                         <h5 class="card-title">3. Printer</h5>
                         <p class="card-text">Perfect for home & business, choose from top brands like HP, Brother,
@@ -231,56 +137,17 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <style>
-        /* Custom styles for cards and images */
-        .card {
-            height: 350px; /* Fixed height for cards */
-            display: flex;
-            flex-direction: column; /* Stack children vertically */
-        }
-    
-        .card-img-top {
-            height: 200px; /* Fixed height for images */
-            object-fit: cover; /* Crop images to fit */
-        }
-    
-        .card-body {
-            flex-grow: 1; /* Allow the body to take remaining space */
-        }
-    </style>
-    
+        </section>
 
-    <!-- Footer Section -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Computer Hardware Guide | <a href="#">Privacy Policy</a></p>
-        </div>
-    </footer>
+        <!-- Footer Section -->
+        <footer class="bg-gray-800 text-white py-4">
+            <div class="container mx-auto text-center">
+                <p>&copy; 2024 Computer Hardware Guide | <a href="#" class="text-blue-400 hover:underline">Privacy Policy</a></p>
+            </div>
+        </footer>
 
-    <!-- Load Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Custom JavaScript -->
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
+        <!-- Smooth Scrolling for anchor links -->
+        
+    </body>
 
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
-// Example: Add a toggle effect on the dropdown
-document.querySelector('.dropdown-toggle').addEventListener('click', function () {
-    let dropdownMenu = document.querySelector('.dropdown-menu');
-    dropdownMenu.classList.toggle('show');
-});
-    </script>
-        // Smooth scroll for navbar links
-       
+    </html>

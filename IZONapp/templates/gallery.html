@@ -1,6 +1,5 @@
 {% load static %}
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +24,7 @@
             margin-bottom: 20px;
         }
 
+        /* Grid layout for the gallery */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -37,6 +37,9 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             position: relative;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .gallery-image {
@@ -49,6 +52,20 @@
 
         .gallery-image:hover {
             transform: scale(1.05);
+        }
+
+        /* Text content (Title and description) */
+        .image-title {
+            font-size: 18px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .image-description {
+            font-size: 14px;
+            text-align: center;
+            color: #555;
+            margin-bottom: 10px;
         }
 
         /* Modal Styles */
@@ -90,19 +107,12 @@
         <div class="gallery-grid">
             {% for image in images %}
                 <div class="gallery-item" onclick="openModal('{{ image.image.url }}', '{{ image.title }}')">
-                    <img class="gallery-image" src="{{ image.image.url }}" alt="{{ image.title }}">
-                    <h3>{{ image.title }}</h3>
-                    <p>{{ image.description }}</p>
+                    <img src="{{ image.image.url }}" alt="Gallery Image" class="gallery-image">
+                    <h3 class="image-title">{{ image.title }}</h3>
+                    <p class="image-description">{{ image.description }}</p>
                 </div>
-            {% empty %}
-                <p>No images in the gallery yet.</p>
             {% endfor %}
         </div>
-    </div>
-    <div class="gallery-item" onclick="openModal('{{ image.image.url }}')">
-        <img src="{{ image.image.url }}" alt="Gallery Image">
-        <h3>{{ image.title }}</h3>
-        <p>{{ image.description }}</p>
     </div>
 
     <!-- Modal -->
