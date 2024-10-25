@@ -3,134 +3,413 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us </title>
-    <link rel="stylesheet" href="styles.css">
+    <title>About Us</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            line-height: 1.6;
+            color: #011689;
+        }
+
+        .header {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background-image: url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(0, 0, 0, 0.8) 0%,
+                rgba(0, 0, 0, 0.6) 50%,
+                rgba(0, 0, 0, 0.4) 100%
+            );
+            z-index: 1;
+        }
+
+        .header-content {
+            max-width: 900px;
+            padding: 40px;
+            position: relative;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid #FE5F00(255, 255, 255, 0.1);
+            transform: translateY(20px);
+            animation: floatIn 1.5s ease forwards;
+        }
+
+        @keyframes floatIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+
+        .header-content p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 1s;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 1.5s;
+        }
+
+        .scroll-down i {
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .team-member-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .team-member h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .value-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-item h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header-content p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+        .header {
+            background-image: url('https://example.com/your-image.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+    </style>
 </head>
 <body>
-    <style>
-        /* Styles for the About page */
-.about-container {
-    max-width: 900px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    font-family: Arial, sans-serif;
-}
-
-h1, h2 {
-    color: #333;
-    text-align: center;
-    margin-top: 20px;
-}
-
-p {
-    color: #555;
-    font-size: 1.2em;
-    line-height: 1.6;
-    text-align: justify;
-    margin: 20px 0;
-}
-
-ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-
-ul li {
-    font-size: 1.1em;
-    color: #555;
-    margin: 10px 0;
-}
-
-/* Button/link back to home */
-.back-to-home {
-    text-align: center;
-    margin-top: 30px;
-}
-
-.back-to-home a {
-    display: inline-block;
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.back-to-home a:hover {
-    background-color: #555;
-}
-
-/* Responsive Design for the About Page */
-@media screen and (max-width: 768px) {
-    .about-container {
-        padding: 10px;
-    }
-
-    h1, h2 {
-        font-size: 1.5em;
-    }
-
-    p {
-        font-size: 1em;
-    }
-
-    ul li {
-        font-size: 1em;
-    }
-}
-
-    </style>
-    <div class="about-container">
-        <h1>About Our Computer Hardware Solutions</h1>
-        <p>
-            Welcome to our hub for cutting-edge computer hardware. We specialize in delivering high-performance components and accessories to help you build, upgrade, and enhance your computing systems. Whether you're a gamer, a creative professional, or a business owner, our wide range of hardware products is designed to meet your needs.
-        </p>
-        
-        <h2>Our Mission</h2>
-        <p>
-            At [Your Brand Name], our mission is to provide top-quality computer hardware that combines performance, reliability, and value. We are passionate about technology and are committed to helping you get the best out of your computing experience. From processors and graphics cards to memory and storage solutions, we ensure that our products keep you ahead of the curve.
-        </p>
-        
-        <h2>Why Choose Us?</h2>
-        <ul>
-            <li><strong>Top-Notch Components:</strong> We only offer hardware from leading brands known for their innovation and quality.</li>
-            <li><strong>Expert Support:</strong> Our team of hardware specialists is here to provide advice and guidance every step of the way.</li>
-            <li><strong>Competitive Pricing:</strong> We provide premium products at prices that won't break your budget.</li>
-            <li><strong>Customer Satisfaction:</strong> Your satisfaction is our priority, and we are always ready to assist with any questions or concerns.</li>
-        </ul>
-
-        <h2>Our Products</h2>
-        <p>
-            We offer a wide range of computer hardware products, including:
-        </p>
-        <ul>
-            <li>Processors (CPUs)</li>
-            <li>Graphics Cards (GPUs)</li>
-            <li>Motherboards</li>
-            <li>Memory (RAM)</li>
-            <li>Storage Devices (SSD/HDD)</li>
-            <li>Power Supplies</li>
-            <li>Cooling Solutions</li>
-            <li>Peripherals & Accessories</li>
-        </ul>
-        
-        <h2>Contact Us</h2>
-        <p>
-            Have any questions or need help with your computer hardware? Reach out to us!
-        </p>
-        <ul>
-            <li>Email: support@hardwarestore.com</li>
-            <li>Phone: +123-456-7890</li>
-            <li>Address: 123 Tech Street, Silicon Valley, CA</li>
-        </ul>
-
-        <div class="back-to-home">
-            <a class="nav-link" href="{% url 'home' %}">Back to Home</a>
+    <header class="header">
+        <div class="header-content">
+            <h1>We are a Leading Company</h1>
+            <p>We specialize in providing top-notch repair services with unparalleled speed and affordability. Our expert team ensures your equipment is up and running swiftly, whether you need a quick fix or a major overhaul. Our services include computer sales and service, building servers and workstations, networking and CCTV installation, as well as EPABX and biometric solutions.</p>
         </div>
+        <div class="scroll-down">
+            <p>Scroll Down</p>
+            <div style="font-size: 24px;">↓</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="section" id="story">
+            <h2 class="section-title">What We Do</h2>
+            <p>Welcome to IZONE IT STORE, your one-stop destination for all your IT needs. We specialize in offering a wide range of computer hardware, software solutions, and IT accessories. Our store is committed to providing top-quality products and exceptional customer service to help you find the perfect solutions for your technology requirements. From the latest desktops and laptops to essential peripherals and accessories, we have everything you need to stay connected and productive. Explore our diverse product range and experience the best in IT technology at IZONE IT STORE.</p>
+        </section>
+
+        <section class="section" id="stats">
+            <h2 class="section-title">Our Impact</h2>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="500">0</div>
+                    <p>Happy Clients</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="50">0</div>
+                    <p>Team Members</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="100">0</div>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="25">0</div>
+                    <p>Countries Reached</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="values">
+            <h2 class="section-title">Our Values</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <h3>Innovation</h3>
+                    <p>We constantly push boundaries and explore new possibilities.</p>
+                </div>
+                <div class="value-item">
+                    <h3>Integrity</h3>
+                    <p>We maintain the highest standards of honesty and transparency.</p>
+                </div>
+                <div class="value-item">
+                    <h3>Excellence</h3>
+                    <p>We strive for excellence in everything we do.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="team">
+            <h2 class="section-title">Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="/api/placeholder/300/300" alt="Team Member 1">
+                    <div class="team-member-info">
+                        <h3>Sabid Kakkad</h3>
+                        <p>Marketing Analyst</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/300/300" alt="Team Member 2">
+                    <div class="team-member-info">
+                        <h3>Suliman KK</h3>
+                        <p>Marketing Analyst</p>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
     </div>
+
+    <script>
+        // Animate sections on scroll
+        const sections = document.querySelectorAll('.section');
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Animate numbers
+        const stats = document.querySelectorAll('.stat-number');
+        
+        stats.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-target'));
+            const increment = target / 50;
+            let current = 0;
+
+            const updateNumber = () => {
+                if (current < target) {
+                    current += increment;
+                    stat.textContent = Math.ceil(current);
+                    setTimeout(updateNumber, 30);
+                } else {
+                    stat.textContent = target;
+                }
+            };
+
+            const statsObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    updateNumber();
+                    statsObserver.unobserve(entries[0].target);
+                }
+            }, observerOptions);
+
+            statsObserver.observe(stat);
+        });
+
+        // Smooth scroll for the scroll-down button
+        document.querySelector('.scroll-down').addEventListener('click', () => {
+            window.scrollTo({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 </html>

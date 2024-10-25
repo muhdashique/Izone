@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IZONE IT STORE </title>
+
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <!-- Section 1 -->
+    <section class="w-full px-8 text-gray-700 bg-white">
+        <div class="container flex flex-col flex-wrap items-center justify-between py-5 mx-auto md:flex-row max-w-7xl">
+            <div class="relative flex flex-col md:flex-row">
+                <a href="#_" class="flex items-center mb-5 font-medium lg:w-auto lg:items-center lg:justify-center md:mb-0">
+                    <img src="{% static 'images/IZONE.png' %}" alt="Image" style="height: 100px; width: 100px; object-fit: contain;mix-blend-mode: multiply;">
+                </a>
+                <nav class="flex flex-wrap items-center mb-5 text-base md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-gray-200">
+                    <!-- Mobile Menu Button -->
+                    <div class="block lg:hidden">
+                        <button class="flex items-center px-3 py-2 text-gray-600 border border-gray-600 rounded focus:outline-none">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="hidden lg:flex lg:flex-grow lg:items-center">
+                        <a href="{% url 'home' %}" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Home</a>
+                        <a href="/about/" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">About</a>
+
+                        <!-- Products Dropdown -->
+                        <div class="relative">
+                            <button id="products-button" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900 flex items-center focus:outline-none">
+                                Products
+                                <svg class="ml-2 w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div id="products-dropdown" class="absolute hidden bg-white shadow-lg rounded mt-2 z-10 transition-opacity duration-300">
+                                <ul class="py-2 w-40">
+                                    <!-- Static Link -->
+                                    <li>
+                                        <!-- Static item example -->
+                                    </li>
+
+                                    <!-- Dynamic Product Links -->
+                                    {% for product in products %}
+                                    <li>
+                                        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                                            {{ product.name }}
+                                        </a>
+                                    </li>
+                                    {% empty %}
+                                    <li>
+                                        <span class="block px-4 py-2 text-gray-700">No Products</span>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <a href="/gallery/" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Gallery</a>
+                        <a href="/product_list/" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Career</a>
+                    </div>
+                </nav>
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Script for dropdown functionality -->
+    <script>
+        const productsButton = document.getElementById('products-button');
+        const productsDropdown = document.getElementById('products-dropdown');
+
+        // Toggle dropdown on click of Products button
+        productsButton.addEventListener('click', function (event) {
+            event.stopPropagation();  // Prevent click from bubbling up to the document
+            productsDropdown.classList.toggle('hidden');
+
+            // Toggle arrow rotation
+            const arrowIcon = productsButton.querySelector('svg');
+            arrowIcon.classList.toggle('rotate-180');
+        });
+
+        // Close dropdown when clicking outside of it
+        document.addEventListener('click', function (event) {
+            const isClickInside = productsButton.contains(event.target) || productsDropdown.contains(event.target);
+            if (!isClickInside) {
+                productsDropdown.classList.add('hidden');
+
+                // Ensure the arrow resets when the dropdown is hidden
+                const arrowIcon = productsButton.querySelector('svg');
+                arrowIcon.classList.remove('rotate-180');
+            }
+        });
+    </script>
+</body>
+
+</html>

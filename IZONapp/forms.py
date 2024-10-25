@@ -6,19 +6,10 @@ from django.db import models
 
 
 
-
-
-
-
 class ProductForm(forms.ModelForm):
-
-    
     class Meta:
         model = Product
-        fields = ['name', 'description', 'price',  'image'] 
-
-
-
+        fields = ['name', 'description', 'price', 'image', 'category']
 # forms.py
 
 
@@ -30,9 +21,9 @@ class LoginForm(forms.Form):
 class ImageUploadForm(forms.ModelForm):
     class Meta:
         model = GalleryImage
-        fields = [ 'image']
+        fields = [ 'image',]
 
 class GalleryImageForm(forms.ModelForm):
     class Meta:
         model = GalleryImage
-        fields = ['image']
+        fields = ['image',]

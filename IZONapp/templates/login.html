@@ -16,12 +16,21 @@
             height: 100vh;
         }
 
-        .login-container {
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background-color: white;
-            padding: 40px 30px;
+            padding: 40px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
-            width: 350px;
+            width: 800px;
+            max-width: 90%;
+        }
+
+        .login-container {
+            width: 50%;
+            padding-right: 20px;
             text-align: center;
         }
 
@@ -42,7 +51,7 @@
 
         .login-container input[type="submit"],
         .login-container button[type="submit"] {
-            background-color: #4CAF50;
+            background-color:#011689;;
             color: white;
             padding: 12px;
             width: 100%;
@@ -69,26 +78,57 @@
             font-size: 14px;
         }
 
+        /* Image container styling */
+        .image-container {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-left: 20px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
         /* Responsive Design */
-        @media (max-width: 400px) {
-            .login-container {
-                width: 90%;
-                padding: 20px;
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .login-container, .image-container {
+                width: 100%;
+                padding: 0;
+            }
+
+            .image-container {
+                margin-top: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}  <!-- Render the form -->
-            <button type="submit">Login</button>
-        </form>
-        {% if error_message %}
-            <p class="error-message">{{ error_message }}</p>
-        {% endif %}
+    
+    <div class="container">
+        <div class="login-container">
+            <h2>Login</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.username }}  <!-- Render username field -->
+                {{ form.password }}  <!-- Render password field -->
+                <button type="submit">Login</button>
+            </form>
+            {% if error_message %}
+                <p class="error-message">{{ error_message }}</p>
+            {% endif %}
+        </div>
+        <div class="image-container">
+            <img src="https://img.freepik.com/premium-photo/customer-service-representative-professional-customer-support-aftersales-service-phone_71956-31509.jpg?size=626&ext=jpg&ga=GA1.1.1630694325.1728393201&semt=ais_hybrid">
+        </div>
     </div>
+
 </body>
 </html>

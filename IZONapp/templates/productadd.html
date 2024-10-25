@@ -1,5 +1,10 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,13 +20,13 @@
 
         h1 {
             text-align: center;
-            color: #007bff;
+            color: #011689;;
             margin-bottom: 20px;
         }
 
         .container {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             flex-wrap: wrap;
             max-width: 1200px;
             margin: 0 auto;
@@ -34,8 +39,8 @@
             padding: 20px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             flex: 1;
-            min-width: 300px; /* Prevents forms from getting too small */
-            margin: 10px; /* Adds space between sections */
+            min-width: 300px;
+            margin: 10px;
         }
 
         form p {
@@ -60,7 +65,7 @@
         }
 
         button {
-            background-color: #007bff;
+            background-color: #011689;;
             color: #fff;
             padding: 10px 15px;
             border: none;
@@ -70,14 +75,14 @@
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #011689;;
         }
 
         a {
             display: inline-block;
             margin-top: 10px;
             text-align: center;
-            color: #007bff;
+            color: #011689;;
             text-decoration: none;
         }
 
@@ -88,42 +93,89 @@
         .gallery-container {
             margin-top: 20px;
         }
+
+        .gallery-images {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .gallery-image {
+            margin: 10px;
+            flex-basis: 23%;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        .gallery-image input {
+            margin-top: 10px;
+        }
+        .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffaa00;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #011689;; /* Change color on hover */
+}
+
     </style>
+    <a href="{% url 'home' %}" class="btn btn-primary" style="color: rgb(255, 255, 255);" backgrund color="coral">Home</a>
+
+
 </head>
+
 <body>
     <h1>Add Product</h1>
-    <div class="container">  
+    <div class="container">
         <!-- Product Form Section -->
         <div class="form-section">
-            <h2>Product Form</h2>
-            <form method="POST">
+            <h2>Add Product</h2>
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.as_p }}
+            <div>              <!-- productadd.html or any relevant template -->
+                {% for category in categories %}
+                <a href="{% url 'category_view' category.id %}">{{ category.name }}</a>
+                {% endfor %}
+
+            </div>  
                 <button type="submit">Add Product</button>
             </form>
         </div>
-    
+        
+
         <!-- Image Upload Section -->
         <div class="form-section">
             <h2>Image Gallery</h2>
-            <form action="{% url 'upload_image' %}" method="POST">
+            <form action="{% url 'upload_image' %}" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="gallery-images">
                     {% for image in images %}
                         <div class="gallery-image">
                             <input type="checkbox" name="selected_images" value="{{ image.id }}">
-                            <img src="{{ image.image.url }}" alt="Gallery Image" style="width:100%; height:auto;">
+                            <img src="{{ image.image.url }}" alt="Gallery Image">
                         </div>
                     {% empty %}
-                        
+                        <p>No images available.</p>
                     {% endfor %}
                 </div>
                 <button type="submit">Add Images</button>
             </form>
         </div>
-        
-    </div>     
+    </div>
 
-    <a class="nav-link" href="{% url 'home' %}">Back to Product List</a>
+   
 </body>
+
 </html>
