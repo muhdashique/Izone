@@ -1,5 +1,6 @@
 from itertools import product
 from msilib.schema import ListView
+from unicodedata import category
 from django.forms import Form
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login as auth_login
@@ -49,7 +50,9 @@ def home(request):
 # Gallery view to display images
 def gallery(request):
     images = GalleryImage.objects.all()  # Fetch all images
-    return render(request, 'gallery.html', {'images': images})
+    products = Product.objects.all()  # Fetch all products
+
+    return render(request, 'gallery.html', {'images': images, 'products': products})
 
 
 
@@ -57,7 +60,9 @@ def gallery(request):
 
 # About page view
 def about(request):
-    return render(request, 'about.html')
+    products = Product.objects.all()  # Fetch all products
+
+    return render(request, 'about.html',{'products': products})
 
 
 # Product addition view
@@ -65,12 +70,18 @@ def add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()  # Save the product
-            return redirect('home')  # Redirect to home or products list
+            form.save()
+            return redirect('product_gallery')  # Redirect to product gallery after saving
     else:
         form = ProductForm()
     
     return render(request, 'productadd.html', {'form': form})
+
+
+
+def product_gallery(request):
+    products = Product.objects.all()  # Retrieve all products
+    return render(request, 'productgallery.html', {'products': products})
 
 
 
@@ -119,5 +130,81 @@ def gallery_list(request):
 
 # Product list view
 def product_list(request):
-    products = Product.objects.all() 
+    products = Product.objects.all()  # Retrieve all products
     return render(request, 'products.html', {'products': products})
+
+
+
+def delete_image(request, image_id):
+    image = get_object_or_404(GalleryImage, id=image_id)
+    if request.method == 'POST':
+        image.delete()  # Delete the image
+        return redirect('gallery')  # Redirect to gallery after deletion
+    
+    return render(request, 'confirm_delete.html', {'image': image})
+
+
+
+
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    return render(request, 'products.html', {'product': product})
+
+
+
+from django.core.mail import send_mail
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+
+def send_email(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        
+        # Compose the email content
+        subject = "New Enquiry Submission"
+        message = f"Full Name: {name}\nEmail: {email}\nPhone: {phone}"
+        from_email = 'your_email@example.com'
+        recipient_list = ['recipient_email@example.com']  # Replace with your target email
+        
+        # Send the email
+        send_mail(subject, message, from_email, recipient_list)
+        
+        # Redirect or render a success message
+        return HttpResponse("Thank you for your enquiry. We'll get back to you soon!")
+    
+    # Render the correct template based on the referer
+    referer = request.META.get('HTTP_REFERER', '')
+    if 'contactus.html' in referer:
+        return render(request, 'contactus.html')
+    return render(request, 'about.html')
+
+
+
+from django.shortcuts import redirect, get_object_or_404
+from django.urls import reverse
+from .models import Product
+
+def delete_product(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    product.delete()
+    return redirect(reverse('product_gallery'))
+
+
+
+
+def product_gallery(request):
+    return render(request,'productgallery.html')
+
+
+
+def careers(request):
+    products = Product.objects.all()  # Fetch all products
+
+    return render (request,'career.html',{'products': products})
+
+def product_details(request, product_id):
+    products = Product.objects.all()
+    product = get_object_or_404(Product, id=product_id)
+    return render(request, 'product_details.html', {'product': product, 'products': products})

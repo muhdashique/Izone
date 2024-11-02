@@ -1,209 +1,510 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload and View Gallery</title>
-    
-    <!-- Inline CSS for styling -->
+    <title>IZONE IT STORE - Dynamic Gallery</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+        /* Modern CSS Reset and Variables */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #475569;
+            --accent: #f59e0b;
+            --danger: #dc2626;
+            --success: #16a34a;
+            --background: #f8fafc;
+            --surface: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
-        .gallery-container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 40px auto;
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            background: var(--surface);
+            padding: 2rem 1rem;
             text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
         }
 
-        h1 {
-            color: #333;
+        .header h1 {
             font-size: 2.5rem;
-            margin-bottom: 30px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            animation: slideDown 0.5s ease-out;
         }
 
-        .gallery-form {
-            margin-bottom: 40px;
+        /* Upload Form Styles */
+        .upload-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--surface);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-out;
         }
 
-        button {
-            background-color: #007BFF;
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--secondary);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .upload-btn {
+            background: var(--primary);
             color: white;
+            padding: 1rem 2rem;
             border: none;
-            padding: 10px 20px;
-            font-size: 16px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
         }
 
-        button:hover {
-            background-color: #0056b3;
+        .upload-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
         }
 
+        /* Gallery Grid Styles */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .gallery-item {
-            background-color: white;
-            border-radius: 8px;
+            background: var(--surface);
+            border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            animation: scaleIn 0.5s ease-out;
             position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                       0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
         .gallery-item img {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item h3 {
-            margin: 15px 0 5px;
-            font-size: 18px;
-            color: #333;
-        }
-
-        .gallery-item p {
-            color: #777;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
         }
 
         .gallery-item:hover img {
             transform: scale(1.1);
         }
 
-        /* Modal for viewing full image */
+        .gallery-item-content {
+            padding: 1.5rem;
+        }
+
+        .gallery-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .gallery-item p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .gallery-item-actions {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .delete-btn {
+            background: var(--danger);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .delete-btn:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
+        }
+
+        /* Modal Styles */
         .modal {
-            display: none;
             position: fixed;
-            z-index: 1000;
-            padding-top: 100px;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
         }
 
         .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 80%;
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
         }
 
         .modal img {
-            width: 100%;
-            height: auto;
+            max-height: 85vh;
+            max-width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
-        .close {
+        .modal-close {
             position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 35px;
-            color: white;
+            top: -2rem;
+            right: -2rem;
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text);
+            transition: var(--transition);
         }
 
+        .modal-close:hover {
+            background: var(--danger);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                padding: 1rem;
+                gap: 1rem;
             }
 
-            .gallery-item img {
-                height: 150px;
+            .header h1 {
+                font-size: 2rem;
             }
+
+            .upload-container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+
+            .modal-close {
+                top: 1rem;
+                right: 1rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+
+        .loading::after {
+            content: '';
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            display: block;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
+    <div class="header">
+        <h1>IZONE IT STORE</h1>
+    </div>
 
-<div class="gallery-container">
-    <h1>Image Gallery</h1>
-
-    <!-- Form to upload image -->
-    <div class="gallery-form">
-        <form method="POST" enctype="multipart/form-data">
+    <div class="upload-container">
+        <form method="POST" enctype="multipart/form-data" class="upload-form">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Upload Image</button>
+            <button type="submit" class="upload-btn">
+                <i class="fas fa-cloud-upload-alt"></i>
+                Upload Image
+            </button>
         </form>
     </div>
 
-    <!-- Display uploaded images -->
     <div class="gallery-grid">
         {% for image in images %}
-            <div class="gallery-item">
-                <img src="{{ image.image.url }}" alt="{{ image.title }}">
+        <div class="gallery-item">
+            <img src="{{ image.image.url }}" alt="{{ image.title }}" loading="lazy">
+            <div class="gallery-item-content">
                 <h3>{{ image.title }}</h3>
                 <p>{{ image.description }}</p>
             </div>
+            <div class="gallery-item-actions">
+                <form method="post" action="{% url 'delete_image' image.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="delete-btn">
+                        <i class="fas fa-trash"></i>
+                        Delete
+                    </button>
+                </form>
+            </div>
+        </div>
         {% empty %}
+        <div class="no-images">
             <p>No images uploaded yet.</p>
+        </div>
         {% endfor %}
     </div>
-</div>
 
-<!-- Inline JavaScript for modal functionality -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const galleryItems = document.querySelectorAll('.gallery-item img');
-        const modal = document.createElement('div');
-        modal.classList.add('modal');
-        document.body.appendChild(modal);
+    <div class="loading"></div>
 
-        modal.innerHTML = `
-            <span class="close">&times;</span>
-            <div class="modal-content">
-                <img id="modal-image" src="" alt="">
-            </div>
-        `;
+    <script>
+          document.addEventListener('DOMContentLoaded', function() {
 
-        const modalImage = document.getElementById('modal-image');
-        const closeModal = document.querySelector('.close');
+            // Create modal
+            const modal = document.createElement('div');
+            modal.classList.add('modal');
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <button class="modal-close"><i class="fas fa-times"></i></button>
+                    <img src="" alt="">
+                </div>
+            }`;
+            document.body.appendChild(modal);
 
-        // Event listener to open the modal with the clicked image
-        galleryItems.forEach((item) => {
-            item.addEventListener('click', () => {
-                modalImage.src = item.src;
-                modal.style.display = 'block';
-            });
-        });
+            // Modal functionality
+            const modalImg = modal.querySelector('img');
+            const modalClose = modal.querySelector('.modal-close');
 
-        // Event listener to close the modal
-        closeModal.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        // Close the modal if clicked outside the image
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
+            function openModal(imgSrc) {
+                modalImg.src = imgSrc;
+                modal.style.display = 'flex';
+                setTimeout(() => modal.classList.add('active'), 10);
+                document.body.style.overflow = 'hidden';
             }
-        });
-    });
+
+            function closeModal() {
+                modal.classList.remove('active');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }, 300);
+            }
+
+            // Image click handlers
+            gallery.addEventListener('click', (e) => {
+                const img = e.target.closest('.gallery-item img');
+                if (img) {
+                    openModal(img.src);
+                }
+            });
+
+            modalClose.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            // Upload form handling
+            uploadForm.addEventListener('submit', function(e) {
+                loading.style.display = 'block';
+            });
+
+            // Lazy loading images
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.removeAttribute('loading');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            lazyImages.forEach(img => imageObserver.observe(img));
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+
+            // Smooth scroll to top
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+
+            // Create scroll to top button
+            const scrollBtn = document.createElement('button');
+            scrollBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+            scrollBtn.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: var(--primary);
+                color: white;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                z-index: 100;
+                transition: var(--transition);
+            `;
+            document.body.appendChild(scrollBtn);
+
+// Show/hide scroll button
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        scrollBtn.style.display = 'flex';
+    } else {
+        scrollBtn.style.display = 'none';
+    }
+});
+
+// Scroll to top button functionality
+scrollBtn.addEventListener('click', scrollToTop);
+});
 </script>
 
-</body>
-</html>
+               
+            
