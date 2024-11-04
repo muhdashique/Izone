@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2d3748;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            margin-top: 0.25rem;
+        }
+
+        textarea {
+            min-height: 100px;
+        }
+
+        .current-image {
+            margin: 1rem 0;
+        }
+
+        .current-image img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .submit-button {
+            background-color: #48bb78;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .submit-button:hover {
+            background-color: #38a169;
+        }
+
+        .cancel-button {
+            background-color: #a0aec0;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            flex: 1;
+        }
+
+        .cancel-button:hover {
+            background-color: #718096;
+        }
+
+        .error-message {
+            color: #e53e3e;
+            margin-top: 0.25rem;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Product</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                <div class="error-message">
+                    {{ field.errors.0 }}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+            {% if product.image %}
+            <div class="current-image">
+                <p>Current Image:</p>
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            </div>
+            {% endif %}
+
+            <div class="button-group">
+                <button type="submit" class="submit-button">Save Changes</button>
+                <a href="{% url 'product_gallery' %}" class="cancel-button">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

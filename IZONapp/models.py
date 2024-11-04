@@ -34,9 +34,14 @@ class GalleryImage(models.Model):
 
     def __str__(self):
         return self.title or "Gallery Image"
-    
+
 class ImageUpload(models.Model):
     image = models.ImageField(upload_to='images/')  # Ensure this is correct
 
     def __str__(self):
         return f"ImageUpload {self.id}"  # Just to provide a string representation
+
+
+
+
+

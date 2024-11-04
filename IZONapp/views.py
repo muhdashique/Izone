@@ -131,7 +131,17 @@ def gallery_list(request):
 # Product list view
 def product_list(request):
     products = Product.objects.all()  # Retrieve all products
-    return render(request, 'products.html', {'products': products})
+    form = ProductForm()
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('productgallery.htmlt')  # Redirect to the same page after saving
+
+    return render(request, 'product_details.html', {'products': products, 'form': form})
+
+
 
 
 
@@ -194,8 +204,7 @@ def delete_product(request, product_id):
 
 
 
-def product_gallery(request):
-    return render(request,'productgallery.html')
+
 
 
 
@@ -208,3 +217,36 @@ def product_details(request, product_id):
     products = Product.objects.all()
     product = get_object_or_404(Product, id=product_id)
     return render(request, 'product_details.html', {'product': product, 'products': products})
+
+
+
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Product
+from .forms import ProductForm
+
+def edit_product(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('product_gallery')
+    else:
+        form = ProductForm(instance=product)
+    return render(request, 'edit_product.html', {'form': form, 'product': product})
+
+def product_gallery(request):
+    products = Product.objects.all()
+    return render(request, 'productgallery.html', {'products': products})
+
+def delete_product(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    if request.method == 'POST':
+        product.delete()
+    return redirect('product_gallery')
+
+def product_details(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    return render(request, 'product_details.html', {'product': product})
+
+

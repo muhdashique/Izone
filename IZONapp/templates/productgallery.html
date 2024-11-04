@@ -4,31 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Gallery</title>
+    <style>
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            color: #2c5282;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .details-link {
+            display: block;
+            background-color: #4299e1;
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .details-link:hover {
+            background-color: #3182ce;
+        }
+
+        .edit-button {
+            background-color: #48bb78;
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .edit-button:hover {
+            background-color: #38a169;
+        }
+
+        .delete-button {
+            background-color: #e53e3e;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .delete-button:hover {
+            background-color: #c53030;
+        }
+
+        .no-products {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-    <h1>Product Gallery</h1>
-
-    <!-- Display the products -->
-    <div class="product-gallery">
+    {% if products %}
+    <div class="product-grid">
         {% for product in products %}
-            <div class="product-item">
-                <h2>{{ product.name }}</h2>
-                <p>{{ product.description }}</p>
-                <p>Price: ${{ product.price }}</p>
-                {% if product.image %}
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                {% endif %}
-                <p>Category: {{ product.category }}</p>
+        <div class="product-card">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+            {% endif %}
+            <h2 class="product-name">{{ product.name }}</h2>
+            <p class="product-description">{{ product.description }}</p>
+            <p class="product-price">${{ product.price }}</p>
+            <a href="{% url 'product_details' product.id %}" class="details-link">View Details</a>
+            <div class="button-group">
+                <a href="{% url 'edit_product' product.id %}" class="edit-button">Edit</a>
+                <form action="{% url 'delete_product' product.id %}" method="POST" style="flex: 1;">
+                    {% csrf_token %}
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
             </div>
+        </div>
         {% endfor %}
     </div>
-
-    <!-- Display the product form -->
-    <h2>Add New Product</h2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Add Product</button>
-    </form>
+    {% else %}
+    <div class="no-products">
+        <h2>No products available</h2>
+        <p>There are currently no products in the gallery.</p>
+    </div>
+    {% endif %}
 </body>
 </html>

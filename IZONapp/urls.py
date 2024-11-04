@@ -21,4 +21,8 @@ urlpatterns = [
     path('careers/', views.careers, name='careers'),
     path('product_gallery/', views.product_gallery, name='product_gallery'),
     path('product/<int:product_id>/', views.product_details, name='product_details'),  # Added missing comma
+    path('product/gallery/', views.product_gallery, name='product_gallery'),
+    path('product/<int:product_id>/details/', views.product_details, name='product_details'),
+    path('product/<int:product_id>/delete/', views.delete_product, name='delete_product'),
+    path('product/<int:product_id>/edit/', views.edit_product, name='edit_product'),
 ]
