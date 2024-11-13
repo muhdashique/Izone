@@ -13,8 +13,8 @@
 </section>
 
 <!-- Section 2 -->
-<section class="px-2 bg-white md:px-0">
-  <div class="container items-center max-w-6xl px-8 mx-auto xl:px-5">
+<section class="px-2 bg-white md:px-0" style="width: 100%;">
+  <div class="container items-center px-8 w-full mx-auto xl:px-5">
     <div class="flex flex-wrap items-center sm:-mx-3">
       <div class="w-full md:w-1/2 md:px-3">
         <div class="w-full pb-6 space-y-6 sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0">
@@ -44,12 +44,7 @@
     </div>
   </div>
 </section>
-        
-
-      
-
-
-           <style>
+        <style>
                .why-choose-section {
                    max-width: 1200px;
                    margin: 0 auto;
@@ -128,13 +123,163 @@
                        grid-template-columns: 1fr;
                    }
                }
+               /* about */
+
+               * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+     
+            body {
+                background: #f0f2f5;
+                font-family: 'Arial', sans-serif;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                width: 100%;
+            } 
+    
+            .about-container {
+                background: linear-gradient(145deg, #ffffff, #f5f5f5);
+                max-width: 800px;
+                padding: 40px;
+                border-radius: 20px;
+                box-shadow: 
+                    10px 10px 20px rgba(0, 0, 0, 0.1),
+                    -10px -10px 20px rgba(255, 255, 255, 0.8);
+                position: relative;
+                overflow: hidden;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+    
+            .about-container:hover {
+                transform: translateY(-5px);
+                box-shadow: 
+                    12px 12px 24px rgba(0, 0, 0, 0.15),
+                    -12px -12px 24px rgba(255, 255, 255, 0.9);
+            }
+    
+            .about-container::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 5px;
+                background: linear-gradient(90deg, #3498db, #2ecc71);
+                animation: shimmer 2s infinite linear;
+            }
+    
+            .about-title {
+                color: #2c3e50;
+                font-size: 2.5em;
+                margin-bottom: 30px;
+                position: relative;
+                padding-bottom: 15px;
+                animation: slideIn 0.8s ease-out forwards;
+            }
+    
+            .about-title::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 60px;
+                height: 3px;
+                background: #3498db;
+                border-radius: 2px;
+                transition: width 0.3s ease;
+            }
+    
+            .about-container:hover .about-title::after {
+                width: 100px;
+            }
+    
+            .about-text {
+                color: #555;
+                line-height: 1.8;
+                font-size: 1.1em;
+                text-align: justify;
+                margin-bottom: 20px;
+                opacity: 0;
+                animation: fadeIn 0.8s ease-out 0.3s forwards;
+            }
+    
+            @keyframes slideIn {
+                from {
+                    transform: translateY(-30px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+    
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+    
+            @keyframes shimmer {
+                0% {
+                    background-position: -200% 0;
+                }
+                100% {
+                    background-position: 200% 0;
+                }
+            }
+    
+            @media (max-width: 768px) {
+                .about-container {
+                    padding: 30px;
+                    margin: 15px;
+                }
+    
+                .about-title {
+                    font-size: 2em;
+                }
+    
+                .about-text {
+                    font-size: 1em;
+                }
+            }
+    
+            @media (max-width: 480px) {
+                .about-container {
+                    padding: 20px;
+                }
+    
+                .about-title {
+                    font-size: 1.8em;
+                    margin-bottom: 20px;
+                }
+            }
+               
            </style>
+           <section>
+            <div class="about-container">
+            <h1 class="about-title">About Us</h1>
+            <p class="about-text">
+            Welcome to IZONE IT STORE, where innovation meets excellence. Founded in 2020, we are a dedicated team of professionals committed to delivering exceptional solutions to our clients. With our expertise in technology and customer-focused approach, we help businesses transform their digital presence and achieve their goals. Our passion for quality, combined with our innovative mindset, has enabled us to successfully serve clients across various industries. We believe in building lasting relationships with our clients through transparency, reliability, and outstanding service delivery.
+        </p>
+    </div>
+           </section> 
       
       <section class="why-choose-section">
         <h1 style="color: #011689;">WHY CHOOSE US</h1>
         <div class="subtitle" style="color: grey;">The fastest and most reliable service at unbeatable prices!</div>
     
-        <div class="services-grid">
+        <div class="services-grid" style="">
             <div class="service-card">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6 0h-4V4h4v2z' fill='%23FE5F00'/%3E%3C/svg%3E" 
                      alt="Data Recovery" class="service-icon">
@@ -213,16 +358,6 @@
       
 
 
-
-
-
-
-
-
-
-
-
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -254,7 +389,7 @@
         .header h1 {
             font-size: 2.5rem;
             color: #333;
-            margin-bottom: 15px;
+            margin-bottom: 15px;    
         }
 
         .header p {
@@ -265,13 +400,10 @@
             display: inline-block;
         }
 
-       
-
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 20px 0;
+            grid-template-columns: repeat(3,1fr);
+            place-items: center;
         }
 
         .service-item {
@@ -289,7 +421,7 @@
             width: 80px;
             height: 80px;
             margin-bottom: 20px;
-            color: #4A90E2;;
+            color: #FE5F00;;
         }
 
         .service-icon svg {
@@ -300,7 +432,7 @@
 
         .service-title {
             font-size: 1.3rem;
-            color: #333;
+            color: #011689;
             margin: 15px 0;
             font-weight: 600;
         }
@@ -451,7 +583,8 @@
         }
 
         .container {
-            max-width: 1200px;
+            /* max-width: 1200px; */
+            width: 100%;
             margin: 0 auto;
             padding: 40px 20px;
         }
@@ -477,7 +610,7 @@
             display: block;
             width: 80px;
             height: 4px;
-            background-color: #ff6b6b;
+            background-color: #FE5F00;
             margin: 20px auto 0;
         }
 
@@ -529,7 +662,7 @@
         }
 
         .discounted-price {
-            color: #ff6b6b;
+            color: #FE5F00;
             font-size: 1.2rem;
             font-weight: bold;
         }
@@ -700,8 +833,6 @@
 <!-- wahatsapp icon end here -->
 
 
-<!DOCTYPE html>
-<html>
 <head>
     <style>
         * {
@@ -820,7 +951,7 @@
         }
 
         .dot.active {
-            background: #ff6b4a;
+            background:#FE5F00;
             transform: scale(1.2);
         }
 
@@ -1002,10 +1133,6 @@
 
  
 
-
-</body>
-
-</html>
 
     {% endblock %}
 

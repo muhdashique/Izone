@@ -1,235 +1,605 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IZONE IT STORE</title>
+    <title>Contact Us</title>
     <style>
-        * {
+        
+
+         .header {
+            text-align: center;
+            padding: 3rem 0;
+        } 
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #222;
+        }
+
+    
+        {% comment %} message us {% endcomment %}
+        :root {
+            --primary-color: #010712;
+            --secondary-color: #818386;
+            --bg-color: #FCFDFD;
+            --button-color: #3B3636;
+            --h1-color: #3F444C;
+          }
+          
+          [data-theme="dark"] {
+            --primary-color: #FCFDFD;
+            --secondary-color: #818386;
+            --bg-color: #010712;
+            --button-color: #818386;
+            --h1-color: #FCFDFD;
+          }
+          
+          * {
             margin: 0;
-            padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background-color: #f5f5f5;
-            min-height: 100vh;
+            transition: all 0.3s ease-in-out;
+          }
+          
+          .contact-container {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .contact-container {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            display: flex; /* Added to arrange items side by side */
-            max-width: 900px; /* Set a max width for the entire container */
-            width: 100%;
-        }
-
-        .header-image {
-            width: 50%; /* Set width for image */
-            height: auto; /* Maintain aspect ratio */
+            width: 100vw;
+            height: 100vh;
+            background: var(--bg-color);
+          }
+          
+          .left-col {
+            width: 45vw;
+            height: 100%;
+            background-image: url("https://images.pexels.com/photos/931018/pexels-photo-931018.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
+            background-size: cover;
+            background-repeat: no-repeat;
+          }
+          
+          .logo {
+            width: 10rem;
+            padding: 1.5rem;
+          }
+          
+          .right-col {
+            background: var(--bg-color);
+            width: 50vw;
+            height: 100vh;
+            padding: 5rem 3.5rem;
+          }
+          
+          h1, label, button, .description {
+            font-family: 'Jost', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.1rem;
+          }
+          
+          h1 {
+            color:var(--h1-color);
+            text-transform: uppercase;
+            font-size: 2.5rem;
+            letter-spacing: 0.5rem;
+            font-weight: 300;
+          }
+          
+          p {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            letter-spacing: 0.01rem;
+            width: 40vw;
+            margin: 0.25rem 0;
+          }
+          
+          label, .description {
+            color: var(--secondary-color);
+            text-transform: uppercase;
+            font-size: 0.625rem;
+          }
+          
+          form {
+            width: 31.25rem;
             position: relative;
-            overflow: hidden;
-            border-radius: 10px 0 0 10px; /* Rounded corners on the left */
-        }
-
-        .header-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .form-container {
-            padding: 2rem; /* Padding for the form */
-            width: 50%; /* Set width for form */
-        }
-
-        .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .overlay h1 {
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            margin: 0;
-        }
-
-        h1 {
-            color: #333;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        label {
+            margin-top: 2rem;
+            padding: 1rem 0;
+          }
+          
+          input, textarea, label {
+            width: 40vw;
             display: block;
-            margin-bottom: 0.5rem;
-            color: #555;
-            font-weight: bold;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #4CAF50;
-        }
-
-        textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1rem 2rem;
+          }
+          
+          p, placeholder, input, textarea {
+            font-family: 'Helvetica Neue', sans-serif;
+          }
+          
+          input::placeholder, textarea::placeholder {
+            color: var(--primary-color);
+          }
+          
+          input, textarea {
+            color: var(--primary-color);
+            font-weight: 500;
+            background: var(--bg-color);
             border: none;
-            border-radius: 5px;
+            border-bottom: 1px solid var(--secondary-color);
+            padding: 0.5rem 0;
+            margin-bottom: 1rem;
+            outline: none;
+          }
+          
+          textarea {
+            resize: none;
+          }
+          
+          button {
+            text-transform: uppercase;
+            font-weight: 300;
+            background: var(--button-color);
+            color: var(--bg-color);
+            width: 10rem;
+            height: 2.25rem;
+            border: none;
+            border-radius: 2px;
+            outline: none;
             cursor: pointer;
-            font-size: 1rem;
-            width: 100%;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        .error {
-            color: #ff0000;
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
-        }
-
-        /* WhatsApp button styles */
-        .whatsapp-container {
-            text-align: center;
-            margin-top: 40px; /* Added margin for space before the WhatsApp option */
-        }
-
-        .whatsapp-button {
-            display: inline-block;
-            text-decoration: none;
-            color: white;
-            background-color: #25D366;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 16px;
+          }
+          
+          input:hover, textarea:hover, button:hover {
+            opacity: 0.5;
+          }
+          
+          button:active {
+            opacity: 0.8;
+          }
+          
+          /* Toggle Switch */
+          
+          .theme-switch-wrapper {
             display: flex;
             align-items: center;
-            justify-content: center;
-        }
-
-        .whatsapp-button img {
-            width: 24px;
-            margin-right: 10px;
-        }
-
-        .whatsapp-button:hover {
-            background-color: #1ebe56;
-        }
+            text-align: center;
+            width: 160px;
+            position: absolute;
+            top: 0.5rem;
+            right: 0;
+          }
+          
+          .description {
+              margin-left: 1.25rem;
+            }
+          
+          .theme-switch {
+            display: inline-block;
+            height: 34px;
+            position: relative;
+            width: 60px;
+          }
+          
+          .theme-switch input {
+            display:none;
+          }
+          
+          .slider {
+            background-color: #ccc;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .4s;
+          }
+          
+          .slider:before {
+            background-color: #fff;
+            bottom: 0.25rem;
+            content: "";
+            width: 26px;
+            height: 26px;
+            left: 0.25rem;
+            position: absolute;
+            transition: .4s;
+          }
+          
+          input:checked + .slider {
+            background-color: var(--button-color);
+          }
+          
+          input:checked + .slider:before {
+            transform: translateX(26px);
+          }
+          
+          .slider.round {
+            border-radius: 34px;
+          }
+          
+          .slider.round:before {
+            border-radius: 50%;
+          }
+          
+          #error, #success-msg {
+            width: 40vw;
+            margin: 0.125rem 0;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-family: 'Jost';
+            color: var(--secondary-color);
+            }
+          
+          
+            #success-msg {
+            transition-delay: 3s;
+            }
+          
+          @media only screen and (max-width: 950px) {
+            .logo {
+              width: 8rem;
+            }
+            h1 {
+              font-size: 1.75rem;
+            }
+            p {
+              font-size: 0.7rem;
+            }
+            input, textarea, button {
+              font-size: 0.65rem;
+            }
+            .description {
+              font-size: 0.3rem;
+              margin-left: 0.4rem;
+            }
+            button {
+              width: 7rem;
+            }
+            .theme-switch-wrapper {
+              width: 120px;
+            }
+            .theme-switch {
+            height: 28px;
+            width: 50px;
+          }
+          
+          .theme-switch input {
+            display:none;
+          }
+          
+          .slider:before {
+            background-color: #fff;
+            bottom: 0.25rem;
+            content: "";
+            width: 20px;
+            height: 20px;
+            left: 0.25rem;
+            position: absolute;
+            transition: .4s;
+          }
+            input:checked + .slider:before {
+            transform: translateX(16px);
+          }
+          
+          .slider.round {
+            border-radius: 15px;
+          }
+          
+          .slider.round:before {
+            border-radius: 50%;
+          }
+          
+          }
     </style>
 </head>
 <body>
-    <div class="contact-container">
-        <div class="header-image">
-            <img src="https://img.freepik.com/premium-photo/customer-service-representative-professional-customer-support-aftersales-service-phone_71956-31509.jpg?size=626&ext=jpg&ga=GA1.1.1630694325.1728393201&semt=ais_hybrid">
-            <div class="overlay">
-                <h1>Contact Us</h1>
-            </div>
-        </div>
+    <div class="container">
+        <header class="header">
+            <h1>We're here to help</h1>
+           
+        </header>
 
-        <div class="form-container">
-            <form method="POST" action="{% url 'send_email' %}">
-                {% csrf_token %}
-                <input type="text" name="name" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="tel" name="phone" placeholder="Phone Number" required>
-                <button type="submit">Submit Enquiry</button>
-            </form>
-            
+        <!-- Responsive Contact Page with Dark Mode and Form Validation (vanilla JS).
 
-            <!-- WhatsApp Contact Option -->
-            <div class="whatsapp-container">
-                <a href="https://wa.me/8281561081?text=Hello%20I%20have%20a%20query%20regarding%20your%20services" target="_blank" class="whatsapp-button">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
-                    Message Us on WhatsApp
-                </a>
+*Designed & built for desktop and tablets with viewport width >= 720px and in landscape orientation.  -->
+
+<div class="contact-container">
+    <div class="left-col">
+      <img class="logo" src="{% static 'images/IZONE LOGO.png' %}"/>
+    </div>
+    <div class="right-col">
+      <div class="theme-switch-wrapper">
+      {% comment %} <label class="theme-switch" for="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <div class="slider round"></div> {% endcomment %}
+    </label>
+  
+  </div>
+      
+      <h1>Connect With Us</h1>
+      <p>"We’re here to help with any questions, feedback, or requests you may have.
+         Whether you need more information, assistance, or simply want to share your thoughts,
+          please feel free to reach out to us. Our team is dedicated to providing the support 
+          you need and will respond as quickly as
+         possible. Thank you for taking the time to connect with us.".</p>
+      
+      <form id="contact-form" method="post">
+        <label for="name">Full name</label>
+    <input type="text" id="name" name="name" placeholder="Your Full Name" required>
+        <label for="email">Email Address</label>
+    <input type="email" id="email" name="email" placeholder="Your Email Address" required>
+        <label for="message">Message</label>
+    <textarea rows="6" placeholder="Your Message" id="message" name="message" required></textarea>
+        <!--<a href="javascript:void(0)">--><button type="submit" id="submit" name="submit">Send</button><!--</a>-->
+    
+  </form>
+  <div id="error"></div>
+  <div id="success-msg"></div>
+    </div>
+  </div>
+  
+  <!-- Image credit: Oliver Sjöström https://www.pexels.com/photo/body-of-water-near-green-mountain-931018/  -->
+
+        <style>
+            /* Previous styles remain the same until cta-section */
+    
+            .cta-section {
+                margin-top: 4rem;
+                text-align: center;
+                padding: 12rem 0;  /* Increased padding */
+                background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                            url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8ZGFyayxjYW1lcmF8fHx8fHwxNjE5NTk0MjIw&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080');
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                position: relative;
+                /* Remove border-radius for full-width effect */
+                margin-left: calc(-50vw + 50%);
+                margin-right: calc(-50vw + 50%);
+                width: 100vw;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+    
+            .cta-content {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+    
+            .cta-section h2 {
+                font-size: 3.5rem;  /* Increased font size */
+                margin-bottom: 2rem;  /* Increased margin */
+                color: #fff;
+                position: relative;
+                z-index: 2;
+                font-weight: 700;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            }
+    
+            .cta-button {
+                display: inline-block;
+                padding: 1.2rem 3rem;  /* Increased padding */
+                background-color: #007bff;
+                color: #fff;
+                text-decoration: none;
+                border-radius: 4px;
+                font-weight: bold;
+                font-size: 1.2rem;  /* Increased font size */
+                transition: all 0.3s ease;
+                position: relative;
+                z-index: 2;
+                border: 2px solid transparent;
+            }
+    
+            .cta-button:hover {
+                background-color: transparent;
+                border: 2px solid #fff;
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            }
+    
+            /* Rest of the previous styles remain the same */
+             {% comment %} whatsapp style end here {% endcomment %}
+             {% comment %} /* Container Styling */
+.whatsapp-form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading Styling */
+.whatsapp-form-container h2 {
+    text-align: center;
+    color: #075e54;
+}
+
+/* Form Element Styling */
+#whatsappForm label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+#whatsappForm input[type="text"],
+#whatsappForm input[type="tel"],
+#whatsappForm textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* WhatsApp Button Styling */
+.whatsapp-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #25D366;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.whatsapp-button img {
+    width: 24px;
+    margin-right: 10px;
+}
+
+.whatsapp-button:hover {
+    background-color: #1ebe57;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .whatsapp-form-container {
+        padding: 15px;
+    }
+
+    #whatsappForm input[type="text"],
+    #whatsappForm input[type="tel"],
+    #whatsappForm textarea {
+        font-size: 14px;
+    }
+
+    .whatsapp-button {
+        font-size: 16px;
+    }
+} {% endcomment %}
+
+
+
+            {% comment %} whatsapp style end here {% endcomment %}
+        </style>
+    </head>
+    <body>
+        <!-- Previous body content remains the same -->
+        <div class="cta-section">
+            <div class="cta-content">
+                <h2>Ready to Work Together</h2>
+                <a href="https://wa.me/1234567890?text=Hello%20there!%20I%20would%20like%20to%20get%20started." class="cta-button" target="_blank">Get Started on WhatsApp</a>
+
             </div>
         </div>
     </div>
+    
+    {% comment %} <section>
+        <div class="whatsapp-form-container">
+            <form id="whatsappForm" onsubmit="sendToWhatsApp(event)">
+                <h2>Contact Us on WhatsApp</h2>
+                
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required placeholder="Your Name">
+        
+                <label for="phone">Your Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required placeholder="+1234567890">
+        
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required placeholder="Type your message here"></textarea>
+        
+                <button type="submit" class="whatsapp-button">
+                    <img src="https://img.icons8.com/color/48/whatsapp.png" alt="WhatsApp Icon" /> Send on WhatsApp
+                </button>
+            </form>
+        </div>
+        
+        
+    </section> {% endcomment %}
 
     <script>
-        // Form validation
-        function validateForm(event) {
+         {% comment %} watsapp script start here {% endcomment %}
+        {% comment %} function sendToWhatsApp(event) {
             event.preventDefault();
-            let isValid = true;
-            
-            // Reset errors
-            document.querySelectorAll('.error').forEach(error => error.textContent = '');
-
-            // Name validation
+        
+            const phone = '8129139506'; // Replace with your WhatsApp number
             const name = document.getElementById('name').value;
-            if (name.length < 2) {
-                document.getElementById('nameError').textContent = 'Name must be at least 2 characters long';
-                isValid = false;
-            }
-
-            // Email validation
-            const email = document.getElementById('email').value;
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                document.getElementById('emailError').textContent = 'Please enter a valid email address';
-                isValid = false;
-            }
-
-            // Subject validation
-            const subject = document.getElementById('subject').value;
-            if (subject.length < 5) {
-                document.getElementById('subjectError').textContent = 'Subject must be at least 5 characters long';
-                isValid = false;
-            }
-
-            // Message validation
+            const userPhone = document.getElementById('phone').value;
             const message = document.getElementById('message').value;
-            if (message.length < 10) {
-                document.getElementById('messageError').textContent = 'Message must be at least 10 characters long';
-                isValid = false;
-            }
+        
+            const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(`Hello, my name is ${name}. My phone number is ${userPhone}. ${message}`)}`;
+        
+            window.open(whatsappUrl, '_blank'); {% endcomment %}
+        }
+        
+        {% comment %} watsapp script end here {% endcomment %}
+        
+        const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
 
-            if (isValid) {
-                // Here you would typically send the form data to a server
-                alert('Form submitted successfully!');
-                document.getElementById('contactForm').reset();
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.documentElement.setAttribute('data-theme', 'dark');
             }
+            else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }    
+        }
 
+        toggleSwitch.addEventListener('change', switchTheme, false);
+
+
+        const name = document.getElementById('name');
+        const email = document.getElementById('email');
+        const message = document.getElementById('message');
+        const contactForm = document.getElementById('contact-form');
+        const errorElement = document.getElementById('error');
+        const successMsg = document.getElementById('success-msg');
+        const submitBtn = document.getElementById('submit');
+        
+        const validate = (e) => {
+        e.preventDefault();
+        
+        if (name.value.length < 3) {
+            errorElement.innerHTML = 'Your name should be at least 3 characters long.';
+            return false;
+        } 
+        
+        if (!(email.value.includes('.') && (email.value.includes('@')))) {
+            errorElement.innerHTML = 'Please enter a valid email address.';
+            return false;
+        } 
+
+        if (!emailIsValid(email.value)) {
+            errorElement.innerHTML = 'Please enter a valid email address.';
             return false;
         }
+
+        if (message.value.length < 15) {
+            errorElement.innerHTML = 'Please write a longer message.';
+            return false;
+        }
+
+        errorElement.innerHTML = '';
+        successMsg.innerHTML = 'Thank you! I will get back to you as soon as possible.'; 
+
+        e.preventDefault();
+        setTimeout(function () {
+            successMsg.innerHTML = '';
+            document.getElementById('contact-form').reset();
+        }, 6000);
+
+        return true;
+
+        }
+
+        const emailIsValid = email => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        submitBtn.addEventListener('click', validate);
     </script>
 </body>
 </html>
+<!-- {% endblock %} -->

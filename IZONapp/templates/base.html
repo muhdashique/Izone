@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_filters %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,28 +7,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IZONE IT STORE </title>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 
 <body>
     <!-- Section 1 -->
-    <section class="w-full px-8 text-gray-700 bg-white">
-        <div class="container flex items-center justify-center py-2 mx-auto  max-w-7xl">
+    <section class="w-full text-gray-700">
+        <div class=" flex items-center justify-center py-2 mx-auto">
             <div class="relative flex flex-col justify-center items-center w-full">
                 
                 
-                <nav class="flex items-center justify-between gap-12 w-full mb-5 text-base md:mb-0 md:pl-8 md:ml-8 ">
+                <nav class="flex items-center justify-between gap-12 w-full mb-5 text-base md:mb-0 px-3">
                     <!-- Mobile Menu Button -->
                     <div>    
                         <img src="{% static 'images/IZONE LOGO.png' %}" alt="Image" style="height: 100px; width: 100px; object-fit: contain;mix-blend-mode: multiply;">
                      </div>
                     <div class="block lg:hidden">
-                        <button class="flex items-center px-3 py-2 text-gray-600 border border-gray-600 rounded focus:outline-none">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                            </svg>
+                        <button id="menu-button" class="flex items-center px-3 py-2 text-gray-600 border border-gray-600 rounded focus:outline-none">
+                            <i class="fa-solid fa-bars"></i>
                         </button>
                     </div>
 
@@ -37,49 +46,65 @@
 
                         <!-- Products Dropdown -->
                         <div class="relative">
-                            <button id="products-button" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900 flex items-center focus:outline-none">
+                            <a id="products-button" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900 flex items-center focus:outline-none">
                                 Products
                                 <svg class="ml-2 w-4 h-4 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                 </svg>
-                            </button>
+                            </a>
                             <div id="products-dropdown" class="absolute hidden bg-white shadow-lg rounded mt-2 z-10 transition-opacity duration-300">
                                 <ul class="py-2 w-40">
                                     <!-- Static Link -->
+                                    {% comment %} <li>
+                                        <a href="{% url 'product_gallery' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">All Products</a>
+                                    </li> {% endcomment %}
+                            
+                                    <!-- Dynamic Product Links Based on Category -->
+                                    {% for category, products in products_by_category.items %}
                                     <li>
-                                        <!-- Static item example -->
-                                    </li>
-
-                                    <!-- Dynamic Product Links -->
-                                    {% for product in products %}
-                                    <li>
-                                        <a href="{% url 'product_details' product.id %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                                            {{ product.name }}
+                                        <a href="{% url 'product_by_category' category %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
+                                            {{ category }} 
                                         </a>
                                     </li>
                                     {% empty %}
                                     <li>
-                                        <span class="block px-4 py-2 text-gray-700">No Products</span>
+                                        <span class="block px-4 py-2 text-gray-700">No Products Available</span>
                                     </li>
                                     {% endfor %}
-                                </ul>
+                                   </ul>
                             </div>
                         </div>
 
-                        <a href="/gallery/" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Gallery</a>
+                        <a href="/contactus/" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Contact Us</a>
                         <a href="/careers/" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Career</a>
+                        <a href="/service/" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Services</a>
                     </div>
                     <a href="{% url 'login' %}" class="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap  border-transparent rounded-md shadow-sm  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600" style="background-color: #011689;" onmouseover="this.style.backgroundColor='#011689d9'" onmouseout="this.style.backgroundColor='#011689'">
                         Login
                     </a>
                 </nav>
+                <!-- Mobile Navigation Layout -->
+            <div id="mobile-menu" class="fixed top-0 bottom-0 left-0 right-0 bg-red-600 z-[1500] hidden flex justify-center items-center">
+                <div class="flex flex-col items-center">
+                    <button id="close-button" class="absolute top-5 right-5 text-white text-3xl">
+                        <i class="fa-solid fa-rectangle-xmark"></i>
+                    </button>
+                    <ul class="text-white flex flex-col items-center gap-4 font-medium">
+                        <a href="{% url 'home' %}"><li>Home</li></a>
+                        <a href="{% url 'about' %}"><li>About</li></a>
+                        <a href="{% url 'contactus' %}"><li>Contact Us</li></a>
+                        <a href="{% url 'careers' %}"><li>Career</li></a>
+                        <a href="{% url 'service' %}"><li>Services</li></a>
+                    </ul>
+                </div>
+            </div>
                 {% block content %}{% endblock %}
             </div>
         </div>
     </section>
-    <section>
-
+    
         <!-- this is footer section -->
+    <section>
 
         <footer class="w-full py-5">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -94,35 +119,12 @@
                             <ul class="grid gap-4 min-[500px]:gap-6 text-center min-[500px]:text-left">
                                 <li><a href="{% url 'home' %}" class="text-gray-600 hover:text-gray-900">Home</a></li>
                                 <li><a href="/about/" class="text-gray-600 hover:text-gray-900">About</a></li>
-                                <li><a href="/gallery/" class="text-gray-600 hover:text-gray-900">Gallery</a></li>
+                                <li><a href="/contactus/" class="text-gray-600 hover:text-gray-900">Contact Us</a></li>
                                 <li><a href=":/careers/" class="text-gray-600 hover:text-gray-900">Career</a></li>
                             </ul>
+                            
                         </div>
-                        <!-- <div class="block">
-                            <h4
-                                class="text-lg text-gray-900 font-medium mb-4 min-[500px]:mb-7 text-center min-[500px]:text-left">
-                                Products</h4>
-                            <ul class="grid gap-4 min-[500px]:gap-6 text-center min-[500px]:text-left">
-                                <li><a href="javascript:;" class="text-gray-600 hover:text-gray-900">Figma UI System</a>
-                                </li>
-                                <li><a href="javascript:;" class="text-gray-600 hover:text-gray-900">Icons Assets</a></li>
-                                <li><a href="javascript:;" class="text-gray-600 hover:text-gray-900">Responsive Blocks</a>
-                                </li>
-                                <li><a href="javascript:;" class="text-gray-600 hover:text-gray-900">Components Library</a>
-                                </li>
-                            </ul>
-                        </div> -->
-                        <!-- <div class="block">
-                            <h4
-                                class="text-lg text-gray-900 font-medium mb-4 min-[500px]:mb-7 text-center min-[500px]:text-left">
-                                Resources</h4>
-                            <ul class="grid gap-4 min-[500px]:gap-6 text-center min-[500px]:text-left">
-                                <li><a href="javascript:;" class="text-gray-600 hover:text-gray-900">FAQs</a></li>
-                                <li><a href="javascript:;" class="text-gray-600 hover:text-gray-900">Quick Start</a></li>
-                                <li><a href="javascript:;" class="text-gray-600 hover:text-gray-900">Documentation</a></li>
-                                <li><a href="javascript:;" class="text-gray-600 hover:text-gray-900">User Guide</a></li>
-                            </ul>
-                        </div> -->
+                        
                     </div>
                     <div class="block lg:max-w-md">
                         <h3
@@ -218,6 +220,23 @@
                 arrowIcon.classList.remove('rotate-180');
             }
         });
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+    const menuButton = document.getElementById("menu-button");
+    const closeButton = document.getElementById("close-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    // Show mobile menu
+    menuButton.addEventListener("click", () => {
+        mobileMenu.classList.remove("hidden");
+    });
+
+    // Hide mobile menu
+    closeButton.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+    });
+});
     </script>
 </body>
 

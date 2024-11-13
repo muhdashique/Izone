@@ -194,9 +194,28 @@
             justify-content: center;
             gap: 0.5rem;
         }
+        .edit-btn {
+            background: rgb(31, 117, 247);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
 
         .delete-btn:hover {
             background: #b91c1c;
+            transform: translateY(-2px);
+        }
+
+        .edit-btn:hover {
+            background: #0051ff;
             transform: translateY(-2px);
         }
 
@@ -371,12 +390,16 @@
                 <p>{{ image.description }}</p>
             </div>
             <div class="gallery-item-actions">
-                <form method="post" action="{% url 'delete_image' image.id %}">
+                <form method="post" action="{% url 'delete_image' image.id %}" style="display: flex;justify-content: space-between; align-items: center; width: 100%;gap: 10px;">
                     {% csrf_token %}
                     <button type="submit" class="delete-btn">
                         <i class="fas fa-trash"></i>
                         Delete
                     </button>
+                    <a href="{% url 'edit_gallery_image' image.id %}" class="edit-btn">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        Edit
+                    </a>
                 </form>
             </div>
         </div>

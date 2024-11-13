@@ -16,15 +16,29 @@ class LoginAttempt(models.Model):
 
     def __str__(self):
         return self.name
+    
 class Product(models.Model):
+    CATEGORY_CHOICES = [
+        ('DESKTOP', 'DESKTOP'),
+        ('LAPTOPS', ' LAPTOPS'),
+        ('PRINTERS', 'PRINTERS'),
+        ('SCANNERS ', 'SCANNERS '),
+        (' CCTV', ' CCTV'),
+        ('ROLLS AND RIBBONS', 'ROLLS AND RIBBONS'),
+        ('SECURITY SYSTEM', 'SECURITY SYSTEM'),       
+        ('ACCESSORIES', 'ACCESSORIES'),
+       
+        # Add more categories as needed
+    ]
+
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(upload_to='product_images/', blank=True, null=True)
-    # category = models.CharField(max_length=255)  # Ensure this line is present
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
 
-    def __str__(self):
-        return self.name
+    def str(self):
+        return self.name 
 
 
 class GalleryImage(models.Model):
@@ -40,6 +54,19 @@ class ImageUpload(models.Model):
 
     def __str__(self):
         return f"ImageUpload {self.id}"  # Just to provide a string representation
+    
+
+
+    from django.db import models
+
+class Image(models.Model):
+    # your model fields here
+    image = models.ImageField(upload_to='images/')
+    title = models.CharField(max_length=200)
+    # other fields...
+
+    def __str__(self):
+        return self.title
 
 
 

@@ -90,7 +90,7 @@
 
         .bathroom-image {
             flex: 3;
-            background: url("{% static 'images\careerbanner.jpg' %}");
+            background: url("{% static 'images/about image.jpeg' %}");
             background-size: cover;
             background-position: center;
         }
@@ -173,7 +173,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-image: url("{% static 'images\careerbanner.jpg' %}");
+            background-image: url("{% static 'images/servicsbanner.jpg' %}");
             background-size: cover;
             background-position: center;
             color: #fff;
@@ -334,7 +334,7 @@
             }
         }
         /* {% comment %} about {% endcomment %} */
-        * {
+        {% comment %} * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -391,7 +391,7 @@
         
         .social-icons a:hover {
             color: #000;
-         }
+         } {% endcomment %}
         /* vision and mission  */
         * {
             margin: 0;
@@ -557,80 +557,162 @@
                 width: 100%;
             }
         }
-        {% comment %} careermenu {% endcomment %}
         * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
-      
+
         body {
-          background-color: #f5f5f5;
-          padding: 2rem;
+            padding: 2rem;
+            background-color: #f8f9fa;
         }
-      
-        .container {
-          max-width: 900px;
-          margin: 0 auto;
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
         }
-      
-        .accordion-item {
-          margin-bottom: 1rem;
-          border-radius: 4px;
-          overflow: hidden;
+
+        .header h1 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
-      
-        .accordion-header {
-          background-color: #ff7f50;
-          padding: 1rem;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          color: white;
-          transition: background-color 0.3s;
+
+        .header .underline {
+            width: 60px;
+            height: 4px;
+            background-color: #ff5722;
+            margin: 0 auto;
         }
-      
-        .accordion-header:hover {
-          background-color: #ff6b3d;
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-      
-        .accordion-header i {
-          margin-right: 1rem;
-          font-size: 1.2rem;
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
-      
-        .accordion-content {
-          background-color: white;
-          padding: 1.5rem;
-          line-height: 1.6;
-          color: #666;
-          border: 1px solid #eee;
-          border-top: none;
+
+        .service-card:hover {
+            transform: translateY(-5px);
         }
-      
-        .accordion-title {
-          font-size: 1.1rem;
-          font-weight: 500;
-        }
-      
+
         .icon {
-          width: 24px;
-          height: 24px;
-          margin-right: 12px;
-          display: inline-block;
-          background-color: rgba(255, 255, 255, 0.2);
-          mask-repeat: no-repeat;
-          mask-position: center;
-          mask-size: contain;
-          -webkit-mask-repeat: no-repeat;
-          -webkit-mask-position: center;
-          -webkit-mask-size: contain;
+            width: 50px;
+            height: 50px;
+            background: #ff5722;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
         }
-      
-        .icon-drive {
-          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M20 12H4M8 16l-4-4 4-4M16 16l4-4-4-4'/%3E%3C/svg%3E");
-          -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M20 12H4M8 16l-4-4 4-4M16 16l4-4-4-4'/%3E%3C/svg%3E");
+
+        .icon svg {
+            width: 25px;
+            height: 25px;
+            fill: white;
+        }
+
+        .service-title {
+            font-size: 1.25rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        {% comment %} image srvice {% endcomment %}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .view-service-btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: #26389A;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-service-btn:hover {
+            background-color: #f4511e;
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         
@@ -642,9 +724,9 @@
 <body>
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Let's Grow Up With Us.</h1>
-            {% comment %} <p>From concept to completion.</p>
-            <a href="#about" class="btn">REQUEST A QUOTE</a> {% endcomment %}
+            <h1>Professional Computer Hardware Services.</h1>
+           
+          
         </div>
         
     </section>
@@ -667,65 +749,110 @@
         </div>
     </div>  
     
-    <section style="width: 100%;background-color: #00000046;position: relative;">
-        <div style="width: 100%;position: absolute;top: 0;bottom: 0;left: 0;right: 0;mix-blend-mode: multiply;">
-            <img src="https://img.freepik.com/free-photo/about-us-information-service-sharing-join-concept_53876-124056.jpg" alt="" style="width: 100%;height: 100%;object-fit: cover;z-index: -1;filter: blur(10px);">
+    <section style=>
+        <div class="header">
+            <h1>Professional Device Repair Services</h1>
+            <div class="underline"></div>
         </div>
-        <div class="about-container" style="position: relative;z-index: 10;">
-            <div class="content">
-                <h1>ABOUT</h1>
-                <p>
-                    Welcome to IZONE IT STORE, your one-stop destination for all your IT needs. We specialize in offering a wide range of computer hardware, software solutions, and IT accessories. Our store is committed to providing top-quality products and exceptional customer service to help you find the perfect solutions for your technology requirements. From the latest desktops and laptops to essential peripherals and accessories, we have everything you need to stay connected and productive. Explore our diverse product range and experience the best in IT technology at<br> IZONE IT STORE
-                </p>
-                <div class="social-icons">
-                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+    
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                    </svg>
                 </div>
+                <h2 class="service-title">Fast Service</h2>
+                <p class="service-description">Quick and efficient repair process that gets your device back to you in minimal time. Our streamlined workflow ensures rapid turnaround without compromising quality.</p>
+            </div>
+    
+            <div class="service-card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                    </svg>
+                </div>
+                <h2 class="service-title">Secure Payments</h2>
+                <p class="service-description">Your financial security is our priority. We utilize industry-standard encryption to protect all transactions and ensure your payment information stays safe.</p>
+            </div>
+    
+            <div class="service-card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </div>
+                <h2 class="service-title">Expert Team</h2>
+                <p class="service-description">Our certified technicians bring years of experience to every repair. Trust your device with professionals who understand the intricacies of modern technology.</p>
+            </div>
+    
+            <div class="service-card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                    </svg>
+                </div>
+                <h2 class="service-title">Affordable Pricing</h2>
+                <p class="service-description">Competitive rates without compromising on quality. We believe in transparent pricing with no hidden fees or surprise charges.</p>
+            </div>
+    
+            <div class="service-card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                    </svg>
+                </div>
+                <h2 class="service-title">30 Days Warranty</h2>
+                <p class="service-description">Peace of mind with our 30-day warranty coverage. If any issues arise with our repair work, we'll fix it at no additional cost.</p>
+            </div>
+    
+            <div class="service-card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM7 10.82C5.84 10.4 5 9.3 5 8V7h2v3.82zM19 8c0 1.3-.84 2.4-2 2.82V7h2v1z"/>
+                    </svg>
+                </div>
+                <h2 class="service-title">Award Winning</h2>
+                <p class="service-description">Recognized for excellence in customer service and repair quality. Our commitment to superior service has earned us industry accolades.</p>
             </div>
         </div>
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </section>
-    <div class="container">
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <span class="icon icon-drive"></span>
-          <span class="accordion-title">Hard Drive Data Recovery</span>
-        </div>
-        <div class="accordion-content">
-          <p>Our professional data recovery service specializes in recovering data from all types of storage devices. Whether you're dealing with a mechanical failure, logical error, or accidental deletion, our experts can help retrieve your valuable information using advanced recovery techniques.</p>
-        </div>
-      </div>
+    <section class="bathroom-section">
+        <div class="container">
+            <div class="services-grid">
+                <!-- Hardware Service -->
+                <div class="service-card">
+                    <img src="/api/placeholder/400/200" alt="Custom PC Building" class="service-image">
+                    <div class="service-content">
+                        <h2 class="service-title">System Building</h2>
+                        <p class="service-description">We specialize in building custom computer systems tailored to your needs. Whether you need a high-performance gaming rig or a reliable workstation, our experts will design and assemble a system that meets your specifications and budget.</p>
+                        <a href="#" class="view-service-btn">VIEW SERVICE</a>
+                    </div>
+                </div>
     
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <span class="icon icon-drive"></span>
-          <span class="accordion-title">SSD Recovery Services</span>
-        </div>
-        <div class="accordion-content">
-          <p>Specialized recovery solutions for Solid State Drives (SSDs). We utilize cutting-edge technology to recover data from failed or corrupted SSDs, ensuring the highest possible success rate while maintaining data integrity throughout the recovery process.</p>
-        </div>
-      </div>
+                <!-- Repair Service -->
+                <div class="service-card">
+                    <img src="/api/placeholder/400/200" alt="Computer Repair" class="service-image">
+                    <div class="service-content">
+                        <h2 class="service-title">Computer Repair</h2>
+                        <p class="service-description">Our computer repair service covers a wide range of issues, from hardware malfunctions to software problems. We provide efficient diagnosis and repairs to get your computer back in top shape.</p>
+                        <a href="#" class="view-service-btn">VIEW SERVICE</a>
+                    </div>
+                </div>
     
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <span class="icon icon-drive"></span>
-          <span class="accordion-title">Emergency Data Recovery</span>
+                <!-- Software Service -->
+                <div class="service-card">
+                    <img src="/api/placeholder/400/200" alt="Software Solutions" class="service-image">
+                    <div class="service-content">
+                        <h2 class="service-title">Software Solutions</h2>
+                        <p class="service-description">We offer comprehensive software solutions, including installation, troubleshooting, and optimization. Our team ensures that your software performs at its best, enhancing productivity and efficiency.</p>
+                        <a href="#" class="view-service-btn">VIEW SERVICE</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="accordion-content">
-          <p>When time is critical, our emergency data recovery service provides rapid response and priority handling. Our team of specialists works around the clock to recover your crucial data with minimal downtime.</p>
-        </div>
-      </div>
-    </div>
     </section>
-    <script>
-      document.querySelectorAll('.accordion-header').forEach(header => {
-        header.addEventListener('click', () => {
-          const content = header.nextElementSibling;
-          content.style.display = content.style.display === 'none' ? 'block' : 'none';
-        });
-      });
-      </script>
    
 </head>
 <body>
