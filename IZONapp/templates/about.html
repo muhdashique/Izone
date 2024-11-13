@@ -9,6 +9,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IZONE IT STORE </title>
+
+
+
+
+    
     <style>
         * {
             margin: 0;
@@ -557,7 +562,205 @@
                 width: 100%;
             }
         }
+        /* new style for service card */
+       /* Container grid styling */
+        .cards-grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Styling individual cards */
+        .action-card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .action-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Icon circle styling */
+        .icon-circle {
+            background-color: #007bff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+
+        /* Text styling */
+        .action-card h3 {
+            font-size: 1.5em;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .action-card p {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .more-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .more-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Separation bar at the end */
+        .cards-grid::after {
+            content: "";
+            display: block;
+            height: 4px;
+            width: 100%;
+            background: #ddd;
+            margin-top: 30px;
+        }
+        /* about and vission */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Mission Section */
+        .mission-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .mission-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .mission-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .mission-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .mission-content h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .mission-content p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Story Section */
+        .story-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .story-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .story-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .story-content h2 {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .story-content p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Logo */
+        .logo {
+            font-size: 2.5em;
+            color: #4CAF50;
+            font-weight: bold;
+            margin-bottom: 40px;
+            display: inline-block;
+        }
+
+        /* Placeholder images */
+        .placeholder {
+            background-color: #f5f5f5;
+            width: 100%;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mission-section, .story-section {
+                flex-direction: column;
+            }
+
+            .mission-content, .story-content,
+            .mission-image, .story-image {
+                width: 100%;
+            }
+
+            .container {
+                padding: 15px;
+            }
+        }
         
+
         
         
     </style>
@@ -565,6 +768,12 @@
    </head>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <body>
+    
+    <style>
+        body {
+            background-color: #ffffff; /* Sky blue */
+        }
+    </style>
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>We are a Leading Company.</h1>
@@ -592,32 +801,53 @@
         </div>
     </div>  
     
-    <section style="width: 100%;background-color: #00000046;position: relative;">
-        <div style="width: 100%;position: absolute;top: 0;bottom: 0;left: 0;right: 0;mix-blend-mode: multiply;">
-            <img src="https://img.freepik.com/free-photo/about-us-information-service-sharing-join-concept_53876-124056.jpg" alt="" style="width: 100%;height: 100%;object-fit: cover;z-index: -1;filter: blur(10px);">
+    <div class="container">
+        <!-- Logo Section -->
+        <!-- <div class="logo-section">
+            <img src="/api/placeholder/50/50" alt="Company Logo" class="logo-image">
+            <span class="logo-text">Grow Better</span>
+        </div> -->
+        
+        <!-- Mission Section -->
+        <div class="mission-section">
+            <div class="mission-image">
+                <div class="image-container">
+                    <img src="/api/placeholder/600/400" alt="Modern Office Space">
+                    <div class="image-overlay">
+                        Our modern collaborative workspace
+                    </div>
+                </div>
+            </div>
+            <div class="mission-content">
+                <h1>Our Mission: Helping Millions of Organizations Grow Better</h1>
+                <p style="text-align: justify;">We believe not just in growing bigger, but in growing better.And growing better means aligning the success of your own business with the success of your customers. Win-win!</p>
+            </div>
         </div>
-        <div class="about-container" style="position: relative;z-index: 10;">
-            <div class="content">
-                <h1>ABOUT</h1>
-                <p>
-                    Welcome to IZONE IT STORE, your one-stop destination for all your IT needs. We specialize in offering a wide range of computer hardware, software solutions, and IT accessories. Our store is committed to providing top-quality products and exceptional customer service to help you find the perfect solutions for your technology requirements. From the latest desktops and laptops to essential peripherals and accessories, we have everything you need to stay connected and productive. Explore our diverse product range and experience the best in IT technology at<br> IZONE IT STORE
-                </p>
-                <div class="social-icons">
-                    <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+
+        <!-- Story Section -->
+        <div class="story-section">
+            <div class="story-content">
+                <h2>Our Story</h2>
+                <p style="text-align: justify;">In 2020, our founders recognized a fundamental shift in how businesses operate and grow. They saw that traditional methods weren't keeping pace with the digital transformation, and customers wanted a more integrated, seamless experience.</p>
+                <p style="text-align: justify;">Today, we've grown into a comprehensive platform that helps businesses thrive in the digital age. Led by our innovative team, we continue to develop cutting-edge solutions that empower organizations to grow better through technology and customer-centric approaches.</p>
+            </div>
+            <div class="story-image">
+                <div class="image-container">
+                    <img src="/api/placeholder/600/400" alt="Team Collaboration">
+                    <div class="image-overlay">
+                        Our team working together to create innovative solutions
+                    </div>
                 </div>
             </div>
         </div>
-        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    </section>
+    </div>
     <section class="bathroom-section">
         <div class="bathroom-image"></div>
         <div class="container">
             <!-- Main Story Card -->
             <div class="story-card">
                 <h1>What We Do</h1>
-                <p> We specialize in providing top-notch repair services with unparalleled speed and affordability. Our expert team ensures your equipment is up and running swiftly, whether you need a quick fix or a major overhaul. Our services include computer sales and service, building servers and workstations, networking and CCTV installation, as well as EPABX and biometric solutions..</p>
+                <p style="text-align: justify;"> We specialize in providing top-notch repair services with unparalleled speed and affordability. Our expert team ensures your equipment is up and running swiftly, whether you need a quick fix or a major overhaul. Our services include computer sales and service, building servers and workstations, networking and CCTV installation, as well as EPABX and biometric solutions..</p>
                 <a href="#" class="learn-more-btn">LEARN MORE</a>
             </div>
     
@@ -629,7 +859,7 @@
                         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'/%3E%3C/svg%3E" alt="Legacy Icon">
                     </div>
                     <h3>Need file recovery?</h3>
-                    <p>Need file recovery?
+                    <p style="text-align: justify;">Need file recovery?
                         If you’re facing data loss issues or need expert recovery services, we are here to help. Our team is equipped to handle various data recovery challenges</p>
                     <a href="#" class="more-link">MORE</a>
                 </div>
@@ -640,7 +870,7 @@
                         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'/%3E%3C/svg%3E" alt="Donation Icon">
                     </div>
                     <h3>Make Donation</h3>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+                    <p style="text-align: justify;">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
                     <a href="#" class="more-link">MORE</a>
                 </div>
     
@@ -650,7 +880,7 @@
                         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z'/%3E%3Cpath d='M22 6l-10 7L2 6'/%3E%3C/svg%3E" alt="Fundraiser Icon">
                     </div>
                     <h3>Become a Fundraiser</h3>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+                    <p style="text-align: justify;">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
                     <a href="#" class="more-link">MORE</a>
                 </div>
     
@@ -660,12 +890,13 @@
                         <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E" alt="Volunteer Icon">
                     </div>
                     <h3>Become A Volunteer</h3>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+                    <p style="text-align: justify;">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
                     <a href="#" class="more-link">MORE</a>
                 </div>
             </div>
         </div>
     </section>
+    <div class="section-separator"></div>
    
 </head>
 <body>

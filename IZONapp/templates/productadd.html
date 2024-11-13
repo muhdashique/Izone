@@ -1,227 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IZONE IT STORE</title>
-    <a href="{% url 'product_gallery' %}" class="button">View Product Gallery</a>
-
-<style>
-.button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.button:hover {
-  background-color: #0056b3;
-}
-</style>
+    <title>Add Product - IZONE IT STORE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+        :root {
+            --primary-color: #011689;
+            --primary-light: #2d3baf;
+            --secondary-color: #ffaa00;
+            --success-color: #10b981;
+            --error-color: #ef4444;
+            --background-color: #f8fafc;
+            --surface-color: #ffffff;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+        }
+
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            line-height: 1.5;
+            padding: 2rem;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--surface-color);
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
-            text-align: center;
-            color: #011689;
-            margin-bottom: 20px;
+            font-size: 1.875rem;
+            color: var(--primary-color);
+            font-weight: 700;
         }
 
-        .container {
+        .nav-buttons {
             display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
+            gap: 1rem;
         }
 
-        .form-section {
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            flex: 1;
-            min-width: 300px;
-            margin: 10px;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            min-width: 120px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--surface-color);
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
         }
 
         label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .required::after {
+            content: '*';
+            color: var(--error-color);
+            margin-left: 4px;
         }
 
         input[type="text"],
         input[type="number"],
         textarea,
-        input[type="file"] {
+        select {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            background: var(--surface-color);
+            transition: all 0.2s ease;
         }
 
-        button {
-            background-color: #011689;
-            color: #fff;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(1, 22, 137, 0.1);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .image-upload {
+            border: 2px dashed var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
             cursor: pointer;
-            width: 100%;
+            transition: all 0.2s ease;
         }
 
-        button:hover {
-            background-color: #011689;
+        .image-upload:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(1, 22, 137, 0.05);
         }
 
-        a {
-            display: inline-block;
-            margin-top: 10px;
+        .image-upload-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .image-preview {
+            margin-top: 1rem;
             text-align: center;
-            color: #011689;
-            text-decoration: none;
         }
 
-        a:hover {
-            text-decoration: underline;
+        .preview-image {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .gallery-container {
-            margin-top: 20px;
+        .form-hint {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
         }
 
-        .gallery-images {
+        .price-input {
+            position: relative;
+        }
+
+        .price-input::before {
+            content: '$';
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        .price-input input {
+            padding-left: 28px;
+        }
+
+        .form-footer {
             display: flex;
-            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--border-color);
         }
 
-        .gallery-image {
-            margin: 10px;
-            flex-basis: 23%;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            padding: 5px;
-        }
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
 
-        .gallery-image img {
-            width: 100%;
-            height: auto;
-        }
+            .page-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
 
-        .gallery-image input {
-            margin-top: 10px;
-        }
+            .nav-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
 
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #ffaa00;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-        }
+            .btn {
+                width: 100%;
+            }
 
-        .btn:hover {
-            background-color: #011689;
+            .form-container {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
-
 <body>
-    <a href="{% url 'home' %}" class="btn" style="color: white;">Home</a>
-     <h1>Add Product</h1> 
-    <div class="container">
-        
-     
- 
-     
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="form-group">
-                {{ form.as_p }}
-            </div>
-            <button type="submit" class="btn btn-primary">Save Product</button>
-        </form>
-     
- 
-  
- 
-
-        
-        <!-- Image Upload Section -->
-        <div class="form-section">
-            <h2>Upload Images</h2>
-            <form action="{% url 'upload_image' %}" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="gallery-images">
-                    {% for image in images %}
-                        <div class="gallery-image">
-                            <input type="checkbox" name="selected_images" value="{{ image.id }}">
-                            <img src="{{ image.image.url }}" alt="Gallery Image">
-                        </div>
-                    {% empty %}
-                        <p></p>
-                    {% endfor %}
-                </div>
-                <button type="submit">Add Images</button>
-            </form>
+    <div class="page-header">
+        <h1>Add New Product</h1>
+        <div class="nav-buttons">
+            <a href="{% url 'home' %}" class="btn btn-secondary">Home</a>
+            <a href="{% url 'product_gallery' %}" class="btn btn-primary">View Gallery</a>
         </div>
     </div>
 
+    <div class="form-container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="name" class="required">Product Name</label>
+                <input type="text" id="name" name="name" required maxlength="255">
+                <div class="form-hint">Enter a descriptive name for your product</div>
+            </div>
+
+            <div class="form-group">
+                <label for="category" class="required">Category</label>
+                <select id="category" name="category" required>
+                    {% for value, label in form.fields.category.choices %}
+                        <option value="{{ value }}">{{ label }}</option>
+                    {% endfor %}
+                </select>
+                <div class="form-hint">Select the most appropriate category for your product</div>
+            </div>
+
+            <div class="form-group">
+                <label for="price" class="required">Price</label>
+                <div class="price-input">
+                    <input type="number" id="price" name="price" step="0.01" min="0" required>
+                </div>
+                <div class="form-hint">Enter the price in dollars (up to 2 decimal places)</div>
+            </div>
+
+            <div class="form-group">
+                <label for="description" class="required">Description</label>
+                <textarea id="description" name="description" required></textarea>
+                <div class="form-hint">Provide a detailed description of your product</div>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Product Image</label>
+                <div class="image-upload" id="dropZone">
+                    <div class="image-upload-icon">📸</div>
+                    <p>Drag and drop an image here or click to browse</p>
+                    <input type="file" id="image" name="image" accept="image/*" style="display: none;">
+                </div>
+                <div id="imagePreview" class="image-preview"></div>
+                <div class="form-hint">Upload a clear image of your product (optional)</div>
+            </div>
+
+            <div class="form-footer">
+                <button type="button" class="btn btn-secondary">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Product</button>
+            </div>
+        </form>
+    </div>
+
     <script>
-        const fileInput = document.getElementById('fileInput');
+        const fileInput = document.getElementById('image');
         const dropZone = document.getElementById('dropZone');
         const imagePreview = document.getElementById('imagePreview');
-        const noImagesText = document.querySelector('.no-images');
 
-        fileInput.addEventListener('change', handleFiles);
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        fileInput.addEventListener('change', handleFile);
+        
         dropZone.addEventListener('dragover', (e) => {
             e.preventDefault();
-            dropZone.style.borderColor = '#1e3a8a';
-        });
-        dropZone.addEventListener('dragleave', (e) => {
-            e.preventDefault();
-            dropZone.style.borderColor = '#ccc';
-        });
-        dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropZone.style.borderColor = '#ccc';
-            handleFiles({ target: { files: e.dataTransfer.files } });
+            dropZone.style.borderColor = '#011689';
+            dropZone.style.backgroundColor = 'rgba(1, 22, 137, 0.05)';
         });
 
-        function handleFiles(event) {
-            const files = event.target.files;
-            if (files.length > 0) noImagesText.style.display = 'none';
-            Array.from(files).forEach(file => {
-                if (file.type.startsWith('image/')) {
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        const img = document.createElement('img');
-                        img.src = e.target.result;
-                        img.className = 'preview-image';
-                        imagePreview.appendChild(img);
-                    }
-                    reader.readAsDataURL(file);
+        dropZone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            dropZone.style.borderColor = '#e5e7eb';
+            dropZone.style.backgroundColor = 'transparent';
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const file = e.dataTransfer.files[0];
+            fileInput.files = e.dataTransfer.files;
+            handleFile({ target: { files: [file] } });
+        });
+
+        function handleFile(event) {
+            const file = event.target.files[0];
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    imagePreview.innerHTML = `<img src="${e.target.result}" class="preview-image" alt="Product preview">`;
                 }
-            });
+                reader.readAsDataURL(file);
+            }
         }
     </script>
 </body>
-
 </html>

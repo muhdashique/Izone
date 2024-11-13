@@ -714,6 +714,65 @@
                 grid-template-columns: 1fr;
             }
         }
+        {% comment %} feature section css {% endcomment %}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 20px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 16px;
+            fill: #4666f5;
+        }
+
+        .feature h3 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .feature {
+                padding: 16px;
+            }
+        }
         
         
         
@@ -722,6 +781,11 @@
    </head>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <body>
+    <style>
+        body {
+            background-color: #ffffff; /* Sky blue */
+        }
+    </style>
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Professional Computer Hardware Services.</h1>
@@ -730,24 +794,34 @@
         </div>
         
     </section>
-    <div class="stats-container">
-        <div class="stat-item">
-            <div class="stat-number">10+</div>
-            <div class="stat-label">Years of Experience</div>
+    <div class="container">
+        <div class="features">
+            <div class="feature">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-9h10v2H7z"/>
+                    <path d="M16 7l-4 4-4-4H16z"/>
+                </svg>
+                <h3>Organization Structure</h3>
+                <p style="text-align: justify;">Cara kerja dari yang rosak bergaritung pada kewafa peruntukkan kementerian akan setiap karyawan memberikan yang adalah serabi.</p>
+            </div>
+
+            <div class="feature">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                </svg>
+                <h3>Fastest Growing</h3>
+                <p style="text-align: justify;">Tumbuh dan cepat berkarifasi dengan tingkungan yang memikiran mayan nyaman ningkunganmu adalah karrer.</p>
+            </div>
+
+            <div class="feature">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/>
+                </svg>
+                <h3>Dedication and Reward</h3>
+                <p style="text-align: justify;">Kesadaran untuk mendedikasikan upaya dan berkualitas tinna menilai dirinya dengan akurabilitas.</p>
+            </div>
         </div>
-        <div class="stat-item">
-            <div class="stat-number">30+</div>
-            <div class="stat-label">Skilled Professionals</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Customer Satisfaction</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">1000+</div>
-            <div class="stat-label">Clients World Wide</div>
-        </div>
-    </div>  
+    </div> 
     
     <section style=>
         <div class="header">
@@ -763,7 +837,7 @@
                     </svg>
                 </div>
                 <h2 class="service-title">Fast Service</h2>
-                <p class="service-description">Quick and efficient repair process that gets your device back to you in minimal time. Our streamlined workflow ensures rapid turnaround without compromising quality.</p>
+                <p class="service-description" style="text-align: justify;">Quick and efficient repair process that gets your device back to you in minimal time. Our streamlined workflow ensures rapid turnaround without compromising quality.</p>
             </div>
     
             <div class="service-card">
@@ -773,7 +847,7 @@
                     </svg>
                 </div>
                 <h2 class="service-title">Secure Payments</h2>
-                <p class="service-description">Your financial security is our priority. We utilize industry-standard encryption to protect all transactions and ensure your payment information stays safe.</p>
+                <p class="service-description" style="text-align: justify;">Your financial security is our priority. We utilize industry-standard encryption to protect all transactions and ensure your payment information stays safe.</p>
             </div>
     
             <div class="service-card">
@@ -783,7 +857,7 @@
                     </svg>
                 </div>
                 <h2 class="service-title">Expert Team</h2>
-                <p class="service-description">Our certified technicians bring years of experience to every repair. Trust your device with professionals who understand the intricacies of modern technology.</p>
+                <p class="service-description" style="text-align: justify;">Our certified technicians bring years of experience to every repair. Trust your device with professionals who understand the intricacies of modern technology.</p>
             </div>
     
             <div class="service-card">
@@ -793,7 +867,7 @@
                     </svg>
                 </div>
                 <h2 class="service-title">Affordable Pricing</h2>
-                <p class="service-description">Competitive rates without compromising on quality. We believe in transparent pricing with no hidden fees or surprise charges.</p>
+                <p class="service-description" style="text-align: justify;">Competitive rates without compromising on quality. We believe in transparent pricing with no hidden fees or surprise charges.</p>
             </div>
     
             <div class="service-card">
@@ -803,7 +877,7 @@
                     </svg>
                 </div>
                 <h2 class="service-title">30 Days Warranty</h2>
-                <p class="service-description">Peace of mind with our 30-day warranty coverage. If any issues arise with our repair work, we'll fix it at no additional cost.</p>
+                <p class="service-description" style="text-align: justify;">Peace of mind with our 30-day warranty coverage. If any issues arise with our repair work, we'll fix it at no additional cost.</p>
             </div>
     
             <div class="service-card">
@@ -813,7 +887,7 @@
                     </svg>
                 </div>
                 <h2 class="service-title">Award Winning</h2>
-                <p class="service-description">Recognized for excellence in customer service and repair quality. Our commitment to superior service has earned us industry accolades.</p>
+                <p class="service-description" style="text-align: justify;">Recognized for excellence in customer service and repair quality. Our commitment to superior service has earned us industry accolades.</p>
             </div>
         </div>
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -823,30 +897,30 @@
             <div class="services-grid">
                 <!-- Hardware Service -->
                 <div class="service-card">
-                    <img src="/api/placeholder/400/200" alt="Custom PC Building" class="service-image">
+                    <img src="{% static 'images\pcbulding.png' %}" alt="Custom PC Building" class="service-image">
                     <div class="service-content">
                         <h2 class="service-title">System Building</h2>
-                        <p class="service-description">We specialize in building custom computer systems tailored to your needs. Whether you need a high-performance gaming rig or a reliable workstation, our experts will design and assemble a system that meets your specifications and budget.</p>
+                        <p class="service-description" style="text-align: justify;">We specialize in building custom computer systems tailored to your needs. Whether you need a high-performance gaming rig or a reliable workstation, our experts will design and assemble a system that meets your specifications and budget.</p>
                         <a href="#" class="view-service-btn">VIEW SERVICE</a>
                     </div>
                 </div>
     
                 <!-- Repair Service -->
                 <div class="service-card">
-                    <img src="/api/placeholder/400/200" alt="Computer Repair" class="service-image">
+                    <img src="{% static 'images\ogcomputerrepair.png' %}" alt="Computer Repair" class="service-image">
                     <div class="service-content">
                         <h2 class="service-title">Computer Repair</h2>
-                        <p class="service-description">Our computer repair service covers a wide range of issues, from hardware malfunctions to software problems. We provide efficient diagnosis and repairs to get your computer back in top shape.</p>
+                        <p class="service-description" style="text-align: justify;">Our computer repair service covers a wide range of issues, from hardware malfunctions to software problems. We provide efficient diagnosis and repairs to get your computer back in top shape.</p>
                         <a href="#" class="view-service-btn">VIEW SERVICE</a>
                     </div>
                 </div>
     
                 <!-- Software Service -->
                 <div class="service-card">
-                    <img src="/api/placeholder/400/200" alt="Software Solutions" class="service-image">
+                    <img src="{% static 'images\software solution.jpg' %}" class="service-image">
                     <div class="service-content">
                         <h2 class="service-title">Software Solutions</h2>
-                        <p class="service-description">We offer comprehensive software solutions, including installation, troubleshooting, and optimization. Our team ensures that your software performs at its best, enhancing productivity and efficiency.</p>
+                        <p class="service-description" style="text-align: justify;" >We offer comprehensive software solutions, including installation, troubleshooting, and optimization. Our team ensures that your software performs at its best, enhancing productivity and efficiency.</p>
                         <a href="#" class="view-service-btn">VIEW SERVICE</a>
                     </div>
                 </div>
