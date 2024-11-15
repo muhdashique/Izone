@@ -36,103 +36,7 @@
         }
 
         /* About Section */
-        .about {
-            padding: 100% 100%;
-            display: flex;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-content {
-            flex: 1;
-        }
-
-        .about-form {
-            flex: 1;
-            padding: 30px;
-            background: #f5f5f5;
-            border-radius: 10px;
-        }
-
-        /* Services Section */
-        /* .services {
-            padding: 100px 50px;
-            text-align: center;
-            background: #f9f9f9;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .service-item {
-            padding: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .service-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .service-item img {
-            width: 60px;
-            margin-bottom: 15px;
-        } */
-
-        /* Project Section */
-        /* .bathroom-section {
-            display: flex;
-            min-height: 500px;
-        }
-{% comment %} 
-        .bathroom-image {
-            flex: 3;
-            background: url("{% static 'images\careerbanner.jpg' %}");
-            background-size: cover;
-            background-position: center;
-        } {% endcomment %}
-
-        .bathroom-content {
-            flex: 2;
-            background: #FE5F00;
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        } */
-
-        /* Latest Projects */
-        .projects {
-            padding: 100px 50px;
-            text-align: center;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .project-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-        }
-
-        .project-item img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .project-item:hover img {
-            transform: scale(1.1);
-        }
+       
 
        
 
@@ -168,7 +72,7 @@
         /* Hero Section */
         .hero {
             position: relative;
-            height: 100vh;
+            height: 80vh;
             width: 100%; /* Added width property */
             display: flex;
             align-items: center;
@@ -333,7 +237,7 @@
                 padding-right: 0;
             }
         }
-        /* {% comment %} about {% endcomment %} */
+        {% comment %} /* about */
         * {
             margin: 0;
             padding: 0;
@@ -344,8 +248,8 @@
             height: 100%;
             font-family: Arial, sans-serif;
         }
-        
-        .about-container {
+         {% endcomment %}
+        {% comment %} .about-container {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -556,7 +460,9 @@
             .stat-item {
                 width: 100%;
             }
-        }
+        } {% endcomment %}
+
+
         {% comment %} careermenu {% endcomment %}
         * {
           margin: 0;
@@ -579,7 +485,7 @@
           margin-bottom: 1rem;
           border-radius: 4px;
           overflow: hidden;
-        }
+        } 
       
         .accordion-header {
           background-color: #ff7f50;
@@ -613,7 +519,7 @@
           font-size: 1.1rem;
           font-weight: 500;
         }
-      
+       
         .icon {
           width: 24px;
           height: 24px;
@@ -625,7 +531,7 @@
           mask-size: contain;
           -webkit-mask-repeat: no-repeat;
           -webkit-mask-position: center;
-          -webkit-mask-size: contain;
+          -webkit-mask-size: contain; 
         }
       
         .icon-drive {
@@ -680,6 +586,7 @@
         .feature-icon {
             width: 32px;
             height: 32px;
+            color :#27399B;
         }
 
         .feature-title {
@@ -881,22 +788,24 @@
     <div class="container">
         <div class="images-section">
             <div class="image image-1">
-                <img src="/api/placeholder/200/200" alt="Person smiling on phone">
+                <img src="{% static 'images\vision1.jpg' %}" alt="Person smiling on phone">
             </div>
             <div class="image image-2">
-                <img src="/api/placeholder/260/200" alt="Business handshake">
+                <img src="{% static 'images\vision2.jpg' %}" alt="Business handshake">
             </div>
             <div class="image image-3">
-                <img src="/api/placeholder/200/200" alt="Person laughing">
+                <img src="{% static 'images\vision3.jpg' %}" alt="Person laughing">
             </div>
         </div>
         <div class="text-section">
-            <h2 class="title">Our Vision</h2>
+            <h2 class="title" style="color: #011689;"><strong>Our Vision</strong></h2>
             <p class="description" style="text-align: justify;">
-                Created fourth third without female evening earth above make multiply sixth fly. Created 
-                gathering creature firmament unto upon the evening he brought form also female given 
-                thing bearing fill together. I morning void, land called, cattle fill herb also yielding 
-                without make to. Life void that, he replenish forth.
+                To empower a connected world through advanced hardware solutions that inspire progress, 
+                improve lives, and redefine the limits of technology. We envision a future where our 
+                innovative devices create seamless, sustainable, and secure experiences, transforming 
+                industries and enhancing the everyday lives of people around the globe. Committed to quality, reliability,
+                 and continual advancement, we strive to be a leader in the development of 
+                intelligent, high-performance hardware that fuels the possibilities of tomorrow.
             </p>
         </div>
     </div>
@@ -960,5 +869,4 @@
 </html>
    
   
-
-<!-- {% endblock %} -->
+{% endblock %}

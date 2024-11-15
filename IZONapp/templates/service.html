@@ -8,7 +8,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IZONE IT STORE </title>
+    <title>Your Page Title</title>
+    <link rel="shortcut icon" href="{% static 'images/IZONE LOGO.png' %}" type="image/x-icon">
     <style>
         * {
             margin: 0;
@@ -35,104 +36,7 @@
             animation: fadeInUp 1s ease 0.2s forwards;
         }
 
-        /* About Section */
-        .about {
-            padding: 100% 100%;
-            display: flex;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-content {
-            flex: 1;
-        }
-
-        .about-form {
-            flex: 1;
-            padding: 30px;
-            background: #f5f5f5;
-            border-radius: 10px;
-        }
-
-        /* Services Section */
-        /* .services {
-            padding: 100px 50px;
-            text-align: center;
-            background: #f9f9f9;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .service-item {
-            padding: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .service-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .service-item img {
-            width: 60px;
-            margin-bottom: 15px;
-        } */
-
-        /* Project Section */
-        /* .bathroom-section {
-            display: flex;
-            min-height: 500px;
-        }
-
-        .bathroom-image {
-            flex: 3;
-            background: url("{% static 'images/about image.jpeg' %}");
-            background-size: cover;
-            background-position: center;
-        }
-
-        .bathroom-content {
-            flex: 2;
-            background: #FE5F00;
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        } */
-
-        /* Latest Projects */
-        .projects {
-            padding: 100px 50px;
-            text-align: center;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .project-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-        }
-
-        .project-item img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .project-item:hover img {
-            transform: scale(1.1);
-        }
+        
 
        
 
@@ -168,7 +72,7 @@
         /* Hero Section */
         .hero {
             position: relative;
-            height: 100vh;
+            height: 80vh;
             width: 100%; /* Added width property */
             display: flex;
             align-items: center;
@@ -194,21 +98,7 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Button Styling */
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background-color: #ff6b6b;
-            color: #fff;
-            font-weight: bold;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #ff5252;
-        }
+        
 
         /* Optional overlay for better text readability */
         .hero::before {
@@ -333,65 +223,7 @@
                 padding-right: 0;
             }
         }
-        /* {% comment %} about {% endcomment %} */
-        {% comment %} * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body, html {
-            height: 100%;
-            font-family: Arial, sans-serif;
-        }
-        
-        .about-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-image: url('bgimage.jpg'); /* replace with your actual background image path */
-            background-size: cover; /* Make the background image cover the whole container */
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        
-        .content {
-            background-color: rgba(224, 224, 224, 0.9); /* Slightly transparent background for text readability */
-            padding: 40px;
-            text-align: center;
-            max-width: 600px;
-            border-radius: 8px;
-        }
-        
-        h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-        }
-        
-        p {
-            font-size: 1em;
-            line-height: 1.6;
-            color: #555;
-            margin-bottom: 20px;
-        }
-        
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        .social-icons a {
-            color: #333;
-            font-size: 1.5em;
-            text-decoration: none;
-        }
-        
-        .social-icons a:hover {
-            color: #000;
-         } {% endcomment %}
+       
         /* vision and mission  */
         * {
             margin: 0;
@@ -465,7 +297,7 @@
         .icon-circle {
             width: 3rem;
             height: 3rem;
-            background: #FE5F00;
+            background: #011689;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -910,7 +742,7 @@
                     <img src="{% static 'images\ogcomputerrepair.png' %}" alt="Computer Repair" class="service-image">
                     <div class="service-content">
                         <h2 class="service-title">Computer Repair</h2>
-                        <p class="service-description" style="text-align: justify;">Our computer repair service covers a wide range of issues, from hardware malfunctions to software problems. We provide efficient diagnosis and repairs to get your computer back in top shape.</p>
+                        <p class="service-description" style="text-align: justify;">Our computer repair service covers a wide range of issues, from hardware malfunctions to software problems. We provide efficient diagnosis and repairs to get your computer back in top shape Computer repair typically begins with .</p>
                         <a href="#" class="view-service-btn">VIEW SERVICE</a>
                     </div>
                 </div>
@@ -920,7 +752,7 @@
                     <img src="{% static 'images\software solution.jpg' %}" class="service-image">
                     <div class="service-content">
                         <h2 class="service-title">Software Solutions</h2>
-                        <p class="service-description" style="text-align: justify;" >We offer comprehensive software solutions, including installation, troubleshooting, and optimization. Our team ensures that your software performs at its best, enhancing productivity and efficiency.</p>
+                        <p class="service-description" style="text-align: justify;" >We offer comprehensive software solutions, including installation, troubleshooting, and optimization. Our team ensures that your software performs at its best, enhancing productivity and efficiency Software solutions can be off-the-shelf.</p>
                         <a href="#" class="view-service-btn">VIEW SERVICE</a>
                     </div>
                 </div>
@@ -939,5 +771,4 @@
 </html>
    
   
-
-<!-- {% endblock %} -->
+{% endblock %}

@@ -312,9 +312,7 @@
     </div>
     <div class="right-col">
       <div class="theme-switch-wrapper">
-      {% comment %} <label class="theme-switch" for="checkbox">
-          <input type="checkbox" id="checkbox" />
-          <div class="slider round"></div> {% endcomment %}
+     
     </label>
   
   </div>
@@ -402,83 +400,7 @@
             }
     
             /* Rest of the previous styles remain the same */
-             {% comment %} whatsapp style end here {% endcomment %}
-             {% comment %} /* Container Styling */
-.whatsapp-form-container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f1f1f1;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Heading Styling */
-.whatsapp-form-container h2 {
-    text-align: center;
-    color: #075e54;
-}
-
-/* Form Element Styling */
-#whatsappForm label {
-    display: block;
-    margin-bottom: 8px;
-    color: #333;
-}
-
-#whatsappForm input[type="text"],
-#whatsappForm input[type="tel"],
-#whatsappForm textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-    box-sizing: border-box;
-}
-
-/* WhatsApp Button Styling */
-.whatsapp-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #25D366;
-    color: #fff;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s;
-}
-
-.whatsapp-button img {
-    width: 24px;
-    margin-right: 10px;
-}
-
-.whatsapp-button:hover {
-    background-color: #1ebe57;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-    .whatsapp-form-container {
-        padding: 15px;
-    }
-
-    #whatsappForm input[type="text"],
-    #whatsappForm input[type="tel"],
-    #whatsappForm textarea {
-        font-size: 14px;
-    }
-
-    .whatsapp-button {
-        font-size: 16px;
-    }
-} {% endcomment %}
+             
 
 
 
@@ -496,45 +418,10 @@
         </div>
     </div>
     
-    {% comment %} <section>
-        <div class="whatsapp-form-container">
-            <form id="whatsappForm" onsubmit="sendToWhatsApp(event)">
-                <h2>Contact Us on WhatsApp</h2>
-                
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required placeholder="Your Name">
-        
-                <label for="phone">Your Phone Number:</label>
-                <input type="tel" id="phone" name="phone" required placeholder="+1234567890">
-        
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required placeholder="Type your message here"></textarea>
-        
-                <button type="submit" class="whatsapp-button">
-                    <img src="https://img.icons8.com/color/48/whatsapp.png" alt="WhatsApp Icon" /> Send on WhatsApp
-                </button>
-            </form>
-        </div>
-        
-        
-    </section> {% endcomment %}
+    
 
     <script>
-         {% comment %} watsapp script start here {% endcomment %}
-        {% comment %} function sendToWhatsApp(event) {
-            event.preventDefault();
         
-            const phone = '8129139506'; // Replace with your WhatsApp number
-            const name = document.getElementById('name').value;
-            const userPhone = document.getElementById('phone').value;
-            const message = document.getElementById('message').value;
-        
-            const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(`Hello, my name is ${name}. My phone number is ${userPhone}. ${message}`)}`;
-        
-            window.open(whatsappUrl, '_blank'); {% endcomment %}
-        }
-        
-        {% comment %} watsapp script end here {% endcomment %}
         
         const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
 
