@@ -236,7 +236,7 @@ def send_email(request):
             message = request.POST.get('message', '')
             
             # Create HTML email content
-            html_message = render_to_string('email_template.html', {
+            html_message = render_to_string('about.html', {
                 'name': name,
                 'email': email,
                 'phone': phone,
@@ -373,10 +373,16 @@ def contact_view(request):
                 fail_silently=False,
             )
             messages.success(request, "Your message has been sent successfully!")
-            return redirect('careers')
+            return redirect('contactus')
         except Exception as e:
             messages.error(request, "There was an error sending your message. Please try again later.")
     
-    return render(request, 'career.html')
+    return render(request, 'contactus.html')
 
-
+def ProductItemDisplay(request, product_id):
+    # Retrieve all products (if you still need them for any purpose)
+    products = Product.objects.all()
+    # Retrieve the specific product by its ID
+    product = get_object_or_404(Product, id=product_id)
+    # Render the ProductItemDisplay.html template with the selected product
+    return render(request, 'ProductItemDisplay.html', {'product': product})

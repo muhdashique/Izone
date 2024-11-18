@@ -25,7 +25,8 @@
         }
 
     
-        {% comment %} message us {% endcomment %}
+         /* message us  */
+
         :root {
             --primary-color: #010712;
             --secondary-color: #818386;
@@ -58,7 +59,7 @@
           .left-col {
             width: 45vw;
             height: 100%;
-            background-image: url("https://images.pexels.com/photos/931018/pexels-photo-931018.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
+            background-image: url("https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
             background-size: cover;
             background-repeat: no-repeat;
           }
@@ -308,7 +309,7 @@
 
 <div class="contact-container">
     <div class="left-col">
-      <img class="logo" src="{% static 'images/IZONE LOGO.png' %}"/>
+      {% comment %} <img class="logo" src="{% static 'images/IZONE LOGO.png' %}"/> {% endcomment %}
     </div>
     <div class="right-col">
       <div class="theme-switch-wrapper">
@@ -323,8 +324,8 @@
           please feel free to reach out to us. Our team is dedicated to providing the support 
           you need and will respond as quickly as
          possible. Thank you for taking the time to connect with us.".</p>
-      
-      <form id="contact-form" method="post">
+         {% csrf_token %}
+  <form id="contact-form" method="post">
         <label for="name">Full name</label>
     <input type="text" id="name" name="name" placeholder="Your Full Name" required>
         <label for="email">Email Address</label>
@@ -349,7 +350,7 @@
                 text-align: center;
                 padding: 12rem 0;  /* Increased padding */
                 background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                            url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8ZGFyayxjYW1lcmF8fHx8fHwxNjE5NTk0MjIw&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080');
+                            url("https://plus.unsplash.com/premium_photo-1674641194949-e154719cdc02?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
                 background-size: cover;
                 background-position: center;
                 background-attachment: fixed;
@@ -404,7 +405,8 @@
 
 
 
-            {% comment %} whatsapp style end here {% endcomment %}
+            
+               /* whatsapp style end here */
         </style>
     </head>
     <body>

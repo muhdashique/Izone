@@ -121,7 +121,7 @@
             <h2 class="product-name">{{ product.name }}</h2>
             <p class="product-description">{{ product.description }}</p>
             <p class="product-price">${{ product.price }}</p>
-            <a href="{% url 'product_details' product.id %}" class="details-link">View Details</a>
+            {% comment %} <a href="{% url 'product_details' product.id %}" class="details-link">View Details</a> {% endcomment %}
             <div class="button-group">
                 <a href="{% url 'edit_product' product.id %}" class="edit-button">Edit</a>
                 <form action="{% url 'delete_product' product.id %}" method="POST" style="flex: 1;">

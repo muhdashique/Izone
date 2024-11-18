@@ -26,4 +26,8 @@ urlpatterns = [
     path('gallery/edit/<int:image_id>/', views.edit_gallery_image, name='edit_gallery_image'),
     path('service/', views.service, name='service'),
     path('contact/', views.contact_view, name='contact'),
-]
+    path('ProductItemDisplay/<int:id>/', views.ProductItemDisplay, name='ProductItemDisplay'),
+    path('ProductItemDisplay/<int:product_id>/', views.ProductItemDisplay, name='ProductItemDisplay'),
+
+  ] 
+
