@@ -183,6 +183,8 @@ def delete_image(request, image_id):
     return render(request, 'confirm_delete.html', {'image': image})
 
 
+
+
 def get_categories(request):
     # Get unique categories from products
     categories = Product.objects.values_list('category', flat=True).distinct()
@@ -222,49 +224,49 @@ def product_detail(request, product_id):
 
 
 
-from django.core.mail import send_mail
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-def send_email(request):
-    if request.method == 'POST':
-        try:
-            # Get form data
-            name = request.POST.get('name', '')
-            email = request.POST.get('email', '')
-            phone = request.POST.get('phone', '')
-            subject = request.POST.get('subject', '')
-            message = request.POST.get('message', '')
+# from django.core.mail import send_mail
+# from django.shortcuts import render, redirect
+# from django.http import HttpResponse
+# def send_email(request):
+#     if request.method == 'POST':
+#         try:
+#             # Get form data
+#             name = request.POST.get('name', '')
+#             email = request.POST.get('email', '')
+#             phone = request.POST.get('phone', '')
+#             subject = request.POST.get('subject', '')
+#             message = request.POST.get('message', '')
             
-            # Create HTML email content
-            html_message = render_to_string('about.html', {
-                'name': name,
-                'email': email,
-                'phone': phone,
-                'subject': subject,
-                'message': message
-            })
+#             # Create HTML email content
+#             html_message = render_to_string('about.html', {
+#                 'name': name,
+#                 'email': email,
+#                 'phone': phone,
+#                 'subject': subject,
+#                 'message': message
+#             })
             
-            # Strip HTML for plain text version
-            plain_message = strip_tags(html_message)
+#             # Strip HTML for plain text version
+#             plain_message = strip_tags(html_message)
             
-            # Send the email
-            send_mail(
-                subject=f"New Contact Form Submission: {subject}",
-                message=plain_message,
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=[settings.ADMIN_EMAIL],
-                html_message=html_message,
-                fail_silently=False,
-            )
+#             # Send the email
+#             send_mail(
+#                 subject=f"New Contact Form Submission: {subject}",
+#                 message=plain_message,
+#                 from_email=settings.EMAIL_HOST_USER,
+#                 recipient_list=[settings.ADMIN_EMAIL],
+#                 html_message=html_message,
+#                 fail_silently=False,
+#             )
             
-            messages.success(request, 'Your message has been sent successfully!')
-            return redirect('contact_success')
+#             messages.success(request, 'Your message has been sent successfully!')
+#             return redirect('contact_success')
             
-        except Exception as e:
-            messages.error(request, 'There was an error sending your message. Please try again later.')
-            return render(request, 'contact.html')
+#         except Exception as e:
+#             messages.error(request, 'There was an error sending your message. Please try again later.')
+#             return render(request, 'contact.html')
     
-    return render(request, 'contact.html')
+#     return render(request, 'contact.html')
 
 
 
@@ -350,39 +352,80 @@ def service(request):
 
 
 
-from django.core.mail import send_mail
-from django.shortcuts import render, redirect
-from django.conf import settings
-from django.contrib import messages
+# from django.core.mail import send_mail
+# from django.shortcuts import render, redirect
+# from django.conf import settings
+# from django.contrib import messages
 
-def contact_view(request):
+# def contact_view(request):
+#     if request.method == 'POST':
+#         email = request.POST.get('email')
+#         subject = request.POST.get('subject')
+#         message = request.POST.get('message')
+        
+#         full_message = f"From: {email}\n\nMessage:\n{message}"
+        
+#         # Send email
+#         try:
+#             send_mail(
+#                 subject,
+#                 full_message,
+#                 settings.EMAIL_HOST_USER,
+#                 ['muhammedashique8281@gmail.com'],  # Replace with your destination email
+#                 fail_silently=False,
+#             )
+#             messages.success(request, "Your message has been sent successfully!")
+#             return redirect('contactus')
+#         except Exception as e:
+#             messages.error(request, "There was an error sending your message. Please try again later.")
+    
+#     return render(request, 'contactus.html')
+
+
+
+from django.template.loader import get_template
+
+def ProductItemDisplay(request, id):
+    product = get_object_or_404(Product, id=id)
+    try:
+        get_template('ProductItesmDisplay.html')
+        print("Template found!")
+    except Exception as e:
+        print("Template error:", e)
+    return render(request, 'ProductItemsDisplay.html', {'product': product})
+
+
+
+
+# views.py
+
+from django.core.mail import send_mail
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.core.mail import send_mail
+from django.http import HttpResponse
+
+def contact_form_view(request):
     if request.method == 'POST':
+        name = request.POST.get('name')
         email = request.POST.get('email')
-        subject = request.POST.get('subject')
         message = request.POST.get('message')
-        
-        full_message = f"From: {email}\n\nMessage:\n{message}"
-        
-        # Send email
+
+        subject = f"New Contact Form Submission from {name}"
+        recipient = 'muhammedashique8281@gmail.com'  # Your recipient email
+        full_message = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+
         try:
             send_mail(
                 subject,
                 full_message,
-                settings.EMAIL_HOST_USER,
-                ['muhammedashique8281@gmail.com'],  # Replace with your destination email
+                email,  # Sender's email
+                [recipient],  # List of recipient emails
                 fail_silently=False,
             )
-            messages.success(request, "Your message has been sent successfully!")
-            return redirect('contactus')
+            return HttpResponse("Your message has been sent successfully!")
         except Exception as e:
-            messages.error(request, "There was an error sending your message. Please try again later.")
-    
-    return render(request, 'contactus.html')
+            return HttpResponse(f"An error occurred: {str(e)}")
 
-def ProductItemDisplay(request, product_id):
-    # Retrieve all products (if you still need them for any purpose)
-    products = Product.objects.all()
-    # Retrieve the specific product by its ID
-    product = get_object_or_404(Product, id=product_id)
-    # Render the ProductItemDisplay.html template with the selected product
-    return render(request, 'ProductItemDisplay.html', {'product': product})
+    return render(request, 'contactus.html')

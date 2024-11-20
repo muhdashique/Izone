@@ -241,47 +241,56 @@
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             
+            <!-- Product Name -->
             <div class="form-group">
                 <label for="name" class="required">Product Name</label>
-                <input type="text" id="name" name="name" required maxlength="255">
+                {{ form.name }}  <!-- Render the product name field from the form -->
                 <div class="form-hint">Enter a descriptive name for your product</div>
             </div>
-
+        
+            <!-- Category -->
             <div class="form-group">
                 <label for="category" class="required">Category</label>
-                <select id="category" name="category" required>
-                    {% for value, label in form.fields.category.choices %}
-                        <option value="{{ value }}">{{ label }}</option>
-                    {% endfor %}
-                </select>
+                {{ form.category }}  <!-- Render the category select field from the form -->
                 <div class="form-hint">Select the most appropriate category for your product</div>
             </div>
-
+        
+            <!-- Price -->
             <div class="form-group">
                 <label for="price" class="required">Price</label>
-                <div class="price-input">
-                    <input type="number" id="price" name="price" step="0.01" min="0" required>
-                </div>
+                {{ form.price }}  <!-- Render the price input field from the form -->
                 <div class="form-hint">Enter the price in dollars (up to 2 decimal places)</div>
             </div>
-
+        
+            <!-- Description -->
             <div class="form-group">
                 <label for="description" class="required">Description</label>
-                <textarea id="description" name="description" required></textarea>
+                {{ form.description }}  <!-- Render the description textarea field from the form -->
                 <div class="form-hint">Provide a detailed description of your product</div>
             </div>
-
+        
+            <!-- Product Image -->
             <div class="form-group">
                 <label for="image">Product Image</label>
                 <div class="image-upload" id="dropZone">
                     <div class="image-upload-icon">📸</div>
                     <p>Drag and drop an image here or click to browse</p>
-                    <input type="file" id="image" name="image" accept="image/*" style="display: none;">
+                    {{ form.image }}  <!-- Render the image upload field -->
                 </div>
                 <div id="imagePreview" class="image-preview"></div>
                 <div class="form-hint">Upload a clear image of your product (optional)</div>
             </div>
-
+        
+            <!-- Category Image Preview -->
+            <div class="form-group">
+                <label for="category_image">Category Image</label>
+                <div class="category-image-preview">
+                    <img id="categoryImagePreview" src="" alt="Category Image" style="max-width: 200px;">
+                </div>
+                <div class="form-hint">This is the default category image. You can upload a new one if needed.</div>
+            </div>
+        
+            <!-- Form Footer -->
             <div class="form-footer">
                 <button type="button" class="btn btn-secondary">Cancel</button>
                 <button type="submit" class="btn btn-primary">Save Product</button>
@@ -327,6 +336,38 @@
                 reader.readAsDataURL(file);
             }
         }
+
+
+    // JavaScript to update category image preview when category is selected
+    document.addEventListener('DOMContentLoaded', function() {
+        const categorySelect = document.getElementById('category');
+        const categoryImagePreview = document.getElementById('categoryImagePreview');
+
+        // Function to update the preview
+        function updateCategoryImage() {
+            const selectedCategory = categorySelect.value;
+            const categoryImages = {
+                'DESKTOP': 'https://res.cloudinary.com/dqydgc2ky/image/upload/v1731912582/WhatsApp_Image_2024-11-18_at_12.16.49_b23417a0_q7jag7.jpg',
+                'LAPTOPS': 'https://res.cloudinary.com/dqydgc2ky/image/upload/v1731912589/WhatsApp_Image_2024-11-18_at_12.17.04_fe72f824_ffx5os.jpg',
+                'PRINTERS': 'https://res.cloudinary.com/dqydgc2ky/image/upload/v1731912597/WhatsApp_Image_2024-11-18_at_12.17.18_af0cd42c_v4dj9k.jpg',
+                'SCANNERS': 'https://res.cloudinary.com/dqydgc2ky/image/upload/v1731912606/WhatsApp_Image_2024-11-18_at_12.17.32_a1eba844_ddjsb6.jpg',
+                'CCTV': 'https://res.cloudinary.com/dqydgc2ky/image/upload/v1731912611/WhatsApp_Image_2024-11-18_at_12.17.38_ed002cec_hxvl9s.jpg',
+                'ROLLS AND RIBBONS': 'https://res.cloudinary.com/dqydgc2ky/image/upload/v1731912611/WhatsApp_Image_2024-11-18_at_12.17.38_ed002cec_hxvl9s.jpg',
+                'SECURITY SYSTEM': 'https://res.cloudinary.com/dqydgc2ky/image/upload/v1731912611/WhatsApp_Image_2024-11-18_at_12.17.38_ed002cec_hxvl9s.jpg',
+                'ACCESSORIES': 'https://res.cloudinary.com/dqydgc2ky/image/upload/v1731912611/WhatsApp_Image_2024-11-18_at_12.17.38_ed002cec_hxvl9s.jpg'
+            };
+
+            // Set the category image based on selected category
+            categoryImagePreview.src = categoryImages[selectedCategory] || 'https://res.cloudinary.com/dqydgc2ky/image/upload/v1731912582/WhatsApp_Image_2024-11-18_at_12.16.49_b23417a0_q7jag7.jpg';
+        }
+
+        // Update category image preview when category is selected
+        categorySelect.addEventListener('change', updateCategoryImage);
+
+        // Initial update when page loads
+        updateCategoryImage();
+    });
+
     </script>
 </body>
 </html>

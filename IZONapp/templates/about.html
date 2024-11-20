@@ -15,11 +15,18 @@
 
     
     <style>
+
+        @font-face{
+            src: url('../static/fonts/evogria/Evogria.otf');
+            font-family: 'evagria';
+        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            /* font-family: 'Arial', sans-serif; */
+            font-family: 'evagria';
+
         }
 
         
@@ -42,7 +49,7 @@
 
         /* About Section */
         .about {
-            padding: 100% 100%;
+            /* padding: 100% 100%; */
             display: flex;
             gap: 50px;
             align-items: center;
@@ -54,7 +61,7 @@
 
         .about-form {
             flex: 1;
-            padding: 30px;
+            /* padding: 30px; */
             background: #f5f5f5;
             border-radius: 10px;
         }
@@ -111,7 +118,7 @@
 
         /* Latest Projects */
         .projects {
-            padding: 100px 50px;
+            /* padding: 100px 50px; */
             text-align: center;
         }
 
@@ -151,7 +158,7 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav {
-                padding: 15px 20px;
+                /* padding: 15px 20px; */
             }
 
             .hero h1 {
@@ -178,7 +185,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-image: url("{% static 'images/aboutbanner.png' %}");
+            background-image: url("{% static 'images\about video.mp4' %}");
             background-size: cover;
             background-position: center;
             color: #fff;
@@ -202,7 +209,7 @@
         /* Button Styling */
         .btn {
             display: inline-block;
-            padding: 0.75rem 1.5rem;
+            /* padding: 0.75rem 1.5rem; */
             background-color: #ff6b6b;
             color: #fff;
             font-weight: bold;
@@ -239,15 +246,16 @@
         }
     
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'evagria';
             line-height: 1.6;
             color: #333;
+            padding: 0;
         }
     
         .about {
             display: flex;
             justify-content: space-between;
-            padding: 40px 20px;
+            /* padding: 40px 20px; */
             max-width: 1200px;
             margin: 0 auto;
             gap: 40px;
@@ -255,12 +263,12 @@
     
         .about-content {
             flex: 1;
-            padding-right: 20px;
+            /* padding-right: 20px; */
         }
     
         .contact-form {
             flex: 1;
-            padding: 20px;
+            /* padding: 20px; */
             background-color: #f5f5f5;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -280,7 +288,7 @@
     
         .btn {
             display: inline-block;
-            padding: 10px 25px;
+            /* padding: 10px 25px; */
             background-color: #011689;
             color: white;
             text-decoration: none;
@@ -300,7 +308,7 @@
         }
     
         input {
-            padding: 12px;
+            /* padding: 12px; */
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 16px;
@@ -313,7 +321,7 @@
         }
     
         button {
-            padding: 12px;
+            /* padding: 12px; */
             background-color: #011689;
             color: white;
             border: none;
@@ -331,7 +339,7 @@
         @media (max-width: 768px) {
             .about {
                 flex-direction: column;
-                padding: 20px;
+                /* padding: 20px; */
             }
             
             .about-content {
@@ -347,7 +355,8 @@
         
         body, html {
             height: 100%;
-            font-family: Arial, sans-serif;
+            font-family:'evagria';
+            padding: 0;
         }
         
         .about-container {
@@ -378,7 +387,7 @@
         p {
             font-size: 1em;
             line-height: 1.6;
-            color: #555;
+            color: #ffffff;
             margin-bottom: 20px;
         }
         
@@ -402,12 +411,13 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family:'evagria';
         }
 
         body {
             background-color: #f5f5f5;
-            padding: 2rem;
+            padding: 0;
+            /* padding: 2rem; */
         }
 
         .container {
@@ -638,13 +648,13 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            /* padding: 20px; */
         }
 
         /* Mission Section */
@@ -759,6 +769,51 @@
                 padding: 15px;
             }
         }
+
+
+        /* css counting */
+        
+        .stats-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
+      text-align: center;
+      min-width: 200px;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #1d4ed8;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: #4b5563;
+      font-size: 0.875rem;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stat-item {
+      animation: fadeIn 0.5s ease-out forwards;
+    }
         
 
         
@@ -772,34 +827,79 @@
     <style>
         body {
             background-color: #ffffff; /* Sky blue */
+            width: 100%;
+            padding: 0;
         }
     </style>
-    <section class="hero" id="home">
+    <section class="hero" id="home" style="position:relative ;">
+        <div style="position: absolute;width: 100%;height: 100%;overflow: hidden;">
+            <video src="{% static 'images\about video.mp4' %}"type="video/mp4" autoplay loop muted playsinline style="width: 100%;height: 100%;object-fit: cover;">
+
+            </video>
+        </div>
         <div class="hero-content">
             <h1>We are a Leading Company.</h1>
-            <p>From concept to completion.</p>
-            <a href="#about" class="btn">REQUEST A QUOTE</a>
-        </div>
+            <p>Discover who we are and what drives us. Together, we create meaningful connections and lasting impact..</p>
+            <!-- <a href="#about" class="btn">REQUEST A QUOTE</a>  -->
         
-    </section>
-    <div class="stats-container">
+    </section> <div class="stats-container">
         <div class="stat-item">
-            <div class="stat-number">10+</div>
-            <div class="stat-label">Years of Experience</div>
+          <div class="stat-number" data-target="10" data-suffix="+">0</div>
+          <div class="stat-label">Years of Experience</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number">30+</div>
-            <div class="stat-label">Skilled Professionals</div>
+          <div class="stat-number" data-target="30" data-suffix="+">0</div>
+          <div class="stat-label">Skilled Professionals</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Customer Satisfaction</div>
+          <div class="stat-number" data-target="100" data-suffix="%">0</div>
+          <div class="stat-label">Customer Satisfaction</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number">1000+</div>
-            <div class="stat-label">Clients World Wide</div>
+          <div class="stat-number" data-target="1000" data-suffix="+">0</div>
+          <div class="stat-label">Clients World Wide</div>
         </div>
-    </div>  
+      </div>
+
+    <!-- counting css -->
+     <!-- conting section js  -->
+      
+     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const stats = document.querySelectorAll('.stat-number');
+          
+          stats.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-target'));
+            const suffix = stat.getAttribute('data-suffix');
+            let current = 0;
+            const increment = target / 50; // Divide animation into 50 steps
+            const duration = 2000; // 2 seconds
+            const stepTime = duration / 50;
+            
+            const updateCounter = () => {
+              current += increment;
+              if (current < target) {
+                stat.textContent = Math.round(current) + suffix;
+                setTimeout(updateCounter, stepTime);
+              } else {
+                stat.textContent = target + suffix;
+              }
+            };
+    
+            // Start animation when element is in view
+            const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  updateCounter();
+                  observer.unobserve(entry.target);
+                }
+              });
+            }, { threshold: 0.5 });
+    
+            observer.observe(stat);
+          });
+        });
+      </script>
     
     <div class="container">
         <!-- Logo Section -->
@@ -819,7 +919,7 @@
                 </div>
             </div>
             <div class="mission-content">
-                <h1 style="color: #011689;"><strong>Our Mission: Helping Millions of Organizations Grow Better</strong></h1>
+                <h1 style="color: #011689;"><strong> Mission: Helping Millions of Organizations Grow Better</strong></h1>
                 <p style="text-align: justify;">We believe not just in growing bigger, but in growing better.And growing better means aligning the success of your own business with the success of your customers. Win-win!</p>
             </div>
         </div>
@@ -827,7 +927,7 @@
         <!-- Story Section -->
         <div class="story-section">
             <div class="story-content">
-                <h2 style="color: #011689;"><strong>Our Story</strong></h2>
+                <h2 style="color: #011689;"><strong>A Glimpse Into Us</strong></h2>
                 <p style="text-align: justify;">In 2020, our founders recognized a fundamental shift in how businesses operate and grow. They saw that traditional methods weren't keeping pace with the digital transformation, and customers wanted a more integrated, seamless experience.</p>
                 <p style="text-align: justify;">Today, we've grown into a comprehensive platform that helps businesses thrive in the digital age. Led by our innovative team, we continue to develop cutting-edge solutions that empower organizations to grow better through technology and customer-centric approaches.</p>
             </div>
@@ -901,15 +1001,10 @@
     </section>
     <div class="section-separator"></div>
    
-</head>
-<body>
    
 </body>
 </html>
 
-
-</body>
-</html>
    
   
 

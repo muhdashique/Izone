@@ -2,6 +2,9 @@
 {% load static %}
 {% block content %}
 
+<style>
+    
+</style>
 
 </div>
 
@@ -21,7 +24,7 @@
                     class="w-full pb-6 space-y-6 sm:max-w-md lg:max-w-lg md:space-y-4 lg:space-y-8 xl:space-y-9 sm:pr-5 lg:pr-0 md:pb-0">
                     <h1 class="text-4xl font-extrabold tracking-tight  sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl"
                         style="color:#FE5F00">
-                        <span class="block xl:inline">Useful Tools to</span>
+                        <span class="block xl:inline bannerText">Useful Tools to</span>
                         <span class="block xl:inline" style="color: #011689;">Help You Build Faster.</span>
                     </h1>
                     <p class="mx-auto text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl">It's never been
@@ -59,7 +62,7 @@
         margin: 0 auto;
         padding: 40px 20px;
         text-align: center;
-        font-family: Arial, sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
 
     h1 {
@@ -144,7 +147,7 @@
 
     body {
         background: #f0f2f5;
-        font-family: 'Arial', sans-serif;
+        font-family: 'Roboto', sans-serif;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -301,7 +304,7 @@
 </section>
 
 <section class="why-choose-section">
-    <h1 style="color: #011689;">WHY CHOOSE US</h1>
+    <h1 style="color: #011689;">What We Do</h1>
     <div class="subtitle" style="color: grey;">The fastest and most reliable service at unbeatable prices!</div>
 
     <div class="services-grid">
@@ -393,7 +396,7 @@
         max-width: 1200px;
         margin: 0 auto;
         padding: 60px 20px;
-        font-family: Arial, sans-serif;
+        font-family: 'Roboto', sans-serif;
         position: relative;
         overflow: hidden;
     }
@@ -487,7 +490,7 @@
 <section class="service-process">
     <div class="background-image"></div>
     <div class="header">
-        <h1 style="color: #011689;">SERVICE PROCESS</h1>
+        <h1 style="color: #011689;">WHY CHOOSE US</h1>
         <p>Simple and effective steps to get your device repaired.</p>
     </div>
 
@@ -615,7 +618,7 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: Arial, sans-serif;
+        font-family:'Roboto', sans-serif;
     }
 
     .container {
@@ -652,7 +655,7 @@
 
     .products {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(4,1fr);
         gap: 30px;
         padding: 20px 0;
     }
@@ -720,24 +723,20 @@
 </div>
 
 
-    <div class="container">
-        {% if products %}
-        <div class="products">
-            {% for product in products %}
-            <a href="{% url 'ProductItemDisplay' product.id %}" class="product-link">
-                <div class="product-card">
-                    <img src="{{ product.image.url }}" alt="Dell Inspiron 24 5000 All-in-One"
-                        class="product-image">
-                    <h2 class="product-title">{{ product.name }}</h2>
-                    <div class="price">
-                        <span class="discounted-price">${{ product.price }}</span>
-                    </div>
-                </div>
-            </a>
-            {% endfor %}
-        </div>
-        {% endif %}
+<div class="container">
+    <div class="products">
+        {% for category, products in products_by_category.items %}
+        <a href="{% url 'product_by_category' category %}" class="product-link">
+            <div class="product-card">
+                <!-- Use get_category_image to show category image -->
+                <img src="{{ products.0.get_category_image }}" alt="Category Image"
+                    class="product-image">
+                <h2 class="product-title">{{ category }}</h2>
+            </div>
+        </a>
+        {% endfor %}
     </div>
+</div>
 
     <script>
         // Add hover effect to product cards
@@ -838,7 +837,7 @@
             margin: 0 auto;
             overflow: hidden;
             color: white;
-            font-family: Arial, sans-serif;
+            font-family:'Roboto', sans-serif;
             display: flex;
             flex-direction: column;
             justify-content: center;

@@ -14,10 +14,8 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
         }
-
-        
 
         .hero h1 {
             font-size: 3.5rem;
@@ -146,7 +144,7 @@
         .about {
             display: flex;
             justify-content: space-between;
-            padding: 40px 20px;
+            padding: 0;
             max-width: 1200px;
             margin: 0 auto;
             gap: 40px;
@@ -154,12 +152,12 @@
     
         .about-content {
             flex: 1;
-            padding-right: 20px;
+            padding-right: 0;
         }
     
         .contact-form {
             flex: 1;
-            padding: 20px;
+            padding: 0;
             background-color: #f5f5f5;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -167,19 +165,19 @@
     
         .about h2 {
             margin-bottom: 20px;
-            color: #333;
+            color: #5a5353;
             font-size: 2em;
         }
     
         .about p {
             line-height: 1.6;
             margin-bottom: 20px;
-            color: #666;
+            color: #645d5d;
         }
     
         .btn {
             display: inline-block;
-            padding: 10px 25px;
+            padding: 0;
             background-color: #011689;
             color: white;
             text-decoration: none;
@@ -199,7 +197,7 @@
         }
     
         input {
-            padding: 12px;
+            padding: 0;
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 16px;
@@ -212,7 +210,7 @@
         }
     
         button {
-            padding: 12px;
+            padding: 0;
             background-color: #011689;
             color: white;
             border: none;
@@ -230,14 +228,14 @@
         @media (max-width: 768px) {
             .about {
                 flex-direction: column;
-                padding: 20px;
+                padding: 0;
             }
             
             .about-content {
                 padding-right: 0;
             }
         }
-        {% comment %} /* about */
+        /* about */
         * {
             margin: 0;
             padding: 0;
@@ -248,8 +246,8 @@
             height: 100%;
             font-family: Arial, sans-serif;
         }
-         {% endcomment %}
-        {% comment %} .about-container {
+         
+        .about-container {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -262,7 +260,7 @@
         
         .content {
             background-color: rgba(224, 224, 224, 0.9); /* Slightly transparent background for text readability */
-            padding: 40px;
+            padding: 0;
             text-align: center;
             max-width: 600px;
             border-radius: 8px;
@@ -277,7 +275,7 @@
         p {
             font-size: 1em;
             line-height: 1.6;
-            color: #555;
+            color: #ffffff;
             margin-bottom: 20px;
         }
         
@@ -306,7 +304,7 @@
 
         body {
             background-color: #f5f5f5;
-            padding: 2rem;
+            padding: 0;
         }
 
         .container {
@@ -317,7 +315,7 @@
         /* Main Story Card */
         .story-card {
             background: white;
-            padding: 2.5rem;
+            padding: 0;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 2rem;
@@ -337,7 +335,7 @@
 
         .learn-more-btn {
             display: inline-block;
-            padding: 0.75rem 1.5rem;
+            padding: 0;
             border: 1px solid #ccc;
             border-radius: 4px;
             text-decoration: none;
@@ -361,7 +359,7 @@
         /* Action Cards */
         .action-card {
             background: white;
-            padding: 1.5rem;
+            padding: 0;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
@@ -434,12 +432,12 @@
             width: 100%;
             margin: 40px auto;
             gap: 20px;
-            padding: 20px;
+            padding: 0;
         }
 
         .stat-item {
             text-align: center;
-            padding: 20px;
+            padding: 0;
             min-width: 200px;
         }
 
@@ -460,10 +458,10 @@
             .stat-item {
                 width: 100%;
             }
-        } {% endcomment %}
+        } 
 
 
-        {% comment %} careermenu {% endcomment %}
+     /* careermenu  */
         * {
           margin: 0;
           padding: 0;
@@ -473,7 +471,7 @@
       
         body {
           background-color: #f5f5f5;
-          padding: 2rem;
+          padding: 0;
         }
       
         .container {
@@ -489,7 +487,7 @@
       
         .accordion-header {
           background-color: #ff7f50;
-          padding: 1rem;
+          padding: 0;
           cursor: pointer;
           display: flex;
           align-items: center;
@@ -508,7 +506,7 @@
       
         .accordion-content {
           background-color: white;
-          padding: 1.5rem;
+          padding: 0;
           line-height: 1.6;
           color: #666;
           border: 1px solid #eee;
@@ -538,7 +536,7 @@
           mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M20 12H4M8 16l-4-4 4-4M16 16l4-4-4-4'/%3E%3C/svg%3E");
           -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M20 12H4M8 16l-4-4 4-4M16 16l4-4-4-4'/%3E%3C/svg%3E");
         }
-        {% comment %} features section css {% endcomment %}
+         /* features section css  */
         * {
             margin: 0;
             padding: 0;
@@ -553,7 +551,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 0;
         }
 
         .features-grid {
@@ -564,7 +562,7 @@
 
         .feature-card {
             text-align: center;
-            padding: 1.5rem;
+            padding: 0;
         }
 
         .icon-container {
@@ -618,7 +616,8 @@
                 padding: 2rem 1rem;
             }
         }
-        {% comment %} our mission css {% endcomment %}
+         /* our mission css 
+          */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -714,7 +713,232 @@
                 right: 40px;
             }
         }
-        
+        /* education */
+        /* * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #DC1A1A;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cards-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+            background: #27399B;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .icon svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        .card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .more-link {
+            color: #000;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-bottom: 2px solid #000;
+            padding-bottom: 2px;
+        }
+
+        .title {
+            color: #27399B;
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .numbered-section {
+            background: #f5f5f5;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .steps {
+            display: flex;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+
+        .step {
+            flex: 1;
+            padding: 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .step p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .steps {
+                flex-direction: column;
+            }
+        } */
+        /* new style  */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .hero1 {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+            url("https://plus.unsplash.com/premium_photo-1674641194949-e154719cdc02?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            width: 90%;
+        }
+
+        .course-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 0;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .course-title {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .course-description {
+            color: #e0e0e0;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .learn-more {
+            display: inline-block;
+            padding: 0;
+            background-color: #ff8c00;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .learn-more:hover {
+            background-color: #ff7200;
+        }
+
+        .attribution {
+            position: absolute;
+            bottom: 1rem;
+            color: #888;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 1024px) {
+            .courses-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
         
     </style>
 
@@ -729,8 +953,8 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Let's Grow Up With Us.</h1>
-            {% comment %} <p>From concept to completion.</p>
-            <a href="#about" class="btn">REQUEST A QUOTE</a> {% endcomment %}
+           <p>Unlock your potential and shape your future with us. Explore opportunities that inspire growth and success.</p>
+            <!-- <a href="#about" class="btn">REQUEST A QUOTE</a>  -->
         </div>
         
     </section>
@@ -812,42 +1036,80 @@
 
     <br>
     <br> 
-        <section class="accordion-section">
-        <div class="container">
-            <!-- Hard Drive Data Recovery -->
-            <div class="accordion-item">
-                <div class="accordion-header">
-                    <span class="icon icon-drive"></span>
-                    <span class="accordion-title">Hard Drive Data Recovery</span>
+    <div class="container">
+        <!-- <div class="cards-container">
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 4L3 15h18L12 4zm0 3.8L16.2 13H7.8L12 7.8z"/>
+                    </svg>
                 </div>
-                <div class="accordion-content">
-                    <p style="text-align: justify;">Our professional data recovery service specializes in recovering data from all types of storage devices. Whether you're dealing with a mechanical failure, logical error, or accidental deletion, our experts can help retrieve your valuable information using advanced recovery techniques.</p>
+                <h2>Programs</h2>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                <a href="#" class="more-link">More</a>
+            </div>
+
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 12l-4.5 4.5L9 21l1.4-1.4-3.1-3.1H21v-2H7.3l3.1-3.1L9 12z"/>
+                    </svg>
+                </div>
+                <h2>Results</h2>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                <a href="#" class="more-link">More</a>
+            </div>
+
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    </svg>
+                </div>
+                <h2>Coaching</h2>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                <a href="#" class="more-link">More</a>
+            </div>
+
+            <div class="card">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/>
+                    </svg>
+                </div>
+                <h2>Events</h2>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                <a href="#" class="more-link">More</a>
+            </div>
+        </div> -->
+
+        <div class="hero1">
+            <h1>Career Goals </h1>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <h2 class="course-title">Data recovery</h2>
+                    <p class="course-description">Data Recovery is the process of retrieving lost, inaccessible, corrupted, or damaged data from storage devices like hard drives, SSDs, USB drives, memory cards.</p>
+                    <a href="/contactus/" class="learn-more">MESSAGE US</a>
+                </div>
+                <div class="course-card">
+                    <h2 class="course-title">Computer repair</h2>
+                    <p class="course-description">Computer Repair involves diagnosing and fixing issues with computer hardware, software, or network systems to restore functionality and performance.</p>
+                    <a href="/contactus/" class="learn-more">MESSAGE US</a>
+                </div>
+                <div class="course-card">
+                    <h2 class="course-title">Network solutions</h2>
+                    <p class="course-description">Network Solutions refer to the design, implementation, and management of systems that ensure seamless connectivity and communication between devices.</p>
+                    <a href="/contactus/" class="learn-more">MESSAGE US</a>
+                </div>
+                <div class="course-card">
+                    <h2 class="course-title">Data recovery</h2>
+                    <p class="course-description">Data Recovery is the process of restoring lost, deleted, corrupted, or inaccessible data from storage devices such as harddrives, SSDs, USBdrives , memorycards,cloud systems.</p>
+                    <a href="/contactus/" class="learn-more">MESSAGE US</a>
                 </div>
             </div>
-        
-            <!-- SSD Recovery Services -->
-            <div class="accordion-item">
-                <div class="accordion-header">
-                    <span class="icon icon-drive"></span>
-                    <span class="accordion-title">SSD Recovery Services</span>
-                </div>
-                <div class="accordion-content">
-                    <p>Specialized recovery solutions for Solid State Drives (SSDs). We utilize cutting-edge technology to recover data from failed or corrupted SSDs, ensuring the highest possible success rate while maintaining data integrity throughout the recovery process.</p>
-                </div>
-            </div>
-        
-            <!-- Emergency Data Recovery -->
-            <div class="accordion-item">
-                <div class="accordion-header">
-                    <span class="icon icon-drive"></span>
-                    <span class="accordion-title">Emergency Data Recovery</span>
-                </div>
-                <div class="accordion-content">
-                    <p>When time is critical, our emergency data recovery service provides rapid response and priority handling. Our team of specialists works around the clock to recover your crucial data with minimal downtime.</p>
-                </div>
-            </div>
+            <div class="attribution">Image from Freepik</div>
         </div>
-    </section>
+    </div>
     
     <script>
       document.querySelectorAll('.accordion-header').forEach(header => {
