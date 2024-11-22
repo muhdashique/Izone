@@ -1,9 +1,13 @@
+
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product - IZONE IT STORE</title>
+    <title>IZONE IT STORE</title>
+    <link rel="shortcut icon" href="{% static 'images/fevicon.png' %}" type="image/x-icon" style="width: 100%;height: 100%;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -229,14 +233,17 @@
     </style>
 </head>
 <body>
-    <div class="page-header">
-        <h1>Add New Product</h1>
-        <div class="nav-buttons">
-            <a href="{% url 'home' %}" class="btn btn-secondary">Home</a>
-            <a href="{% url 'product_gallery' %}" class="btn btn-primary">View Products</a>
-        </div>
+    <div class="nav-buttons">
+        <a href="{% url 'home' %}" class="btn btn-secondary">Home</a>
+        <a href="{% url 'product_gallery' %}" class="btn btn-primary">View Products</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn btn-success">Login</a>
+        {% endif %}
     </div>
-
+    
+    
     <div class="form-container">
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -244,43 +251,57 @@
             <!-- Product Name -->
             <div class="form-group">
                 <label for="name" class="required">Product Name</label>
-                {{ form.name }}  <!-- Render the product name field from the form -->
+                {{ form.name }}
                 <div class="form-hint">Enter a descriptive name for your product</div>
             </div>
-        
+            
+            <!-- Model Name -->
+            <div class="form-group">
+                <label for="model_name">Model Name</label>
+                {{ form.model_name }}
+                <div class="form-hint">Provide the model name of your product (optional)</div>
+            </div>
+            
+            <!-- Brand Name -->
+            <div class="form-group">
+                <label for="brand_name">Brand Name</label>
+                {{ form.brand_name }}
+                <div class="form-hint">Enter the brand name of your product (optional)</div>
+            </div>
+            
             <!-- Category -->
             <div class="form-group">
                 <label for="category" class="required">Category</label>
-                {{ form.category }}  <!-- Render the category select field from the form -->
+                {{ form.category }}
                 <div class="form-hint">Select the most appropriate category for your product</div>
             </div>
-        
+            
             <!-- Price -->
             <div class="form-group">
                 <label for="price" class="required">Price</label>
-                {{ form.price }}  <!-- Render the price input field from the form -->
+                {{ form.price }}
                 <div class="form-hint">Enter the price in dollars (up to 2 decimal places)</div>
             </div>
-        
+            
             <!-- Description -->
             <div class="form-group">
                 <label for="description" class="required">Description</label>
-                {{ form.description }}  <!-- Render the description textarea field from the form -->
+                {{ form.description }}
                 <div class="form-hint">Provide a detailed description of your product</div>
             </div>
-        
+            
             <!-- Product Image -->
             <div class="form-group">
                 <label for="image">Product Image</label>
                 <div class="image-upload" id="dropZone">
                     <div class="image-upload-icon">📸</div>
                     <p>Drag and drop an image here or click to browse</p>
-                    {{ form.image }}  <!-- Render the image upload field -->
+                    {{ form.image }}
                 </div>
                 <div id="imagePreview" class="image-preview"></div>
                 <div class="form-hint">Upload a clear image of your product (optional)</div>
             </div>
-        
+            
             <!-- Category Image Preview -->
             <div class="form-group">
                 <label for="category_image">Category Image</label>
@@ -289,7 +310,7 @@
                 </div>
                 <div class="form-hint">This is the default category image. You can upload a new one if needed.</div>
             </div>
-        
+            
             <!-- Form Footer -->
             <div class="form-footer">
                 <button type="button" class="btn btn-secondary">Cancel</button>
@@ -297,6 +318,7 @@
             </div>
         </form>
     </div>
+    
 
     <script>
         const fileInput = document.getElementById('image');

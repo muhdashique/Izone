@@ -1,9 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Gallery</title>
+    <title>IZONE IT STORE</title>
+    <link rel="shortcut icon" href="{% static 'images/fevicon.png' %}" type="image/x-icon" style="width: 100%;height: 100%;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         .product-grid {
             display: grid;
@@ -119,9 +122,12 @@
             <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
             {% endif %}
             <h2 class="product-name">{{ product.name }}</h2>
+            <p class="product-brand">Brand: {{ product.brand_name }}</p>
+            <p class="product-model">Model: {{ product.model_name }}</p>
             <p class="product-description">{{ product.description }}</p>
             <p class="product-price">${{ product.price }}</p>
-            {% comment %} <a href="{% url 'product_details' product.id %}" class="details-link">View Details</a> {% endcomment %}
+            
+           <a href="{% url 'product_details' product.id %}" class="details-link">View Details</a> 
             <div class="button-group">
                 <a href="{% url 'edit_product' product.id %}" class="edit-button">Edit</a>
                 <form action="{% url 'delete_product' product.id %}" method="POST" style="flex: 1;">

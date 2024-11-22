@@ -33,6 +33,11 @@
         html{
             scroll-behavior: smooth;
         }
+      @media screen and (max-width:768px){
+        .contactdetails{
+          display: none;
+        }
+      }
     </style>
 </head>
 
@@ -93,7 +98,7 @@
                         <a href="/careers/" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Career</a>
                         <a href="/service/" class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900">Services</a>
                     </div>
-                    <div>
+                    <div class="contactdetails">
                         <a href="mailto:izone@gmail.com">izone@gmail.com</a> <br>
                         <a href="tel:+919080706050">+91 9080706050</a>
                     </div>
@@ -135,7 +140,7 @@
 
     
         <!-- this is footer section -->
-        <footer class="bg-white" container="width=100px">
+        <footer class="bg-white" container="" style="width: 100%;">
             <div class="mx-auto max-w-screen-xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8">
               <div class="sm:flex sm:items-fit sm:justify-between">
                 <div class="text-teal-600">

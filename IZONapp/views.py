@@ -81,18 +81,6 @@ def add_product(request):
     return render(request, 'productadd.html',{'form':form})
 
 
-# Product addition view
-# def add_product(request):
-#     if request.method == 'POST':
-#         form = ProductForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('product_gallery')  # Redirect to product gallery after saving
-#     else:
-#         form = ProductForm()
-    
-#     return render(request, 'productadd.html', {'form': form})
-
 
 # Product gallery view (list products by category)
 def product_gallery(request):
@@ -106,10 +94,6 @@ def product_gallery(request):
     return render(request, 'productgallery.html', {'products': products, 'categories':categories})
 
 
-
-# def product_gallery(request):
-#     products = Product.objects.all()  # Retrieve all products
-#     return render(request, 'productgallery.html', {'products': products})
 
 
 
@@ -224,49 +208,13 @@ def product_detail(request, product_id):
 
 
 
-# from django.core.mail import send_mail
-# from django.shortcuts import render, redirect
-# from django.http import HttpResponse
-# def send_email(request):
-#     if request.method == 'POST':
-#         try:
-#             # Get form data
-#             name = request.POST.get('name', '')
-#             email = request.POST.get('email', '')
-#             phone = request.POST.get('phone', '')
-#             subject = request.POST.get('subject', '')
-#             message = request.POST.get('message', '')
-            
-#             # Create HTML email content
-#             html_message = render_to_string('about.html', {
-#                 'name': name,
-#                 'email': email,
-#                 'phone': phone,
-#                 'subject': subject,
-#                 'message': message
-#             })
-            
-#             # Strip HTML for plain text version
-#             plain_message = strip_tags(html_message)
-            
-#             # Send the email
-#             send_mail(
-#                 subject=f"New Contact Form Submission: {subject}",
-#                 message=plain_message,
-#                 from_email=settings.EMAIL_HOST_USER,
-#                 recipient_list=[settings.ADMIN_EMAIL],
-#                 html_message=html_message,
-#                 fail_silently=False,
-#             )
-            
-#             messages.success(request, 'Your message has been sent successfully!')
-#             return redirect('contact_success')
-            
-#         except Exception as e:
-#             messages.error(request, 'There was an error sending your message. Please try again later.')
-#             return render(request, 'contact.html')
-    
-#     return render(request, 'contact.html')
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')  # Redirect to the home page or login page after logout
+
 
 
 
@@ -347,39 +295,6 @@ def product_details(request, product_id):
 
 def service(request):
     return render(request,'service.html')
-
-
-
-
-
-# from django.core.mail import send_mail
-# from django.shortcuts import render, redirect
-# from django.conf import settings
-# from django.contrib import messages
-
-# def contact_view(request):
-#     if request.method == 'POST':
-#         email = request.POST.get('email')
-#         subject = request.POST.get('subject')
-#         message = request.POST.get('message')
-        
-#         full_message = f"From: {email}\n\nMessage:\n{message}"
-        
-#         # Send email
-#         try:
-#             send_mail(
-#                 subject,
-#                 full_message,
-#                 settings.EMAIL_HOST_USER,
-#                 ['muhammedashique8281@gmail.com'],  # Replace with your destination email
-#                 fail_silently=False,
-#             )
-#             messages.success(request, "Your message has been sent successfully!")
-#             return redirect('contactus')
-#         except Exception as e:
-#             messages.error(request, "There was an error sending your message. Please try again later.")
-    
-#     return render(request, 'contactus.html')
 
 
 

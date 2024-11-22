@@ -27,6 +27,14 @@
                 {{ product.name }}
             </div>
             <div>
+                <div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <div style="margin-bottom: 10px;font-size: 14px;font-weight: 500;">Brand: {{ product.brand_name }}</div>
+                       <div>
+                        <div style="margin-bottom: 10px;font-size: 14px;font-weight: 500;">Model: {{ product.model_name }}</div>
+                       </div>
+                    </div>
+                </div>
                 <div style="margin-bottom: 10px;font-size: 14px;font-weight: 500;">{{ product.description }}</div>
                 <div style="display: flex; justify-content:space-between;align-items: center;">
                     <div style="display: flex;justify-content: center;align-items: center;gap: 10px;background-color: #4FCE5D;color: #4FCE5D;color: #fff;padding-left: 20px;padding-right: 20px;padding-top: 5px;padding-bottom: 5px;border-radius: 10px;">

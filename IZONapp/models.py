@@ -31,11 +31,13 @@ class Product(models.Model):
         ('ACCESSORIES', 'ACCESSORIES'),
     ]
 
-    name = models.CharField(max_length=255)
-    description = models.TextField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='product_images/', blank=True, null=True)
-    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
+    name = models.CharField(max_length=255)  # Existing field
+    model_name = models.CharField(max_length=100, blank=True, null=True)  # New field for model name
+    brand_name = models.CharField(max_length=100, blank=True, null=True)  # New field for brand name
+    description = models.TextField()  # Existing field
+    price = models.DecimalField(max_digits=10, decimal_places=2)  # Existing field
+    image = models.ImageField(upload_to='product_images/', blank=True, null=True)  # Existing field
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)  # Existing field
     
     # Default category image setup based on category choice
     category_image = models.ImageField(upload_to='category_images/', blank=True, null=True)
