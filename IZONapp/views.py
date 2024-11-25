@@ -10,7 +10,8 @@ from django.contrib import messages
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
-
+from django.shortcuts import get_object_or_404
+# from django.template.defaultfilters import slugify
 
 
 # Login view with login attempt logging
@@ -193,18 +194,25 @@ def product_by_category(request, category):
         **get_categories(request)})
 
 
+def product_by_category(request, category=None):
+    # Get all categories
+    categories = Product.objects.values_list('category', flat=True).distinct()
+    
+    # Get products for each category
+    products_by_category = {cat: Product.objects.filter(category=cat) for cat in categories}
 
-def product_details(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
-    return render(request, 'product_details.html', {'product': product,**get_categories(request)})
+    # Use the provided category or the first category as the default
+    selected_category = category if category else (categories[0] if categories else None)
+
+    context = {
+        'categories': categories,
+        'products_by_category': products_by_category,
+        'selected_category': selected_category,
+    }
+    
+    return render(request, 'product_details.html', context)
 
 
-
-
-def product_detail(request, product_id):
-    products = Product.objects.all()  # Retrieve all products
-    product = get_object_or_404(Product, id=product_id)
-    return render(request, 'products.html', {'product': product})
 
 
 
@@ -233,13 +241,6 @@ def delete_product(request, product_id):
 def careers(request):
     products = Product.objects.all()  # Fetch all products
     return render (request,'career.html',{'products': products})
-
-
-
-def product_details(request, product_id):
-    products = Product.objects.all()
-    product = get_object_or_404(Product, id=product_id)
-    return render(request, 'product_details.html', {'product': product, 'products': products})
 
 
 
@@ -284,12 +285,6 @@ def delete_product(request, product_id):
         product.delete()
     return redirect('product_gallery')
 
-
-
-
-def product_details(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
-    return render(request, 'product_details.html', {'product': product})
 
 
 
@@ -344,3 +339,26 @@ def contact_form_view(request):
             return HttpResponse(f"An error occurred: {str(e)}")
 
     return render(request, 'contactus.html')
+
+
+
+
+def product_details(request):
+    return render(request,'product_details.html')
+
+
+def product_image_view(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    category_products = Product.objects.filter(category=product.category).order_by('id')
+    product_ids = list(category_products.values_list('id', flat=True))
+
+    current_index = product_ids.index(product_id)
+    previous_product = category_products[current_index - 1] if current_index > 0 else None
+    next_product = category_products[current_index + 1] if current_index < len(product_ids) - 1 else None
+
+    context = {
+        'product': product,
+        'previous_product': previous_product,
+        'next_product': next_product,
+    }
+    return render(request, 'ProductImageView.html', context)

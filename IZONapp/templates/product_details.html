@@ -1,63 +1,373 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load custom_filters %}
+
 {% block content %}
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Categories Section */
+        .categories-container {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .categories-wrapper {
+            overflow-x: auto;
+            padding: 10px 40px;
+            scrollbar-width: none;
+        }
+
+        .categories-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .categories {
+            display: flex;
+            gap: 20px;
+            min-width: max-content;
+        }
+
+        .category-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            min-width: 150px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .category-card.active {
+            border-color: #ff6b00;
+        }
+
+        .category-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .category-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .item-count {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .scroll-left {
+            left: 0;
+        }
+
+        .scroll-right {
+            right: 0;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            position: relative;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .info-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #0066cc;
+            cursor: pointer;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-name {
+            background: #f0f7ff;
+            color: #0066cc;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .product-details {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .product-price {
+            color: #ff6b00;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HARDWARES</h1>
+
+        <div class="categories-container">
+            <button class="scroll-btn scroll-left">←</button>
+            <div class="categories-wrapper">
+                <div class="categories">
+                    {% for category, products in products_by_category.items %}
+                    <a href="#{{ category|slugify }}" onclick="toggleCategory('{{ category|slugify }}')">
+                        <div class="category-card active" style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
+                            <div style="width: 80px;height: 100px;border-radius: 10px;padding: 10px;overflow: hidden;">
+                                <img src="{{ products.0.get_category_image }}" style="width: 100%;height: 100%;object-fit: contain;" alt="Category Image"
+                                >
+                            </div>
+                            <div class="category-name">{{ category }}</div>
+                            <!-- <div class="item-count">5 items</div> -->
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            <button class="scroll-btn scroll-right">→</button>
+        </div>
+
+        <div class="products-grid">
+            <!-- Product cards will be inserted here by JavaScript -->
+        </div>
+    </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
     .BoxShadow{box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;}
 </style>
 
 <div style="width: 100%;display:flex;justify-content: center;align-items: center;padding: 20px;">
-    {% if products %}
+    {% if products_by_category %}
 
-    <div style="display: flex;flex-wrap: wrap;gap: 20px;justify-content: center;align-items: center;">
-        {% for product in products %}
-
-        <div style="width: 350px;border-radius: 20px;padding: 10px;background-color: #f2efef;height: 450px;" class="BoxShadow">
-            
-            <div style="height:200px;width: 100%; background-color: bisque;border-radius: 20px;margin-bottom: 10px;position: relative;">
-                <div style="position: absolute; top: 5px;right: 10px; padding-left: 10px;padding-right: 10px;padding-top: 5px;padding-bottom: 5px;background-color: #14bd05;border-radius: 20px;font-size: 14px;font-weight: 700;color: white;">
-                    Available
-                </div>
-                <img src="{{ product.image.url }}" style="height: 100%;width: 100%;object-fit: cover; border-radius: 20px;" alt="{{ product.image.url }}">
-            </div>
-            <div style="margin-bottom: 10px; font-weight: 800;">
-                {{ product.name }}
-            </div>
-            <div>
-                <div>
-                    <div style="display: flex; justify-content: space-between;">
-                        <div style="margin-bottom: 10px;font-size: 14px;font-weight: 500;">Brand: {{ product.brand_name }}</div>
-                       <div>
-                        <div style="margin-bottom: 10px;font-size: 14px;font-weight: 500;">Model: {{ product.model_name }}</div>
-                       </div>
+    <!-- Products Display Area -->
+<div class="md:col-span-3">
+    {% for category, products in products_by_category.items %}
+    <div id="{{ category|slugify }}-products" 
+         class="category-products mb-8 {% if category != selected_category %}hidden{% endif %}">
+        <h2 class="text-2xl font-bold mb-4">{{ category }}</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {% for product in products %}
+            <div class="bg-white rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
+                <!-- Link wrapping the image to redirect -->
+                <a href="{% url 'product_image_view' product.id %}">
+                    <img src="{{ product.image.url }}" 
+                         alt="{{ product.name }}"
+                         class="w-full h-48 object-contain rounded-t-lg">
+                </a>
+                <div class="p-4">
+                    <h3 class="text-lg font-semibold mb-2">{{ product.name }}</h3>
+                    <div style="display: flex; justify-content:start; flex-direction: column;">
+                        <div style="margin-bottom: 10px;font-size: 14px;font-weight: 600;">Brand: {{ product.brand_name }}</div>
+                        <div>
+                            <div style="margin-bottom: 10px;font-size: 14px;font-weight: 600;">Model: {{ product.model_name }}</div>
+                        </div>
                     </div>
-                </div>
-                <div style="margin-bottom: 10px;font-size: 14px;font-weight: 500;">{{ product.description }}</div>
-                <div style="display: flex; justify-content:space-between;align-items: center;">
-                    <div style="display: flex;justify-content: center;align-items: center;gap: 10px;background-color: #4FCE5D;color: #4FCE5D;color: #fff;padding-left: 20px;padding-right: 20px;padding-top: 5px;padding-bottom: 5px;border-radius: 10px;">
-                        <a href="https://wa.me/8129139506?text=Hi, I'm interested in {{ product.name }}.%0A
-                         *Product Name*: *{{ product.name }}*
-                         Description: {{ product.description }}
-                         Price: ₹{{ product.price }}" style="display: flex;justify-content: center;align-items: center;gap: 10px;" target="_blank"><i class="fa-brands fa-whatsapp"></i><span>Whatsapp</span></a>
-                    </div>
-                    <div style="display: flex;justify-content: center;align-items: center;gap: 10px;background-color: #0055ff;color: #ffffff;color: #fff;padding-left: 20px;padding-right: 20px;padding-top: 5px;padding-bottom: 5px;border-radius: 10px;">
+                    <div style="margin-bottom: 10px;font-size: 14px;font-weight: 500;">{{ product.description }}</div>
+                    <div style="display: flex;justify-content: center;align-items: center;gap: 10px;background-color: #0055ff;color: #fff;padding: 5px 20px;border-radius: 10px;">
                         <span>Price</span>
                         <div>
                             <i class="fa-solid fa-indian-rupee-sign"></i> {{ product.price }}
                         </div>
                     </div>
+                    <div style="display: flex;justify-content: center;align-items: center;gap: 10px;background-color: #4FCE5D;color: #fff;padding: 5px 20px;border-radius: 10px;">
+                        <a href="https://wa.me/8129139506?text=Hi, I'm interested in {{ product.name }}.%0A
+                             *Product Name*: *{{ product.name }}*
+                             Description: {{ product.description }}
+                             Price: ₹{{ product.price }}" 
+                           style="display: flex;justify-content: center;align-items: center;gap: 10px;" target="_blank">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Whatsapp</span>
+                        </a>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-
     </div>
+    {% endfor %}
+</div>
+
     {% endif %}
 
 </div>
+
+    <script>
+        // IMAGE PREVIEW
+        
+        // Render products
+        function renderProducts() {
+            const productsGrid = document.querySelector('.products-grid');
+            productsGrid.innerHTML = products.map(product => `
+                <div class="product-card">
+                    <div class="info-icon">ℹ️</div>
+                    <div class="product-image">
+                        <img src="/api/placeholder/400/300" alt="${product.name}" style="max-width: 100%; height: auto;">
+                    </div>
+                    <div class="product-name">${product.name}</div>
+                    <div class="product-details">
+                        <div>Brand : ${product.brand}</div>
+                        <div>Model : ${product.model}</div>
+                        <div class="product-price">₹ ${product.price}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Categories scroll functionality
+        const scrollLeftBtn = document.querySelector('.scroll-left');
+        const scrollRightBtn = document.querySelector('.scroll-right');
+        const categoriesWrapper = document.querySelector('.categories-wrapper');
+
+        scrollLeftBtn.addEventListener('click', () => {
+            categoriesWrapper.scrollBy({ left: -200, behavior: 'smooth' });
+        });
+
+        scrollRightBtn.addEventListener('click', () => {
+            categoriesWrapper.scrollBy({ left: 200, behavior: 'smooth' });
+        });
+
+        // Category selection
+        const categoryCards = document.querySelectorAll('.category-card');
+        categoryCards.forEach(card => {
+            card.addEventListener('click', () => {
+                categoryCards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+            });
+        });
+
+        // Initialize the page
+        renderProducts();
+
+
+
+        function toggleCategory(categorySlug) {
+    // Hide all category products first
+    document.querySelectorAll('.category-products').forEach(div => {
+        div.classList.add('hidden');
+    });
+    
+    // Show the selected category's products
+    const selectedProducts = document.getElementById(categorySlug + '-products');
+    if (selectedProducts) {
+        selectedProducts.classList.remove('hidden');
+    }
+}
+
+// Show the first category by default if no category is selected
+document.addEventListener('DOMContentLoaded', function() {
+    if (!document.querySelector('.category-products:not(.hidden)')) {
+        const firstCategory = document.querySelector('.category-products');
+        if (firstCategory) {
+            firstCategory.classList.remove('hidden');
+        }
+    }
+});
+
+function toggleCategory(categorySlug) {
+    // Hide all category products first
+    document.querySelectorAll('.category-products').forEach(div => {
+        div.classList.add('hidden');
+    });
+
+    // Show the selected category's products
+    const selectedProducts = document.getElementById(categorySlug + '-products');
+    if (selectedProducts) {
+        selectedProducts.classList.remove('hidden');
+    }
+    
+    // Update the active class on the category cards
+    document.querySelectorAll('.category-card').forEach(card => {
+        card.classList.remove('active');
+    });
+    const selectedCategoryCard = document.querySelector(`a[href="#${categorySlug}"] .category-card`);
+    if (selectedCategoryCard) {
+        selectedCategoryCard.classList.add('active');
+    }
+}
+
+// Show the first category by default if no category is selected
+document.addEventListener('DOMContentLoaded', function() {
+    const firstCategory = document.querySelector('.category-products:not(.hidden)');
+    if (!firstCategory) {
+        const defaultCategory = document.querySelector('.category-products');
+        if (defaultCategory) {
+            defaultCategory.classList.remove('hidden');
+        }
+    }
+});
+
+    </script>
+</body>
+</html>
 
 
 {% endblock %}
