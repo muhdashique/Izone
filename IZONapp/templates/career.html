@@ -136,7 +136,7 @@
         }
     
         body {
-            font-family: Arial, sans-serif;
+            font-family:'Roboto', sans-serif;
             line-height: 1.6;
             color: #333;
         }
@@ -244,7 +244,7 @@
         
         body, html {
             height: 100%;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
         }
          
         .about-container {
@@ -299,7 +299,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family:'Roboto', sans-serif;
         }
 
         body {
@@ -466,7 +466,7 @@
           margin: 0;
           padding: 0;
           box-sizing: border-box;
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",'Roboto', sans-serif;
         }
       
         body {
@@ -544,7 +544,7 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family:'Roboto', sans-serif;
             line-height: 1.6;
         }
 
@@ -713,133 +713,13 @@
                 right: 40px;
             }
         }
-        /* education */
-        /* * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background-color: #DC1A1A;
-            padding: 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .cards-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .card {
-            background: white;
-            padding: 2rem;
-            width: 250px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .icon {
-            width: 60px;
-            height: 60px;
-            background: #27399B;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-
-        .icon svg {
-            width: 30px;
-            height: 30px;
-            fill: white;
-        }
-
-        .card h2 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-
-        .card p {
-            color: #666;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 1rem;
-        }
-
-        .more-link {
-            color: #000;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            font-weight: bold;
-            border-bottom: 2px solid #000;
-            padding-bottom: 2px;
-        }
-
-        .title {
-            color: #27399B;
-            text-align: center;
-            font-size: 2.5rem;
-            margin: 3rem 0;
-        }
-
-        .numbered-section {
-            background: #f5f5f5;
-            padding: 2rem;
-            margin-top: 2rem;
-        }
-
-        .steps {
-            display: flex;
-            gap: 2rem;
-            justify-content: space-between;
-        }
-
-        .step {
-            flex: 1;
-            padding: 1rem;
-        }
-
-        .step h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .step p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 768px) {
-            .cards-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .steps {
-                flex-direction: column;
-            }
-        } */
+        
         /* new style  */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
         }
 
         body {
@@ -904,13 +784,12 @@
 
         .learn-more {
             display: inline-block;
-            padding: 0;
-            background-color: #ff8c00;
+            padding: 0.8rem 2rem;
+            background:  #ff7200;
             color: white;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
+            border-radius: 4px;
+            font-weight: 500;
         }
 
         .learn-more:hover {
@@ -939,17 +818,22 @@
                 font-size: 2.5rem;
             }
         }
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background:#27399B;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+        }
         
     </style>
 
    </head>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <body>
-  <style>
-    body {
-        background-color: #ffffff; 
-    }
-</style>
+ 
 <section class="hero" id="home" style="position:relative ;">
     <div style="position: absolute;width: 100%;height: 100%;overflow: hidden;">
         <video src="{% static 'images\careervideo.mp4' %}"type="video/mp4" autoplay loop muted playsinline style="width: 100%;height: 100%;object-fit: cover;">
@@ -961,8 +845,7 @@
            <p>Unlock your potential and shape your future with us. Explore opportunities that inspire growth and success.</p>
             <!-- <a href="#about" class="btn">REQUEST A QUOTE</a>  -->
         </div>
-        
-    </section>
+</section>
     <div class="container">
         <div class="features-grid">
             <div class="feature-card">
@@ -1027,7 +910,7 @@
             </div>
         </div>
         <div class="text-section">
-            <h2 class="title" style="color: #011689;"><strong>Our Vision</strong></h2>
+            <h3 class="title" style="color: #011689;"><strong>Start Your Journey With Us</strong></h3>
             <p class="description" style="text-align: justify;">
                 To empower a connected world through advanced hardware solutions that inspire progress, 
                 improve lives, and redefine the limits of technology. We envision a future where our 
@@ -1036,58 +919,13 @@
                  and continual advancement, we strive to be a leader in the development of 
                 intelligent, high-performance hardware that fuels the possibilities of tomorrow.
             </p>
+            <a href="#" class="cta-button">Contact Us</a>
         </div>
     </div>
 
     <br>
     <br> 
     <div class="container">
-        <!-- <div class="cards-container">
-            <div class="card">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 4L3 15h18L12 4zm0 3.8L16.2 13H7.8L12 7.8z"/>
-                    </svg>
-                </div>
-                <h2>Programs</h2>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-                <a href="#" class="more-link">More</a>
-            </div>
-
-            <div class="card">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M9 12l-4.5 4.5L9 21l1.4-1.4-3.1-3.1H21v-2H7.3l3.1-3.1L9 12z"/>
-                    </svg>
-                </div>
-                <h2>Results</h2>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-                <a href="#" class="more-link">More</a>
-            </div>
-
-            <div class="card">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-                    </svg>
-                </div>
-                <h2>Coaching</h2>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-                <a href="#" class="more-link">More</a>
-            </div>
-
-            <div class="card">
-                <div class="icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/>
-                    </svg>
-                </div>
-                <h2>Events</h2>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-                <a href="#" class="more-link">More</a>
-            </div>
-        </div> -->
-
         <div class="hero1">
             <h1>Career Goals </h1>
             <div class="courses-grid">
@@ -1112,7 +950,7 @@
                     <a href="/contactus/" class="learn-more">MESSAGE US</a>
                 </div>
             </div>
-            <div class="attribution">Image from Freepik</div>
+          
         </div>
     </div>
     
@@ -1123,17 +961,13 @@
           content.style.display = content.style.display === 'none' ? 'block' : 'none';
         });
       });
-      </script>
+    </script>
    
-</head>
-<body>
+
+
    
 </body>
 </html>
 
-
-</body>
-</html>
-   
   
 {% endblock %}

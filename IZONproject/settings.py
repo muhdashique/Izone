@@ -56,10 +56,10 @@ WSGI_APPLICATION = 'IZONproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'izone_qmxb',
-        'USER': 'izone_qmxb_user',
-        'PASSWORD': 'WLiJusRW9qKyYeJDi0tazdmmR2aWnbie',
-        'HOST': 'dpg-cstdu1ogph6c739d4t50-a.singapore-postgres.render.com',
+        'NAME': 'izone',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
@@ -107,11 +107,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # EMAIL_USE_TLS = True
 # EMAIL_HOST_USER = 'your_email@example.com'
 # EMAIL_HOST_PASSWORD = 'your_password'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'muhammedashique8281@gmail.com'  # Your Gmail address
-EMAIL_HOST_PASSWORD = 'kuovuhsugfhxsgah'  # Your Gmail app password
+EMAIL_HOST_USER = 'muhammedashique8281@gmail.com'
+EMAIL_HOST_PASSWORD = 'kuovuhsugfhxsgah'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 

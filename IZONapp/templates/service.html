@@ -393,7 +393,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
         }
 
         /* banner padding */
@@ -479,7 +479,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
         }
 
         .container {
@@ -556,7 +556,7 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family:  'Roboto', sans-serif;
             line-height: 1.6;
         }
 
@@ -617,18 +617,22 @@
 <body>
     <style>
         body {
-            background-color: #ffffff; /* Sky blue */
+            background-color: #ffffff;
         }
     </style>
-    <section class="hero" id="home">
+   <section class="hero" id="home" style="position:relative ;">
+    <div style="position: absolute;width: 100%;height: 100%;overflow: hidden;">
+        <video src="{% static 'images/careerbanner.mp4' %}"type="video/mp4" autoplay loop muted playsinline style="width: 100%;height: 100%;object-fit: cover;">
+
+        </video>
+    </div>
         <div class="hero-content">
-            <h1 style="text-align: center;">Professional Computer Hardware Services.</h1>
-            <p style="max-width: 900px;text-align: center;line-height: normal;font-size: medium;margin: auto;">We specialize in delivering expert solutions for all your computer hardware needs. Whether you're looking for repairs, upgrades, or expert advice, we offer a full range of services designed to keep your systems running smoothly. With a focus on professionalism and reliability, you can trust us to provide the highest quality service tailored to your specific requirements. Our team is dedicated to ensuring your hardware performs at its best, so you can stay focused on what matters most.</p>
-           
-          
+            <h1>Professional Computer Hardware Services</h1>
+           <p>We specialize in delivering expert solutions for all your computer hardware needs. Whether you're looking for repairs, upgrades, or expert advice, we offer a full range of services designed to keep your systems running smoothly. With a focus on professionalism and reliability, you can trust us to provide the highest quality service tailored to your specific requirements. Our team is dedicated to ensuring your hardware performs at its best, so you can stay focused on what matters most.</p>
+            <!-- <a href="#about" class="btn">REQUEST A QUOTE</a>  -->
         </div>
         
-    </section>
+</section>
     <div class="container">
         <div class="features">
             <div class="feature">

@@ -308,13 +308,9 @@ def ProductItemDisplay(request, id):
 
 
 # views.py
-
 from django.core.mail import send_mail
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.shortcuts import render
-from django.core.mail import send_mail
-from django.http import HttpResponse
+from django.http import JsonResponse
 
 def contact_form_view(request):
     if request.method == 'POST':
@@ -322,23 +318,29 @@ def contact_form_view(request):
         email = request.POST.get('email')
         message = request.POST.get('message')
 
+        if not all([name, email, message]):
+            return JsonResponse({'success': False, 'message': "All fields are required."})
+
         subject = f"New Contact Form Submission from {name}"
-        recipient = 'muhammedashique8281@gmail.com'  # Your recipient email
+        recipient = 'muhammedashique8281@gmail.com'
         full_message = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
 
         try:
             send_mail(
                 subject,
                 full_message,
-                email,  # Sender's email
-                [recipient],  # List of recipient emails
+                'muhammedashique8281@gmail.com',
+                [recipient],
                 fail_silently=False,
             )
-            return HttpResponse("Your message has been sent successfully!")
+            return JsonResponse({'success': True, 'message': "Your message has been sent successfully!"})
         except Exception as e:
-            return HttpResponse(f"An error occurred: {str(e)}")
+            return JsonResponse({'success': False, 'message': f"An error occurred: {str(e)}"})
 
     return render(request, 'contactus.html')
+
+
+
 
 
 
