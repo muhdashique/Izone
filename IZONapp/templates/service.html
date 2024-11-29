@@ -608,6 +608,9 @@
             }
         }
         
+        body {
+            background-color: #ffffff;
+        }
         
         
     </style>
@@ -615,11 +618,7 @@
    </head>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <body>
-    <style>
-        body {
-            background-color: #ffffff;
-        }
-    </style>
+   
    <section class="hero" id="home" style="position:relative ;">
     <div style="position: absolute;width: 100%;height: 100%;overflow: hidden;">
         <video src="{% static 'images/careerbanner.mp4' %}"type="video/mp4" autoplay loop muted playsinline style="width: 100%;height: 100%;object-fit: cover;">
@@ -627,6 +626,7 @@
         </video>
     </div>
         <div class="hero-content">
+            
             <h1>Professional Computer Hardware Services</h1>
            <p>We specialize in delivering expert solutions for all your computer hardware needs. Whether you're looking for repairs, upgrades, or expert advice, we offer a full range of services designed to keep your systems running smoothly. With a focus on professionalism and reliability, you can trust us to provide the highest quality service tailored to your specific requirements. Our team is dedicated to ensuring your hardware performs at its best, so you can stay focused on what matters most.</p>
             <!-- <a href="#about" class="btn">REQUEST A QUOTE</a>  -->
@@ -664,8 +664,18 @@
     
     <section style=>
         <div class="header">
-            <h1>Professional Device Repair Services</h1>
-            <div class="underline"></div>
+            <h1 style="
+  color: #011689;
+  font-size: 2.5rem; /* Adjust font size */
+  font-weight: 700; /* Bold text */
+  text-align: center; /* Center alignment */
+  text-transform: uppercase; /* Uppercase text */
+  letter-spacing: 2px; /* Add spacing between letters */
+  margin-bottom: 1rem; /* Space below the heading */
+">
+  Professional Device Repair Services
+</h1>
+        <div class="underline"></div>
         </div>
     
         <div class="services-grid">
@@ -731,7 +741,22 @@
         </div>
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </section>
+    <br>
+    <br>
+    <br>
     <section class="bathroom-section">
+        <h1 style="
+  color: #011689;
+  font-size: 2.5rem; /* Adjust font size */
+  font-weight: 700; /* Bold text */
+  text-align: center; /* Center alignment */
+  text-transform: uppercase; /* Uppercase text */
+  letter-spacing: 2px; /* Add spacing between letters */
+  margin-bottom: 1rem; /* Space below the heading */
+">
+ OUR SERVICES
+</h1>
+
         
         <div class="container">
             <div class="services-grid">
@@ -739,10 +764,9 @@
                  
                  
                 <div class="service-card">
-                    
                     <img src="{% static 'images\pcbulding.png' %}" alt="Custom PC Building" class="service-image">
                     <div class="service-content">
-                        <h2 class="service-title">System Building</h2>
+                        <h2 class="service-title "style= "color: #011689";>System Building</h2>
                         <p class="service-description" style="text-align: justify;">We specialize in building custom computer systems tailored to your needs. Whether you need a high-performance gaming rig or a reliable workstation, our experts will design and assemble a system that meets your specifications and budget.</p>
                         <!-- <a href="#" class="view-service-btn">VIEW SERVICE</a> -->
                     </div>
@@ -752,7 +776,7 @@
                 <div class="service-card">
                     <img src="{% static 'images\ogcomputerrepair.png' %}" alt="Computer Repair" class="service-image">
                     <div class="service-content">
-                        <h2 class="service-title">Computer Repair</h2>
+                        <h2 class="service-title" style= "color: #011689";>Computer Repair</h2>
                         <p class="service-description" style="text-align: justify;">Our computer repair service covers a wide range of issues, from hardware malfunctions to software problems. We provide efficient diagnosis and repairs to get your computer back in top shape Computer repair typically begins with .</p>
                         <!-- <a href="#" class="view-service-btn">VIEW SERVICE</a> -->
                     </div>
@@ -760,9 +784,9 @@
     
                 <!-- Software Service -->
                 <div class="service-card">
-                    <img src="{% static 'images\software solution.jpg' %}" class="service-image">
+                    <img src="{% static 'images/sftware_solution.jpg' %}" class="service-image">
                     <div class="service-content">
-                        <h2 class="service-title">Software Solutions</h2>
+                        <h2 class="service-title" style= "color: #011689";>Software Solutions</h2>
                         <p class="service-description" style="text-align: justify;" >We offer comprehensive software solutions, including installation, troubleshooting, and optimization. Our team ensures that your software performs at its best, enhancing productivity and efficiency Software solutions can be off-the-shelf.</p>
                         <!-- <a href="#" class="view-service-btn">VIEW SERVICE</a> -->
                     </div>
