@@ -1,3 +1,4 @@
+from email.message import EmailMessage
 from itertools import product
 from msilib.schema import ListView
 from unicodedata import category
@@ -308,36 +309,9 @@ def ProductItemDisplay(request, id):
 
 
 # views.py
-from django.core.mail import send_mail
-from django.shortcuts import render
-from django.http import JsonResponse
 
-def contact_form_view(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
 
-        if not all([name, email, message]):
-            return JsonResponse({'success': False, 'message': "All fields are required."})
 
-        subject = f"New Contact Form Submission from {name}"
-        recipient = 'muhammedashique8281@gmail.com'
-        full_message = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
-
-        try:
-            send_mail(
-                subject,
-                full_message,
-                'muhammedashique8281@gmail.com',
-                [recipient],
-                fail_silently=False,
-            )
-            return JsonResponse({'success': True, 'message': "Your message has been sent successfully!"})
-        except Exception as e:
-            return JsonResponse({'success': False, 'message': f"An error occurred: {str(e)}"})
-
-    return render(request, 'contactus.html')
 
 
 
@@ -364,3 +338,41 @@ def product_image_view(request, product_id):
         'next_product': next_product,
     }
     return render(request, 'ProductImageView.html', context)
+
+from django.core.mail import send_mail
+from django.shortcuts import render
+
+def contact_form_view(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')  # Get phone number
+        message = request.POST.get('message')
+
+        if not all([name, email, phone, message]):
+            messages.error(request, "All fields are required.")
+            return redirect('contactus')
+
+        try:
+            send_mail(
+                subject=f"New Contact Form Submission from {name}",
+                message=(
+                    f"Name: {name}\n"
+                    f"Email: {email}\n"
+                    f"Phone: {phone}\n\n"
+                    f"Message:\n{message}"
+                ),
+                from_email='your_email@gmail.com',
+                recipient_list=['muhammedashique8281@gmail.com'],
+                fail_silently=False,
+            )
+            
+            # Add a success message
+            messages.success(request, "Your message has been sent successfully!")
+            return redirect('contactus')
+        
+        except Exception as e:
+            messages.error(request, f"An error occurred: {str(e)}")
+            return redirect('contactus')
+
+    return render(request, 'contactus.html')

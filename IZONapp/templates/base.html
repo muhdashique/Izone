@@ -1,5 +1,4 @@
 {% load static %}
-{% load custom_filters %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,8 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IZONE IT STORE</title>
-  <link rel="shortcut icon" href="{% static 'images/fevicon.png' %}" type="image/x-icon"
-    style="width: 100%;height: 100%;">
+  <link rel="shortcut icon" href="{% static 'images/fevicon.png' %}" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -25,286 +23,333 @@
       font-family: 'evagria';
     }
 
-    @font-face {
-      src: url('../static/fonts/nexa_rust_sans/NexaRustSlab-Trial-BlackShadow3.ttf');
-      font-family: 'Roboto', sans-serif;
-    }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Roboto', sans-serif;
     }
 
     html {
       scroll-behavior: smooth;
     }
 
-    @media screen and (max-width:768px) {
-      .contactdetails {
+    .hover-highlight:hover {
+      color: #011689;
+      border-bottom: 2px solid #011689;
+    }
+
+    .menu-button {
+      background-color: #011689;
+      color: #fff;
+      padding: 0.5rem;
+      border-radius: 0.375rem;
+    }
+
+    .menu-button:hover {
+      background-color: #011689d9;
+    }
+
+    .active-link {
+      color: #011689;
+      font-weight: bold;
+      border-bottom: 2px solid #011689;
+    }
+    @media screen and (max-width: 768px) {
+      .contactdetails{
         display: none;
       }
+  
+  }
+
+  /* login */
+  .menu-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #011689; /* Blue background */
+    color: white; /* Text color */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s ease; /* Smooth transition */
+  }
+
+  /* Add hover effect */
+  .menu-button:hover {
+    background-color: #011689; /* Darker blue on hover */
+  }
+
+  /* Apply styles for large screen sizes */
+  @media (min-width: 1024px) {
+    .menu-button {
+      font-size: 18px; /* Larger font size on large screens */
     }
-    /* social media */
-    .orange-icon {
-    color: #011689; /* Orange color */
-    transition: color 0.3s ease; /* Smooth transition */
-}
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-.orange-icon:hover {
-    color: #011689; /* Darker orange */
-}
-
-
-    
+  .menu-button {
+    animation: fadeIn 1s ease-out; /* Add fade-in animation */
+  }
   </style>
 </head>
 
-<body>
-  <!-- Section 1 -->
-  <section class="w-full text-gray-700 overflow-hidden">
-    <div class=" flex items-center justify-center py-2 mx-auto">
-      <div class="relative flex flex-col justify-center items-center w-full">
+<body class="bg-gray-50">
+  <!-- Navbar Section -->
+  <nav class="bg-white shadow-md" style="width: 100%;">
+    <div class="max-w-screen-xl mx-auto px-4 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <!-- Logo -->
+        <a href="{% url 'home' %}">
+          <img src="{% static 'images/IZONE LOGO.png' %}" alt="IZONE Logo" 
+               class="object-contain" 
+               style="width: 100px; height: auto;">
+      </a>
+      
 
-
-        <nav class="flex items-center justify-between gap-12 w-full mb-5 text-base md:mb-0 px-3">
-          <!-- Mobile Menu Button -->
-          <div>
-            <img src="{% static 'images/IZONE LOGO.png' %}" alt="Image"
-              style="height: 100px; width: 100px; object-fit: contain;mix-blend-mode: multiply;">
-          </div>
-          <div class="block lg:hidden">
-            <button id="menu-button"
-              class="flex items-center px-3 py-2 text-gray-600 border border-gray-600 rounded focus:outline-none">
-              <i class="fa-solid fa-bars"></i>
-            </button>
-          </div>
-        
-          <div class="hidden lg:flex lg:flex-grow lg:items-center">
-            <a href="{% url 'home' %}" 
-               class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900 {% if request.resolver_match.url_name == 'home' %}text-indigo-600{% endif %}">
-              Home
-            </a>
-            <a href="/about/" 
-               class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900 {% if request.path == '/about/' %}text-indigo-600{% endif %}">
-              About
-            </a>
-        
-            <!-- Products Dropdown -->
-            <div class="relative">
-              <a href="/product_details/" 
-                 class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900 {% if request.path == '/product_details/' %}text-indigo-600{% endif %}">
-                Products
-              </a>
-              <div id="products-dropdown"
-                class="absolute hidden bg-white shadow-lg rounded mt-2 z-10 transition-opacity duration-300">
-                <ul class="py-2 w-40"></ul>
-              </div>
-            </div>
-        
-            <a href="/service/" 
-               class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900 {% if request.path == '/service/' %}text-indigo-600{% endif %}">
-              Services
-            </a>
-            <a href="/careers/" 
-               class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900 {% if request.path == '/careers/' %}text-indigo-600{% endif %}">
-              Career
-            </a>
-            <a href="/contactus/" 
-               class="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900 {% if request.path == '/contactus/' %}text-indigo-600{% endif %}">
-              Contact Us
-            </a>
-          </div>
-        
-          <div class="contactdetails">
-            <a href="mailto:izone@gmail.com">izone@gmail.com</a> <br>
-            <a href="tel:+919080706050">+91 9080706050</a>
-          </div>
-        
-          <a href="{% url 'login' %}" 
-             class="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap  border-transparent rounded-md shadow-sm  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600"
-             style="background-color: #011689;" onmouseover="this.style.backgroundColor='#011689d9'"
-             onmouseout="this.style.backgroundColor='#011689'">
-            Login
+        <!-- Desktop Menu -->
+        <div class="hidden lg:flex space-x-8">
+          <a href="{% url 'home' %}" 
+             class="hover-highlight text-gray-600 {% if request.resolver_match.url_name == 'home' %}active-link{% endif %}" style="color: #011689;">
+             Home
           </a>
-        </nav>
-        
-        <!-- Mobile Navigation Layout -->
-                        <div id="mobile-menu"
-                    class="fixed inset-0 bg-red-600 z-[1500] hidden flex justify-center items-center">
-                    <div class="relative flex flex-col items-center w-full max-w-md mx-auto">
-                        <!-- Close Button -->
-                        <button id="close-button" class="absolute top-5 right-5 text-white text-3xl">
-                            <i class="fa-solid fa-rectangle-xmark"></i>
-                        </button>
-                        <!-- Navigation Links -->
-                        <ul class="text-white flex flex-col items-center gap-6 font-medium text-lg">
-                            <a href="{% url 'home' %}" class="hover:text-gray-300 transition">
-                                <li>Home</li>
-                            </a>
-                            <a href="{% url 'about' %}" class="hover:text-gray-300 transition">
-                                <li>About</li>
-                            </a>
-                            <a href="{% url 'contactus' %}" class="hover:text-gray-300 transition">
-                                <li>Contact Us</li>
-                            </a>
-                            <a href="{% url 'careers' %}" class="hover:text-gray-300 transition">
-                                <li>Career</li>
-                            </a>
-                            <a href="{% url 'service' %}" class="hover:text-gray-300 transition">
-                                <li>Services</li>
-                            </a>
-                        </ul>
-                    </div>
-                </div>
+          <a href="/about/" 
+             class="hover-highlight text-gray-600 {% if request.path == '/about/' %}active-link{% endif %}" style="color: #011689;">
+             About
+          </a>
+          <a href="/product_details/" 
+             class="hover-highlight text-gray-600 {% if request.path == '/product_details/' %}active-link{% endif %}" style="color: #011689;">
+             Products
+          </a>
+          <a href="/service/" 
+             class="hover-highlight text-gray-600 {% if request.path == '/service/' %}active-link{% endif %}" style="color: #011689;">
+             Services
+          </a>
+          <a href="/careers/" 
+             class="hover-highlight text-gray-600 {% if request.path == '/careers/' %}active-link{% endif %}" style="color: #011689;">
+             Career
+          </a>
+          <a href="/contactus/" 
+             class="hover-highlight text-gray-600 {% if request.path == '/contactus/' %}active-link{% endif %}" style="color: #011689;">
+             Contact Us
+          </a>
+        </div>
 
-        {% block content %}{% endblock %}
+        <!-- Contact Details (Desktop Only) -->
+        <div class="contactdetails">
+          <a href="mailto:izone@gmail.com" style="color: #011689;">izone@gmail.com</a> <br>
+          <a href="tel:+919080706050" style="color: #011689;">+91 9080706050</a>
+        </div>
+
+        <div style="display: flex;justify-content: center;align-items: center;gap: 10px;">
+          <!-- Login Button -->
+          <div class="flex justify-end">
+  <a href="{% url 'login' %}" class="lg:inline-block menu-button">Login</a>
+</div>
+
+
+          <!-- Mobile Menu Button -->
+          <button1 id="mobile-menu-button" class="lg:hidden text-gray-600 text-xl">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
       </div>
     </div>
-  </section>
-  <style>
-    body {
-      background-color: #fffffffe;
-      /* Sky blue */
-    }
-  </style>
 
-
-
-
-
-
-
-
-  <!-- this is footer section -->
-  <footer class="bg-white flex flex-col items-center w-full" style="width: 100%;">
-    <div class="mx-auto max-w-screen-xl px-4 lg:px-8 pb-7 w-full">
-        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center">
-            <!-- Logo -->
-            <div class="text-teal-600 mb-5 sm:mb-0">
-                <img src="{% static 'images/IZONE LOGO.png' %}" alt="Image"
-                    class="h-auto w-24 object-contain mix-blend-multiply">
-            </div>
-            <!-- Social Media Icons -->
-            <div class="flex justify-center gap-4 items-center text-lg">
-              <a href="https://www.instagram.com/your_username" class="orange-icon">
-                  <i class="fa-brands fa-instagram"></i>
-              </a>
-              <a href="https://wa.me/1234567890" class="orange-icon">
-                  <i class="fa-brands fa-whatsapp"></i>
-              </a>
-              <a href="https://www.facebook.com/yourpage" class="orange-icon">
-                  <i class="fa-brands fa-facebook"></i>
-              </a>
-              <a href="https://www.yourwebsite.com" class="orange-icon">
-                  <i class="fa-solid fa-globe"></i>
-              </a>
-          </div>
-          
-        </div>
-
-        <!-- Links Grid -->
-        <div class="grid grid-cols-1 gap-8 border-t border-gray-100 sm:grid-cols-2 lg:grid-cols-4 pt-5 mt-5">
-            <div>
-                <p class="font-medium text-gray-900">Services</p>
-                <ul class="mt-4 space-y-3 text-sm">
-                    <li><a href="#" class="text-gray-700 transition hover:text-teal-500">System Building</a></li>
-                    <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Computer Repair</a></li>
-                    <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Software Solutions</a></li>
-                    <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Computer Repair</a></li>
-                    <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Network Solutions</a></li>
-                </ul>
-            </div>
-            <div>
-                <p class="font-medium text-gray-900">Company</p>
-                <ul class="mt-4 space-y-3 text-sm">
-                    <li><a href="#" class="text-gray-700 transition hover:text-teal-500">About</a></li>
-                    <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Career</a></li>
-                    <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Products</a></li>
-                </ul>
-            </div>
-            <div>
-                <p class="font-medium text-gray-900">Helpful Links</p>
-                <ul class="mt-4 space-y-3 text-sm">
-                    <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Contact</a></li>
-                    <li><a href="#" class="text-gray-700 transition hover:text-teal-500">FAQs</a></li>
-                    <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Connect Us</a></li>
-                </ul>
-            </div>
-            <div>
-                <p class="font-medium text-gray-900">Legal</p>
-                <ul class="mt-4 space-y-3 text-sm">
-                    <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Fast Service</a></li>
-                    <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Secure Payments</a></li>
-                    <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Expert Team</a></li>
-                    <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Affordable Pricing</a></li>
-                    <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Affordable Pricing</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Footer Bottom -->
-        <p class="text-xs text-gray-500 text-center pt-5 mt-5">&copy; 2022. Izone It Store. All rights reserved.</p>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden bg-white shadow-lg lg:hidden">
+      <ul class="flex flex-col space-y-2 py-4 px-6">
+        <li>
+          <a href="{% url 'home' %}" 
+             class="{% if request.resolver_match.url_name == 'home' %}active-link{% else %}text-gray-600{% endif %}">
+             Home
+          </a>
+        </li>
+        <li>
+          <a href="/about/" 
+             class="{% if request.path == '/about/' %}active-link{% else %}text-gray-600{% endif %}">
+             About
+          </a>
+        </li>
+        <li>
+          <a href="/product_details/" 
+             class="{% if request.path == '/product_details/' %}active-link{% else %}text-gray-600{% endif %}">
+             Products
+          </a>
+        </li>
+        <li>
+          <a href="/service/" 
+             class="{% if request.path == '/service/' %}active-link{% else %}text-gray-600{% endif %}">
+             Services
+          </a>
+        </li>
+        <li>
+          <a href="/careers/" 
+             class="{% if request.path == '/careers/' %}active-link{% else %}text-gray-600{% endif %}">
+             Career
+          </a>
+        </li>
+        <li>
+          <a href="/contactus/" 
+             class="{% if request.path == '/contactus/' %}active-link{% else %}text-gray-600{% endif %}">
+             Contact Us
+          </a>
+        </li>
+      </ul>
     </div>
-</footer>
+  </nav>
 
-  <!-- footer section ending here -->
+  <!-- Content Block -->
+  {% block content %}{% endblock %}
 
-
-
-
-
-
-
-
-  <!-- Script for dropdown functionality -->
+  <!-- Scripts -->
   <script>
-    const productsButton = document.getElementById('products-button');
-    const productsDropdown = document.getElementById('products-dropdown');
-
-    // Toggle dropdown on click of Products button
-    productsButton.addEventListener('click', function (event) {
-      event.stopPropagation();  // Prevent click from bubbling up to the document
-      productsDropdown.classList.toggle('hidden');
-
-      // Toggle arrow rotation
-      const arrowIcon = productsButton.querySelector('svg');
-      arrowIcon.classList.toggle('rotate-180');
-    });
-
-    // Close dropdown when clicking outside of it
-    document.addEventListener('click', function (event) {
-      const isClickInside = productsButton.contains(event.target) || productsDropdown.contains(event.target);
-      if (!isClickInside) {
-        productsDropdown.classList.add('hidden');
-
-        // Ensure the arrow resets when the dropdown is hidden
-        const arrowIcon = productsButton.querySelector('svg');
-        arrowIcon.classList.remove('rotate-180');
-      }
-    });
-
-
     document.addEventListener("DOMContentLoaded", () => {
-      const menuButton = document.getElementById("menu-button");
-      const closeButton = document.getElementById("close-button");
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
       const mobileMenu = document.getElementById("mobile-menu");
 
-      // Show mobile menu
-      menuButton.addEventListener("click", () => {
-        mobileMenu.classList.remove("hidden");
-      });
-
-      // Hide mobile menu
-      closeButton.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
+      // Toggle mobile menu
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
       });
     });
   </script>
-
-
-  </section>
 </body>
+ <!-- this is footer section -->
+ <footer class="bg-white flex flex-col items-center w-full" style="width: 100%;">
+  <div class="mx-auto max-w-screen-xl px-4 lg:px-8 pb-7 w-full">
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+          <!-- Logo -->
+          <div class="text-teal-600 mb-5 sm:mb-0">
+              <img src="{% static 'images/IZONE LOGO.png' %}" alt="Image"
+                  class="h-auto w-24 object-contain mix-blend-multiply">
+          </div>
+          <!-- Social Media Icons -->
+          <div class="flex justify-center gap-4 items-center text-lg">
+            <a href="https://www.instagram.com/your_username" class="orange-icon">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/1234567890" class="orange-icon">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="https://www.facebook.com/yourpage" class="orange-icon">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="https://www.yourwebsite.com" class="orange-icon">
+                <i class="fa-solid fa-globe"></i>
+            </a>
+        </div>
+        
+      </div>
+
+      <!-- Links Grid -->
+      <div class="grid grid-cols-1 gap-8 border-t border-gray-100 sm:grid-cols-2 lg:grid-cols-4 pt-5 mt-5">
+          <div>
+              <p class="font-medium text-gray-900">Services</p>
+              <ul class="mt-4 space-y-3 text-sm">
+                  <li><a href="#" class="text-gray-700 transition hover:text-teal-500">System Building</a></li>
+                  <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Computer Repair</a></li>
+                  <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Software Solutions</a></li>
+                  <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Computer Repair</a></li>
+                  <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Network Solutions</a></li>
+              </ul>
+          </div>
+          <div>
+              <p class="font-medium text-gray-900">Company</p>
+              <ul class="mt-4 space-y-3 text-sm">
+                  <li><a href="#" class="text-gray-700 transition hover:text-teal-500">About</a></li>
+                  <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Career</a></li>
+                  <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Products</a></li>
+              </ul>
+          </div>
+          <div>
+              <p class="font-medium text-gray-900">Helpful Links</p>
+              <ul class="mt-4 space-y-3 text-sm">
+                  <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Contact</a></li>
+                  <li><a href="#" class="text-gray-700 transition hover:text-teal-500">FAQs</a></li>
+                  <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Connect Us</a></li>
+              </ul>
+          </div>
+          <div>
+              <p class="font-medium text-gray-900">Legal</p>
+              <ul class="mt-4 space-y-3 text-sm">
+                  <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Fast Service</a></li>
+                  <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Secure Payments</a></li>
+                  <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Expert Team</a></li>
+                  <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Affordable Pricing</a></li>
+                  <li><a href="#" class="text-gray-700 transition hover:text-teal-500">Affordable Pricing</a></li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <p class="text-xs text-gray-500 text-center pt-5 mt-5">&copy; 2022. Izone It Store. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- footer section ending here -->
+
+
+
+
+
+
+
+
+<!-- Script for dropdown functionality -->
+<script>
+  const productsButton = document.getElementById('products-button');
+  const productsDropdown = document.getElementById('products-dropdown');
+
+  // Toggle dropdown on click of Products button
+  productsButton.addEventListener('click', function (event) {
+    event.stopPropagation();  // Prevent click from bubbling up to the document
+    productsDropdown.classList.toggle('hidden');
+
+    // Toggle arrow rotation
+    const arrowIcon = productsButton.querySelector('svg');
+    arrowIcon.classList.toggle('rotate-180');
+  });
+
+  // Close dropdown when clicking outside of it
+  document.addEventListener('click', function (event) {
+    const isClickInside = productsButton.contains(event.target) || productsDropdown.contains(event.target);
+    if (!isClickInside) {
+      productsDropdown.classList.add('hidden');
+
+      // Ensure the arrow resets when the dropdown is hidden
+      const arrowIcon = productsButton.querySelector('svg');
+      arrowIcon.classList.remove('rotate-180');
+    }
+  });
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuButton = document.getElementById("menu-button");
+    const closeButton = document.getElementById("close-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    // Show mobile menu
+    menuButton.addEventListener("click", () => {
+      mobileMenu.classList.remove("hidden");
+    });
+
+    // Hide mobile menu
+    closeButton.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+    });
+  });
+</script>
+
+
+</section>
 
 </html>

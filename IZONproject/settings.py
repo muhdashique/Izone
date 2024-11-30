@@ -94,6 +94,13 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'  # Where static files will be collected (
 # Media files (user uploads)
 MEDIA_URL = '/media/'  
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Directory for uploaded media files
+# settings.py
+
+# Other Django settings ...
+
+# Redirect to this URL if the user is not authenticated
+LOGIN_URL = '/login/'  # Redirect users to the login page if they are not logged in
+
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -107,7 +114,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # EMAIL_USE_TLS = True
 # EMAIL_HOST_USER = 'your_email@example.com'
 # EMAIL_HOST_PASSWORD = 'your_password'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True

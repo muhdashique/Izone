@@ -20,6 +20,9 @@
         html{
             scroll-behavior: smooth;
         }
+        body {
+            background-color: #f5f5f5;
+        }
     </style>
 </head>
 
@@ -118,6 +121,8 @@
                 <div style="display: flex; flex-direction: column;justify-content: center;align-items: center;">
                     <div>{{ product.name }}</div>
                     <div>{{ product.description }}</div>
+                    <div>${{ product.model }}</div>
+                    <div>${{ product.brand }}</div>
                     <div>${{ product.price }}</div>
                 </div>
             </div>
