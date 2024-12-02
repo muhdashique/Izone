@@ -827,6 +827,98 @@
             border-radius: 4px;
             font-weight: 500;
         }
+        /* Responsive styles for contact page */
+@media screen and (max-width: 768px) {
+    /* Overall page container adjustments */
+    .page-container {
+        width: 95%;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    /* Responsive typography */
+    h1 {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+
+    /* Form section adjustments */
+    .form-section {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .contact-container {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    /* Form group responsive design */
+    .form-group {
+        width: 100%;
+        margin-bottom: 15px;
+        padding: 10px 0;
+    }
+
+    /* Adjust input fields */
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    /* Location heading responsive */
+    #find-our-location {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+        padding: 0 15px;
+    }
+
+    /* Popup message and error handling */
+    #popup-message,
+    #error,
+    #success-msg {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+}
+
+/* Mobile-specific adjustments */
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .contact-container {
+        padding: 5px;
+    }
+
+    #find-our-location {
+        font-size: 1.5rem;
+    }
+}
+
+/* Flexible box model and basic responsive setup */
+* {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Ensure images and media are responsive */
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
+}
         
     </style>
 
@@ -846,6 +938,7 @@
             <!-- <a href="#about" class="btn">REQUEST A QUOTE</a>  -->
         </div>
 </section>
+<section>
     <div class="container">
         <div class="features-grid">
             <div class="feature-card">
@@ -895,7 +988,8 @@
                 <p class="feature-description" style="text-align: justify;">Bring that from man said god, his appear yielding open signs fowl a be deep with some meanings.</p>
             </div>
         </div>
-    </div>  
+    </div> 
+</section> 
     
     <div class="container">
         <div class="images-section">

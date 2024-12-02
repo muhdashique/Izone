@@ -307,18 +307,6 @@ def ProductItemDisplay(request, id):
 
 
 
-
-# views.py
-
-
-
-
-
-
-
-
-
-
 def product_details(request):
     return render(request,'product_details.html')
 
@@ -338,6 +326,9 @@ def product_image_view(request, product_id):
         'next_product': next_product,
     }
     return render(request, 'ProductImageView.html', context)
+
+
+
 
 from django.core.mail import send_mail
 from django.shortcuts import render
