@@ -31,7 +31,7 @@ def login(request):
                 auth_login(request, user)
                 login_attempt.user = user  # Attach user if authentication succeeds
                 login_attempt.save()
-                return redirect('add_product')  # Redirect after successful login
+                return redirect('product_add_edit')  # Redirect after successful login
             else:
                 login_attempt.save()  # Save failed login attempt
                 return render(request, 'login.html', {'form': form, 'error_message': 'Invalid username or password'})
@@ -225,17 +225,18 @@ def logout_view(request):
     return redirect('home')  # Redirect to the home page or login page after logout
 
 
-
-
-from django.shortcuts import redirect, get_object_or_404
+from django.contrib import messages
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from .models import Product
 
 def delete_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
+    product_name = product.name  # Save the product name for the message
     product.delete()
-    return redirect(reverse('product_gallery'))
-
+    # Add a success message with Bootstrap success styling
+    messages.success(request, f'Product "{product_name}" has been deleted successfully.')
+    return redirect(reverse('product_add_edit'))
 
 
 
@@ -255,7 +256,7 @@ def edit_product(request, product_id):
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            return redirect('product_gallery')
+            return redirect('product_add_edit')
     else:
         form = ProductForm(instance=product)
     return render(request, 'edit_product.html', {'form': form, 'product': product})
@@ -275,7 +276,7 @@ def edit_gallery_image(request, image_id):
 
 def product_gallery(request):
     products = Product.objects.all()
-    return render(request, 'productgallery.html', {'products': products})
+    return render(request, 'product_add_edit.html', {'products': products})
 
 
 
@@ -284,7 +285,7 @@ def delete_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     if request.method == 'POST':
         product.delete()
-    return redirect('product_gallery')
+    return redirect('product_add_edit')
 
 
 
@@ -367,3 +368,7 @@ def contact_form_view(request):
             return redirect('contactus')
 
     return render(request, 'contactus.html')
+
+
+def product_add_edit(request):
+    return render(request,'product_add_edit.html')

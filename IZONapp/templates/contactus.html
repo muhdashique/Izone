@@ -321,6 +321,20 @@
 }
 
 
+#popup-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #ffffff; /* Green for success */
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+
+
 
 
     </style>
@@ -381,15 +395,15 @@
 
                     </form>
                     
-                    <!-- Popup Message Div -->
-                    <div id="popup-message" class="{% if messages %}{% for message in messages %}{{ message.tags }}{% endfor %}{% endif %}">
-                        {% if messages %}
-                            {% for message in messages %}
-                                {{ message }}
-                            {% endfor %}
-                        {% endif %}
-                        <!-- <button onclick="closePopup()">Close</button> -->
-                    </div>
+                                    <!-- Popup Message Div -->
+                                    <div id="popup-message" 
+                    class="{% if messages %}{% for message in messages %}{{ message.tags }}{% endfor %}{% endif %}">
+                    {% if messages %}
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    {% endif %}
+                </div>
                     
                     
                     <div id="error"></div>
@@ -454,6 +468,17 @@
         const popup = document.getElementById('popup-message');
         popup.style.display = 'none';
     }
+
+
+     // Automatically hide the popup message after 3 seconds
+     document.addEventListener('DOMContentLoaded', () => {
+        const popup = document.getElementById('popup-message');
+        if (popup) {
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 3000); // 3000 milliseconds = 3 seconds
+        }
+    });
     </script>
 </body>
 </html>

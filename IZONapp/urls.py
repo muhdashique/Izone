@@ -26,5 +26,12 @@ urlpatterns = [
     path('category/<str:category>/', views.product_by_category, name='product_by_category'),
     path('product/<int:product_id>/', views.product_details, name='product_detail'),
     path('product/image/<int:product_id>/', views.product_image_view, name='product_image_view'),
- ] 
+    path('product_add_edit/',views.product_add_edit,name='product_add_edit'),
+    path('product/edit/<int:product_id>/', views.edit_product, name='edit_product'),
+    path('product/delete/<int:product_id>/', views.delete_product, name='delete_product'),
+
+
+
+
+]
 
