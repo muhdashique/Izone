@@ -2,16 +2,18 @@ from email.message import EmailMessage
 from itertools import product
 from msilib.schema import ListView
 from unicodedata import category
+from urllib import request
 from django.forms import Form
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login as auth_login
 from IZONapp.forms import ProductForm, GalleryImageForm, LoginForm
 from .models import  GalleryImage, LoginAttempt, Product
 from django.contrib import messages
-from django.conf import settings
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
+
+
 from django.shortcuts import get_object_or_404
+from django.core.mail import send_mail
+from django.shortcuts import render
 # from django.template.defaultfilters import slugify
 
 
@@ -52,12 +54,12 @@ def home(request):
 
 
 
-# Gallery view to display images
-def gallery(request):
-    images = GalleryImage.objects.all()  # Fetch all images
-    products = Product.objects.all()  # Fetch all products
+# # Gallery view to display images
+# def gallery(request):
+#     images = GalleryImage.objects.all()  # Fetch all images
+#     products = Product.objects.all()  # Fetch all products
 
-    return render(request, 'gallery.html', {'images': images, 'products': products})
+#     return render(request, 'gallery.html', {'images': images, 'products': products})
 
 
 
@@ -85,15 +87,15 @@ def add_product(request):
 
 
 # Product gallery view (list products by category)
-def product_gallery(request):
-    category = request.GET.get('category', None)
-    if category:
-        products = Product.objects.filter(category=category)
-    else:
-        products = Product.objects.all()
+# def product_gallery(request):
+#     category = request.GET.get('category', None)
+#     if category:
+#         products = Product.objects.filter(category=category)
+#     else:
+#         products = Product.objects.all()
 
-    categories = [choice[0] for choice in Product.CATEGORY_CHOICES]
-    return render(request, 'productgallery.html', {'products': products, 'categories':categories})
+#     categories = [choice[0] for choice in Product.CATEGORY_CHOICES]
+#     return render(request, 'productgallery.html', {'products': products, 'categories':categories})
 
 
 
@@ -109,64 +111,64 @@ def contactus(request):
 
 
 
-# Image upload for gallery
-def upload_image(request):
-    if request.method == 'POST':
-        form = GalleryImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()  # Save the image
-            return redirect('upload_image')  # Redirect to gallery after uploading
+# # Image upload for gallery
+# def upload_image(request):
+#     if request.method == 'POST':
+#         form = GalleryImageForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()  # Save the image
+#             return redirect('upload_image')  # Redirect to gallery after uploading
     
-    images = GalleryImage.objects.all()  # Fetch all images
-    form = GalleryImageForm()  # Empty form to show on page
+#     images = GalleryImage.objects.all()  # Fetch all images
+#     form = GalleryImageForm()  # Empty form to show on page
     
-    return render(request, 'galleryadd.html', {'form': form, 'images': images})
+#     return render(request, 'galleryadd.html', {'form': form, 'images': images})
 
 
 
 
 
-# Gallery list with image uploading
-def gallery_list(request):
-    if request.method == "POST":
-        form = GalleryImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()  # Save the image
-            return redirect('gallery')  # Redirect to gallery after uploading
+# # Gallery list with image uploading
+# def gallery_list(request):
+#     if request.method == "POST":
+#         form = GalleryImageForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()  # Save the image
+#             return redirect('gallery')  # Redirect to gallery after uploading
 
-    images = GalleryImage.objects.all()  # Fetch all images
-    form = GalleryImageForm()  # Empty form for uploading
+#     images = GalleryImage.objects.all()  # Fetch all images
+#     form = GalleryImageForm()  # Empty form for uploading
     
-    return render(request, 'gallery.html', {'form': form, 'images': images})
+#     return render(request, 'gallery.html', {'form': form, 'images': images})
 
 
 
 
 # Product list view
-def product_list(request):
-    products = Product.objects.all()  # Retrieve all products
-    form = ProductForm()
+# def product_list(request):
+#     products = Product.objects.all()  # Retrieve all products
+#     form = ProductForm()
 
-    if request.method == 'POST':
-        form = ProductForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('productgallery.htmlt')  # Redirect to the same page after saving
+#     if request.method == 'POST':
+#         form = ProductForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('productgallery.htmlt')  # Redirect to the same page after saving
 
-    return render(request, 'product_details.html', {'products': products, 'form': form})
+#     return render(request, 'product_details.html', {'products': products, 'form': form})
 
 
 
 
 # gallery image deleting view
 
-def delete_image(request, image_id):
-    image = get_object_or_404(GalleryImage, id=image_id)
-    if request.method == 'POST':
-        image.delete()  # Delete the image
-        return redirect('gallery')  # Redirect to gallery after deletion
+# def delete_image(request, image_id):
+#     image = get_object_or_404(GalleryImage, id=image_id)
+#     if request.method == 'POST':
+#         image.delete()  # Delete the image
+#         return redirect('gallery')  # Redirect to gallery after deletion
     
-    return render(request, 'confirm_delete.html', {'image': image})
+#     return render(request, 'confirm_delete.html', {'image': image})
 
 
 
@@ -225,18 +227,15 @@ def logout_view(request):
     return redirect('home')  # Redirect to the home page or login page after logout
 
 
-from django.contrib import messages
-from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
-from .models import Product
+# from django.contrib import messages
+# from django.shortcuts import render, redirect, get_object_or_404
+# from django.urls import reverse
+# from .models import Product
 
-def delete_product(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
-    product_name = product.name  # Save the product name for the message
-    product.delete()
-    # Add a success message with Bootstrap success styling
-    messages.success(request, f'Product "{product_name}" has been deleted successfully.')
-    return redirect(reverse('product_add_edit'))
+# def delete_product(request, product_id):
+#     product = get_object_or_404(Product, id=product_id)  # Fetch product by ID or return 404 if not found
+#     product.delete()  # Delete the product
+#     return redirect('product_details')  # Redirect after deletion
 
 
 
@@ -262,16 +261,16 @@ def edit_product(request, product_id):
     return render(request, 'edit_product.html', {'form': form, 'product': product})
 
 
-def edit_gallery_image(request, image_id):
-    image = get_object_or_404(GalleryImage, id=image_id)
-    if request.method == 'POST':
-        form = GalleryImageForm(request.POST, request.FILES, instance=image)
-        if form.is_valid():
-            form.save()
-            return redirect('upload_image')
-    else:
-        form = GalleryImageForm(instance=image)
-    return render(request, 'edit_gallery_image.html', {'form': form, 'image': image})
+# def edit_gallery_image(request, image_id):
+#     image = get_object_or_404(GalleryImage, id=image_id)
+#     if request.method == 'POST':
+#         form = GalleryImageForm(request.POST, request.FILES, instance=image)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('upload_image')
+#     else:
+#         form = GalleryImageForm(instance=image)
+#     return render(request, 'edit_gallery_image.html', {'form': form, 'image': image})
 
 
 def product_gallery(request):
@@ -282,10 +281,14 @@ def product_gallery(request):
 
 
 def delete_product(request, product_id):
+    # Fetch the product by id, or return 404 if not found
     product = get_object_or_404(Product, id=product_id)
+    
     if request.method == 'POST':
-        product.delete()
-    return redirect('product_add_edit')
+        product.delete()  # Delete the product if the method is POST
+    
+    # Redirect to a page after deletion. For example, the product list or product details.
+    return redirect('product_details')  # Adjust this to your desired redirect page
 
 
 
@@ -331,8 +334,6 @@ def product_image_view(request, product_id):
 
 
 
-from django.core.mail import send_mail
-from django.shortcuts import render
 
 def contact_form_view(request):
     if request.method == 'POST':
@@ -370,8 +371,23 @@ def contact_form_view(request):
     return render(request, 'contactus.html')
 
 
-def product_add_edit(request):
-    return render(request,'product_add_edit.html')
+
+
+# from django.shortcuts import render
+# from .forms import ProductForm  # Assuming you have a ProductForm for adding products
+
+# def product_add(request):
+#     if request.method == 'POST':
+#         form = ProductForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('product_details')  # Redirect to product details after successful addition
+#     else:
+#         form = ProductForm()
+
+#     return render(request, 'product_add', {'form': form})  # Make sure the path is correct
+
+
 
 
 

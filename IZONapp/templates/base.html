@@ -167,6 +167,15 @@
               <a href="{% url 'login' %}" class="lg:inline-block menu-button">Login</a>
             {% endif %}
 </div>
+{% if request.user.is_authenticated %}
+<div>
+  <a href="{% url 'add_product' %}" class="lg:inline-block menu-button">
+    <i class="fa-solid fa-plus"></i> 
+</a>
+
+  
+    {% endif %}
+</div>
 
 
           <!-- Mobile Menu Button -->
