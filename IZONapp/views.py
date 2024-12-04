@@ -31,7 +31,7 @@ def login(request):
                 auth_login(request, user)
                 login_attempt.user = user  # Attach user if authentication succeeds
                 login_attempt.save()
-                return redirect('product_add_edit')  # Redirect after successful login
+                return redirect('/')  # Redirect after successful login
             else:
                 login_attempt.save()  # Save failed login attempt
                 return render(request, 'login.html', {'form': form, 'error_message': 'Invalid username or password'})
@@ -256,7 +256,7 @@ def edit_product(request, product_id):
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            return redirect('product_add_edit')
+            return redirect('product_details')
     else:
         form = ProductForm(instance=product)
     return render(request, 'edit_product.html', {'form': form, 'product': product})
@@ -276,7 +276,7 @@ def edit_gallery_image(request, image_id):
 
 def product_gallery(request):
     products = Product.objects.all()
-    return render(request, 'product_add_edit.html', {'products': products})
+    return render(request, 'product_details.html', {'products': products})
 
 
 
@@ -372,3 +372,9 @@ def contact_form_view(request):
 
 def product_add_edit(request):
     return render(request,'product_add_edit.html')
+
+
+
+
+
+

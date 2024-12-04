@@ -238,6 +238,12 @@
                     <div style="margin-bottom: 10px;font-size: 14px;font-weight: 500;">{{ product.description }}</div>
                     <div class=" flex justify-center items-center mb-10">
                         <div style="display: flex; justify-content: space-between;" class="absolute bottom-5 gap-5">
+                            {% if request.user.is_authenticated %}
+                            <div style="cursor: pointer;">
+                                <a href="{% url 'edit_product' product.id %}"><i class="fa-solid fa-pen"></i></a>
+                                
+                                </div>
+                                {% endif %}
                             <div style="display: flex;justify-content: center;align-items: center;gap: 10px;background-color: #0055ff;color: #fff;padding: 5px 20px;border-radius: 10px;">
                                 <span>Price</span>
                                 <div>
@@ -254,6 +260,14 @@
                                     <span>Whatsapp</span>
                                 </a>
                             </div>
+                            {% if request.user.is_authenticated %}
+                            <form action="{% url 'delete_product' product.id %}" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');">
+                                {% csrf_token %}
+                                <button type="submit">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
