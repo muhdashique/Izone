@@ -8,7 +8,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-4z48$25szyxx3!)l)(kh&9a1!j-#i9dy*6k!yfk9qe&*=mx=fd'
 
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'izone.net.in',         # The domain name
+    'cname',                 # Your CNAME (e.g., subdomain or alias)
+    '127.0.0.1',             # Local IP (for local development)
+    'localhost',             # Localhost (common alias for local IP)
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://www.izone.net.in', 
+    'https://izone.net.in',      
+]
 
 # Application definition
 INSTALLED_APPS = [
