@@ -16,7 +16,7 @@
 </section>
 
 <!-- Section 2 -->
-<section class="px-2 bg-white md:px-0" style="width: 100%;">
+<section class="px-2 bg-white md:px-0" style="width: 100%;margin-bottom: 20px;">
     <div class="container items-center px-8 w-full mx-auto xl:px-5">
         <div class="flex flex-wrap items-center sm:-mx-3">
             <div class="w-full md:w-1/2 md:px-3">
@@ -155,11 +155,10 @@
 
     .about-container {
         background: linear-gradient(145deg, #ffffff, #f5f5f5);
-        width: 100vw;
+        width: 100%;
         /* Fills the entire viewport width */
-        height: 50vh;
         /* Fills the entire viewport height */
-        padding: 40px;
+        padding: 20px;
         border-radius: 20px;
         /* Adjusted to make it more box-like */
         /* box-shadow: */
@@ -523,7 +522,8 @@
         .carousel-wrapper {
             position: relative;
             width: 100vw;
-            height: 100vh;
+            /* height: 100vh; */
+            padding: 20px;
             background: url('/api/placeholder/1920/1080') center/cover no-repeat;
         }
 
@@ -691,28 +691,30 @@
         }
 </style>
 <section>
-    <div class="about-container">
-        <h1 class="about-title">About Us</h1>
-        <p class="about-text">
-             IZONE IT STORE, where innovation meets excellence. Founded in 2020, we are a dedicated team of
-            professionals committed to delivering exceptional solutions to our clients. With our expertise in technology
-            and customer-focused approach, we help businesses transform their digital presence and achieve their goals.
-            Our passion for quality, combined with our innovative mindset, has enabled us to successfully serve clients
-            across various industries. We believe in building lasting relationships with our clients through
-            transparency, reliability, and outstanding service delivery.
-        </p>
+    <div class="about-container" style="">
+        <div style="display: flex;flex-direction: column; justify-content: center; align-items: center;max-width: 900px;margin: auto;">
+            <h1 class="about-title" style="font-size: 50px;font-weight: 600;">About Us</h1>
+            <p class="about-text">
+                IZONE IT STORE, where innovation meets excellence. Founded in 2020, we are a dedicated team of
+                professionals committed to delivering exceptional solutions to our clients. With our expertise in technology
+                and customer-focused approach, we help businesses transform their digital presence and achieve their goals.
+                Our passion for quality, combined with our innovative mindset, has enabled us to successfully serve clients
+                across various industries. We believe in building lasting relationships with our clients through
+                transparency, reliability, and outstanding service delivery.
+            </p>
+        </div>
     </div>
 </section>
 
 <section class="why-choose-section">
-    <h1 style="color: #011689;">What We Do</h1>
+    <h1 style="color: #011689;font-size: 50px;" class="service-title">What We Do</h1>
     <div class="subtitle" style="color: grey;">The fastest and most reliable service at unbeatable prices!</div>
 
     <div class="services-grid">
         <div class="service-card">
             <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z' fill='%23FE5F00'/%3E%3C/svg%3E"
                 alt="Computer Repair" class="service-icon">
-            <h3 class="service-title" style="color: #011689;">Computer and Hardware</h3>
+            <h3 class="service-title" style="color: #011689;">Computers and Hardwares</h3>
             <p class="service-description">Expert repairs for desktops, laptops, and more, keeping your tech running
                 smoothly.</p>
         </div>
@@ -764,7 +766,7 @@
 <section class="service-process">
     <div class="background-image"></div>
     <div class="header">
-        <h1 style="color: #011689;">WHY CHOOSE US</h1>
+        <h1 style="color: #011689;font-size: 50px;font-weight: 600;">WHY CHOOSE US</h1>
         <p>Simple and effective steps to get your device repaired.</p>
     </div>
 
@@ -845,7 +847,7 @@
 
 <div class="container">
     <div class="header">
-        <h1 style="color: #011689;">OUR TOP SELLING PRODUCTS</h1>
+        <h1 style="color: #011689;font-size: 50px;font-weight: 600;">OUR TOP SELLING PRODUCTS</h1>
         <p>We package the products with best services to make you a happy customer.</p>
     </div>
 
