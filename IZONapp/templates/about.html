@@ -5,21 +5,19 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IZONE IT STORE </title>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-
-
-
-    
     <style>
-
-        @font-face{
+        @font-face {
             src: url('../static/fonts/evogria/Evogria.otf');
             font-family: 'Roboto', sans-serif;
         }
+
         * {
             margin: 0;
             padding: 0;
@@ -36,7 +34,7 @@
             padding: 0;
         }
 
-        
+
 
         .hero h1 {
             font-size: 3.5rem;
@@ -73,7 +71,7 @@
             border-radius: 10px;
         }
 
-       
+
 
         /* Latest Projects */
         .projects {
@@ -105,7 +103,7 @@
             transform: scale(1.1);
         }
 
-       
+
 
         @keyframes fadeInUp {
             to {
@@ -136,11 +134,13 @@
                 min-height: 300px;
             }
         }
+
         /* Hero Section */
         .hero {
             position: relative;
             height: 80vh;
-            width: 100%; /* Added width property */
+            width: 100%;
+            /* Added width property */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -149,10 +149,14 @@
             background-position: center;
             color: #fff;
             text-align: center;
-            margin: 0; /* Ensure no margin */
-            padding: 0; /* Ensure no padding */
-            box-sizing: border-box; /* Include padding and border in element's width */
+            margin: 0;
+            /* Ensure no margin */
+            padding: 0;
+            /* Ensure no padding */
+            box-sizing: border-box;
+            /* Include padding and border in element's width */
         }
+
         /* Hero Content */
         .hero-content h1 {
             font-size: 3rem;
@@ -161,7 +165,7 @@
         }
 
         .hero-content p {
-            
+
             font-size: 1.25rem;
             margin-bottom: 1.5rem;
         }
@@ -199,19 +203,20 @@
             position: relative;
             z-index: 2;
         }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-    
+
         body {
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
             color: #333;
             padding: 0;
         }
-    
+
         .about {
             display: flex;
             justify-content: space-between;
@@ -220,32 +225,32 @@
             margin: 0 auto;
             gap: 40px;
         }
-    
+
         .about-content {
             flex: 1;
             /* padding-right: 20px; */
         }
-    
+
         .contact-form {
             flex: 1;
             /* padding: 20px; */
             background-color: #f5f5f5;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-    
+
         .about h2 {
             margin-bottom: 20px;
             color: #333;
             font-size: 2em;
         }
-    
+
         .about p {
             line-height: 1.6;
             margin-bottom: 20px;
             color: #666;
         }
-    
+
         .btn {
             display: inline-block;
             /* padding: 10px 25px; */
@@ -256,17 +261,17 @@
             transition: background-color 0.3s;
             font-weight: 500;
         }
-    
+
         .btn:hover {
             background-color: #011689;
-        } */
-    
-        form {
+        }
+
+        */ form {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
-    
+
         input {
             /* padding: 12px; */
             border: 1px solid #ddd;
@@ -274,12 +279,12 @@
             font-size: 16px;
             transition: border-color 0.3s;
         }
-    
+
         input:focus {
             outline: none;
             border-color: #011689;
         }
-    
+
         button {
             /* padding: 12px; */
             background-color: #011689;
@@ -291,87 +296,91 @@
             transition: background-color 0.3s;
             font-weight: 500;
         }
-   
-         button:hover {
+
+        button:hover {
             background-color: #011689;
-        } 
-    
+        }
+
         @media (max-width: 768px) {
             .about {
                 flex-direction: column;
                 /* padding: 20px; */
             }
-            
+
             .about-content {
                 padding-right: 0;
             }
         }
+
         /* {% comment %} about {% endcomment %} */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        body, html {
+
+        body,
+        html {
             height: 100%;
-            font-family:'Roboto', sans-serif;
+            font-family: 'Roboto', sans-serif;
             padding: 0;
         }
-        
+
         .about-container {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url('bgimage.jpg'); 
+            background-image: url('bgimage.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
-        
+
         .content {
-            background-color: rgba(224, 224, 224, 0.9); /* Slightly transparent background for text readability */
+            background-color: rgba(224, 224, 224, 0.9);
+            /* Slightly transparent background for text readability */
             padding: 40px;
             text-align: center;
             max-width: 600px;
             border-radius: 8px;
         }
-        
+
         h1 {
             font-size: 3em;
             margin-bottom: 20px;
             letter-spacing: 2px;
         }
-        
+
         p {
             font-size: 1em;
             line-height: 1.6;
             color: #ffffff;
             margin-bottom: 20px;
         }
-        
+
         .social-icons {
             display: flex;
             justify-content: center;
             gap: 15px;
         }
-        
+
         .social-icons a {
             color: #333;
             font-size: 1.5em;
             text-decoration: none;
         }
-        
+
         .social-icons a:hover {
             color: #000;
-         }
+        }
+
         /* vision and mission  */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family:'Roboto', sans-serif;
+            font-family: 'Roboto', sans-serif;
         }
 
         body {
@@ -495,6 +504,7 @@
                 grid-template-columns: 1fr;
             }
         }
+
         /* image slide option */
         .stats-container {
             display: flex;
@@ -515,14 +525,14 @@
         }
 
         .stat-number {
-            font-size: 36px;
-            font-weight: bold;
+            /* font-size: 36px; */
+            /* font-weight: bold; */
             color: #011689;
             margin-bottom: 10px;
         }
 
         .stat-label {
-            font-size: 16px;
+            /* font-size: 16px; */
             color: #333;
             line-height: 1.4;
         }
@@ -532,8 +542,9 @@
                 width: 100%;
             }
         }
+
         /* new style for service card */
-       /* Container grid styling */
+        /* Container grid styling */
         /* .cards-grid {
             display: grid;
             gap: 20px;
@@ -594,7 +605,7 @@
             text-decoration: underline;
         }
 
-        
+
         /* about and vission */
         * {
             margin: 0;
@@ -708,12 +719,16 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .mission-section, .story-section {
+
+            .mission-section,
+            .story-section {
                 flex-direction: column;
             }
 
-            .mission-content, .story-content,
-            .mission-image, .story-image {
+            .mission-content,
+            .story-content,
+            .mission-image,
+            .story-image {
                 width: 100%;
             }
 
@@ -724,124 +739,139 @@
 
 
         /* css counting */
-        
+
         .stats-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    .stat-item {
-      text-align: center;
-      min-width: 200px;
-    }
+        .stat-item {
+            text-align: center;
+            min-width: 200px;
+        }
 
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #1d4ed8;
-      margin-bottom: 0.5rem;
-    }
+        .stat-number {
+            /* font-size: 2.5rem; */
+            /* font-weight: bold; */
+            color: #1d4ed8;
+            /* margin-bottom: 0.5rem; */
+        }
 
-    .stat-label {
-      color: #4b5563;
-      font-size: 0.875rem;
-    }
+        .stat-label {
+            color: #4b5563;
+            font-size: 0.875rem;
+        }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
 
-    .stat-item {
-      animation: fadeIn 0.5s ease-out forwards;
-    }
-        
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-        
-        
+        .stat-item {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
     </style>
 
-   </head>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 <body>
-    
-   
+
+
     <section class="hero" id="home" style="position:relative ;">
         <div style="position: absolute;width: 100%;height: 100%;overflow: hidden;">
-            <video src="{% static 'images\about video.mp4' %}"type="video/mp4" autoplay loop muted playsinline style="width: 100%;height: 100%;object-fit: cover;">
+            <video src="{% static 'images\about video.mp4' %}" type="video/mp4" autoplay loop muted playsinline
+                style="width: 100%;height: 100%;object-fit: cover;">
 
             </video>
         </div>
         <div class="hero-content">
             <h1>We are a Leading Company.</h1>
-            <p>Discover who we are and what drives us. Together, we create meaningful connections and lasting impact..</p>
+            <p>Discover who we are and what drives us. Together, we create meaningful connections and lasting impact..
+            </p>
             <!-- <a href="#about" class="btn">REQUEST A QUOTE</a>  -->
-     
 
-    </section> <div class="stats-container">
-        <br>
-        <br>
-        <br>
-        <div class="stat-item">
-          <div class="stat-number" data-target="10" data-suffix="+">0</div>
-          <div class="stat-label">Years of Experience</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" data-target="30" data-suffix="+">0</div>
-          <div class="stat-label">Skilled Professionals</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" data-target="100" data-suffix="%">0</div>
-          <div class="stat-label">Customer Satisfaction</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" data-target="1000" data-suffix="+">0</div>
-          <div class="stat-label">Clients World Wide</div>
-        </div>
-      </div>
-      <br>
-      <br>
-      <br>
 
-   
-     
-    
+    </section>
+    <div class="stats-container">
+        <br>
+        <br>
+        <br>
+
+        <div class="flex justify-center items-center max-w-[1400px] mx-auto">
+            <div class="flex justify-center items-center gap-10">
+
+                <div class="stat-item justify-center text-3xl md:text-[100px] items-center flex flex-col items-center gap-5 font-bold">
+                    <div class="stat-number  font-bold" data-target="10" data-suffix="+">0</div>
+                    <div class="stat-label">Years of Experience</div>
+                </div>
+                <div class="stat-item text-3xl md:text-[100px] font-bold items-center flex flex-col items-center gap-5">
+                    <div class="stat-number" data-target="30" data-suffix="+">0</div>
+                    <div class="stat-label">Skilled Professionals</div>
+                </div>
+                <div class="stat-item text-3xl md:text-[100px] font-bold items-center flex flex-col items-center gap-5">
+                    <div class="stat-number" data-target="100" data-suffix="%">0</div>
+                    <div class="stat-label">Customer Satisfaction</div>
+                </div>
+                <div class="stat-item items-center flex flex-col items-center gap-5 text-3xl md:text-[100px] font-bold">
+                    <div class="stat-number" data-target="1000" data-suffix="+">0</div>
+                    <div class="stat-label">Clients World Wide</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+
+
+
     <div class="container">
         <!-- Mission Section -->
         <div class="mission-section">
             <div class="mission-image">
                 <div class="image-container">
-                    <img src="{% static 'images\visionog.jpg' %}" alt="Modern Office Space">
+                    <img src="{% static 'images\visionog.jpg' %}" alt="Modern Office Space" class="md:w-[50%] rounded-3xl overflow-hidden">
                     <div class="image-overlay"> </div>
                 </div>
             </div>
             <div class="mission-content">
-                <h1 style="color: #011689;"><strong> Mission: Helping Millions of Organizations Grow Better</strong></h1>
-                <p style="text-align: justify;">We believe not just in growing bigger, but in growing better.And growing better means aligning the success of your own business with the success of your customers. Win-win!</p>
+                <h1 style="color: #011689;" class="leading-tight"><strong> Mission: Helping Millions of Organizations Grow Better</strong>
+                </h1>
+                <p style="text-align: justify;" class="font-medium tracking-tight text-sm"><span class="pl-10">We believe not just in growing bigger, but in growing better.And growing</span>
+                    better means aligning the success of your own business with the success of your customers. Win-win!
+                </p>
             </div>
         </div>
 
         <!-- Story Section -->
-        <div class="story-section">
+        <div class="story-section mb-10">
             <div class="story-content">
-                <h2 style="color: #011689;"><strong>A Glimpse Into Us</strong></h2>
-                <p style="text-align: justify;">In 2020, our founders recognized a fundamental shift in how businesses operate and grow. They saw that traditional methods weren't keeping pace with the digital transformation, and customers wanted a more integrated, seamless experience.</p>
-                <p style="text-align: justify;">Today, we've grown into a comprehensive platform that helps businesses thrive in the digital age. Led by our innovative team, we continue to develop cutting-edge solutions that empower organizations to grow better through technology and customer-centric approaches.</p>
+                <h1 style="color: #011689;" class="leading-tight"><strong>A Glimpse Into Us</strong></h1>
+                <p style="text-align: justify;" class="leading-tight tracking-tight font-medium"><span class="pl-10">In 2020, our founders    recognized a fundamental shift in how businesses</span>
+                    operate and grow. They saw that traditional methods weren't keeping pace with the digital
+                    transformation, and customers wanted a more integrated, seamless experience.</p>
+                <p style="text-align: justify;"><span class="pl-10">Today, we've grown into a comprehensive platform that helps businesses</span>
+                    thrive in the digital age. Led by our innovative team, we continue to develop cutting-edge solutions
+                    that empower organizations to grow better through technology and customer-centric approaches.</p>
             </div>
             <div class="story-image">
                 <div class="image-container">
-                    <img src="{% static 'images\mission.jpg' %}" alt="Team Collaboration">
+                    <img src="{% static 'images\mission.jpg' %}" alt="Team Collaboration" class="md:w-[50%] rounded-3xl overflow-hidden">
                     <div class="image-overlay"></div>
                 </div>
             </div>
@@ -853,52 +883,68 @@
             <!-- Main Story Card -->
             <div class="story-card">
                 <h1 style="color: #011689;"><strong>What We Do</strong></h1>
-                <p style="text-align: justify;"> We specialize in providing top-notch repair services with unparalleled speed and affordability. Our expert team ensures your equipment is up and running swiftly, whether you need a quick fix or a major overhaul. Our services include computer sales and service, building servers and workstations, networking and CCTV installation, as well as EPABX and biometric solutions..</p>
+                <p style="text-align: justify;"><span class="pl-10"> We specialize in providing top-notch repair services with unparalleled</span>
+                    speed and affordability. Our expert team ensures your equipment is up and running swiftly, whether
+                    you need a quick fix or a major overhaul. Our services include computer sales and service, building
+                    servers and workstations, networking and CCTV installation, as well as EPABX and biometric
+                    solutions..</p>
                 <!-- <a href="#" class="learn-more-btn">LEARN MORE</a> -->
             </div>
-    
+
             <!-- Action Cards Grid -->
             <div class="cards-grid">
                 <!-- Leave a Legacy Card -->
                 <div class="action-card">
                     <div class="icon-circle">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'/%3E%3C/svg%3E" alt="Legacy Icon">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z'/%3E%3C/svg%3E"
+                            alt="Legacy Icon">
                     </div>
                     <h3>Need file recovery?</h3>
                     <p style="text-align: justify;">Need file recovery?
-                        If you’re facing data loss issues or need expert recovery services, we are here to help. Our team is equipped to handle various data recovery challenges,so you can make the best decisions</p>
+                        If you’re facing data loss issues or need expert recovery services, we are here to help. Our
+                        team is equipped to handle various data recovery challenges,so you can make the best decisions
+                    </p>
                     <!-- <a href="#" class="more-link">MORE</a> -->
                 </div>
-    
+
                 <!-- Make Donation Card -->
                 <div class="action-card">
                     <div class="icon-circle">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'/%3E%3C/svg%3E" alt="Donation Icon">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'/%3E%3C/svg%3E"
+                            alt="Donation Icon">
                     </div>
                     <h3>Honest Services</h3>
                     <p style="text-align: justify;">
                         Honest Services
-                        We provide transparent and honest repair services. Our team ensures that you are informed about every step of the repair process and the costs involved, so you can make the best decisions .</p>
+                        We provide transparent and honest repair services. Our team ensures that you are informed about
+                        every step of the repair process and the costs involved, so you can make the best decisions .
+                    </p>
                     <!-- <a href="#" class="more-link">MORE</a> -->
                 </div>
-    
+
                 <!-- Become a Fundraiser Card -->
                 <div class="action-card">
                     <div class="icon-circle">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z'/%3E%3Cpath d='M22 6l-10 7L2 6'/%3E%3C/svg%3E" alt="Fundraiser Icon">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z'/%3E%3Cpath d='M22 6l-10 7L2 6'/%3E%3C/svg%3E"
+                            alt="Fundraiser Icon">
                     </div>
                     <h3>Expert Team</h3>
-                    <p style="text-align: justify;">Our team consists of highly skilled professionals with extensive experience in the repair industry. We are committed to delivering expert services to address any issues you may face with your equipment.</p>
+                    <p style="text-align: justify;">Our team consists of highly skilled professionals with extensive
+                        experience in the repair industry. We are committed to delivering expert services to address any
+                        issues you may face with your equipment.</p>
                     <!-- <a href="#" class="more-link">MORE</a> -->
                 </div>
-    
+
                 <!-- Become A Volunteer Card -->
                 <div class="action-card">
                     <div class="icon-circle">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E" alt="Volunteer Icon">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E"
+                            alt="Volunteer Icon">
                     </div>
                     <h3>Affordable Services</h3>
-                    <p style="text-align: justify;">We believe in offering high-quality repair services at affordable prices. Our goal is to make professional repair services accessible to everyone without compromising on the quality of work.</p>
+                    <p style="text-align: justify;">We believe in offering high-quality repair services at affordable
+                        prices. Our goal is to make professional repair services accessible to everyone without
+                        compromising on the quality of work.</p>
                     <!-- <a href="#" class="more-link">MORE</a> -->
                 </div>
             </div>
@@ -908,49 +954,50 @@
     <br>
     <br>
     <!-- conting section js  -->
-      
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-          const stats = document.querySelectorAll('.stat-number');
-          
-          stats.forEach(stat => {
-            const target = parseInt(stat.getAttribute('data-target'));
-            const suffix = stat.getAttribute('data-suffix');
-            let current = 0;
-            const increment = target / 50; // Divide animation into 50 steps
-            const duration = 2000; // 2 seconds
-            const stepTime = duration / 50;
-            
-            const updateCounter = () => {
-              current += increment;
-              if (current < target) {
-                stat.textContent = Math.round(current) + suffix;
-                setTimeout(updateCounter, stepTime);
-              } else {
-                stat.textContent = target + suffix;
-              }
-            };
-    
-            // Start animation when element is in view
-            const observer = new IntersectionObserver((entries) => {
-              entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                  updateCounter();
-                  observer.unobserve(entry.target);
-                }
-              });
-            }, { threshold: 0.5 });
-    
-            observer.observe(stat);
-          });
+            const stats = document.querySelectorAll('.stat-number');
+
+            stats.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                const suffix = stat.getAttribute('data-suffix');
+                let current = 0;
+                const increment = target / 50; // Divide animation into 50 steps
+                const duration = 2000; // 2 seconds
+                const stepTime = duration / 50;
+
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        stat.textContent = Math.round(current) + suffix;
+                        setTimeout(updateCounter, stepTime);
+                    } else {
+                        stat.textContent = target + suffix;
+                    }
+                };
+
+                // Start animation when element is in view
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCounter();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                observer.observe(stat);
+            });
         });
-      </script>
-  
-   
+    </script>
+
+
 </body>
+
 </html>
 
-   
-  
+
+
 
 {% endblock %}

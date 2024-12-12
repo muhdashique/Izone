@@ -2,18 +2,8 @@
 {% load static %}
 {% block content %}
 
-<style>
-    
-</style>
+<script src="https://cdn.tailwindcss.com"></script>
 
-</div>
-
-<div class="inline-flex items-center ml-5 space-x-6 lg:justify-end">
-
-
-</div>
-</div>
-</section>
 
 <!-- Section 2 -->
 <section class="px-2 bg-white md:px-0" style="width: 100%;margin-bottom: 20px;">
@@ -27,7 +17,9 @@
                         <span class="block xl:inline bannerText">Useful Tools to</span>
                         <span class="block xl:inline" style="color: #011689;">Help You Build Faster.</span>
                     </h1>
-                    <p class="mx-auto text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl">We provide top-quality tools and materials to help you build, repair, and grow your projects. Your trusted partner for all your hardware needs.</p>
+                    <p class="mx-auto text-base text-gray-500 sm:max-w-md lg:text-xl md:max-w-3xl"><span class="pl-10">
+
+                    We provide top-quality tools and materials to help you build, repair, and grow your projects. Your trusted partner for all your hardware needs</span></p>
                     <div class="relative flex flex-col sm:flex-row sm:space-x-4">
                         <a href="/contactus/"
                             class="flex items-center w-full px-6 py-3 mb-3 text-lg text-white rounded-md sm:mb-0 sm:w-auto"
@@ -692,22 +684,31 @@
 </style>
 <section>
     <div class="about-container" style="">
-        <div style="display: flex;flex-direction: column; justify-content: center; align-items: center;max-width: 900px;margin: auto;">
-            <h1 class="about-title" style="font-size: 50px;font-weight: 600;">About Us</h1>
-            <p class="about-text">
-                IZONE IT STORE, where innovation meets excellence. Founded in 2020, we are a dedicated team of
-                professionals committed to delivering exceptional solutions to our clients. With our expertise in technology
-                and customer-focused approach, we help businesses transform their digital presence and achieve their goals.
-                Our passion for quality, combined with our innovative mindset, has enabled us to successfully serve clients
-                across various industries. We believe in building lasting relationships with our clients through
-                transparency, reliability, and outstanding service delivery.
-            </p>
+        <div class="flex-row-reverse gap-10"
+            style="display: flex; justify-content: center; align-items: center;margin: auto;">
+            <div class="md:w-[50%]">
+                <h1 class="about-title" style="font-size: 50px;font-weight: 600;">About Us</h1>
+                <p class="about-text">
+                    <span class="pl-10"> IZONE IT STORE, where innovation meets excellence. Founded in 2020, we are a dedicated team of
+                    professionals committed to delivering exceptional solutions to our clients. With our expertise in
+                    technology
+                    and customer-focused approach, we help businesses transform their digital presence and achieve their
+                    goals.
+                    Our passion for quality, combined with our innovative mindset, has enabled us to successfully serve
+                    clients
+                    across various industries. We believe in building lasting relationships with our clients through
+                    transparency, reliability, and outstanding service delivery.
+                </p></span>
+            </div>
+            <div class="md:w-[50%] rounded-3xl overflow-hidden">
+                <img src="https://media.istockphoto.com/id/1453843862/photo/business-meeting.jpg?s=612x612&w=0&k=20&c=4k9H7agmpn92B7bkUywvkK5Ckwm9Y8f8QrGs4DRDWpE=" class="w-full h-full object-cover" alt="">
+            </div>
         </div>
     </div>
 </section>
 
 <section class="why-choose-section">
-    <h1 style="color: #011689;font-size: 50px;" class="service-title">What We Do</h1>
+    <h1 style="color: #011689;font-size: 50px; font-style: unset;" class="service-title">What We Do</h1>
     <div class="subtitle" style="color: grey;">The fastest and most reliable service at unbeatable prices!</div>
 
     <div class="services-grid">

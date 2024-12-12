@@ -389,7 +389,9 @@ def contact_form_view(request):
 
 
 
-
+def product_page(request):
+    # Add the necessary logic to fetch and display products
+    return render(request, 'productdetails.html')
 
 
 

@@ -355,7 +355,7 @@
 
 
     <section style="width: 100%;">
-        <div class="page-container">
+        <div class="md:flex">
             <div class="image-section">
                 <div class="image-content">
                     <div class="workspace-items"></div>
@@ -393,14 +393,14 @@
                     </form>
                     
                                     <!-- Popup Message Div -->
-                                    <div id="popup-message" 
-                    class="{% if messages %}{% for message in messages %}{{ message.tags }}{% endfor %}{% endif %}">
-                    {% if messages %}
-                        {% for message in messages %}
-                            {{ message }}
-                        {% endfor %}
-                    {% endif %}
-                </div>
+                    <div id="popup-message" 
+                        class="{% if messages %}{% for message in messages %}{{ message.tags }}{% endfor %}{% endif %}">
+                        {% if messages %}
+                            {% for message in messages %}
+                                {{ message }}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
                     
                     
                     <div id="error"></div>
