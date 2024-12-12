@@ -31,7 +31,6 @@
         body {
             background-color: #ffffff;
             width: 100%;
-            padding: 0;
         }
 
 
@@ -306,10 +305,6 @@
                 flex-direction: column;
                 /* padding: 20px; */
             }
-
-            .about-content {
-                padding-right: 0;
-            }
         }
 
         /* {% comment %} about {% endcomment %} */
@@ -322,6 +317,7 @@
         body,
         html {
             height: 100%;
+            width: 100%;
             font-family: 'Roboto', sans-serif;
             padding: 0;
         }
@@ -489,7 +485,7 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             body {
-                padding: 1rem;
+                /* padding: 1rem; */
             }
 
             .story-card {
@@ -513,14 +509,14 @@
             flex-wrap: wrap;
             max-width: 1200px;
             width: 100%;
-            margin: 40px auto;
-            gap: 20px;
+            /* margin: 40px auto; */
+            /* gap: 20px; */
             padding: 20px;
         }
 
         .stat-item {
             text-align: center;
-            padding: 20px;
+            /* padding: 20px; */
             min-width: 200px;
         }
 
@@ -799,33 +795,36 @@
         </div>
         <div class="hero-content">
             <h1 class="leading-tight">We are a Leading Company.</h1>
-            <p class="text-sm">Discover who we are and what drives us. Together, we create meaningful connections and lasting impact..
+            <p class="text-sm">Discover who we are and what drives us. Together, we create meaningful connections and
+                lasting impact..
             </p>
             <!-- <a href="#about" class="btn">REQUEST A QUOTE</a>  -->
 
 
     </section>
+
     <div class="stats-container">
-        <br>
-        <br>
-        <br>
+
 
         <div class="flex justify-center items-center max-w-[1400px] mx-auto">
-            <div class="grid grid-cols-1 plce-items-center md:flex md:flex-wrap justify-center items-center md:gap-10">
+            <div class="grid grid-cols-1 plce-items-center md:flex justify-center items-center lg:gap-20">
                 <div
-                    class="stat-item justify-center text-[50px] md:text-[100px] items-center flex flex-col items-center md:gap-5 font-bold">
+                    class="stat-item justify-center text-[50px] lg:text-[100px] items-center flex flex-col items-center font-bold">
                     <div class="stat-number  font-bold" data-target="10" data-suffix="+">0</div>
                     <div class="stat-label">Years of Experience</div>
                 </div>
-                <div class="stat-item text-[50px] md:text-[100px] font-bold items-center flex flex-col items-center md:gap-5">
+                <div
+                    class="stat-item text-[50px] lg:text-[100px] font-bold items-center flex flex-col items-center">
                     <div class="stat-number" data-target="30" data-suffix="+">0</div>
                     <div class="stat-label">Skilled Professionals</div>
                 </div>
-                <div class="stat-item text-[50px] md:text-[100px] font-bold items-center flex flex-col items-center md:gap-5">
+                <div
+                    class="stat-item text-[50px] lg:text-[100px] font-bold items-center flex flex-col items-center ">
                     <div class="stat-number" data-target="100" data-suffix="%">0</div>
                     <div class="stat-label">Customer Satisfaction</div>
                 </div>
-                <div class="stat-item items-center flex flex-col items-center md:gap-5 text-[50px] md:text-[100px] font-bold">
+                <div
+                    class="stat-item items-center flex flex-col items-center text-[50px] lg:text-[100px] font-bold">
                     <div class="stat-number" data-target="1000" data-suffix="+">0</div>
                     <div class="stat-label">Clients World Wide</div>
                 </div>
@@ -833,7 +832,7 @@
         </div>
     </div>
 
-    
+
     <div class="container">
         <!-- Mission Section -->
         <div class="mission-section">
@@ -845,8 +844,9 @@
                 </div>
             </div>
             <div class="mission-content">
-                <h1 style="color: #011689;" class="leading-tight font-bold text-center"> Mission: Helping Millions of Organizations
-                        Grow Better
+                <h1 style="color: #011689;" class="leading-tight font-bold text-center"> Mission: Helping Millions of
+                    Organizations
+                    Grow Better
                 </h1>
                 <p style="text-align: justify;" class="font-medium tracking-tight text-sm"><span class="pl-10">We
                         believe not just in growing bigger, but in growing better.And growing</span>
@@ -882,7 +882,7 @@
             <!-- Main Story Card -->
             <div class="story-card">
                 <h1 style="color: #011689;text-align: center;"><strong>What We Do</strong></h1>
-                <p style="text-align: justify;"><span class="pl-10"> We specialize in providing top-notch repair
+                <p style="text-align: justify;text-align: center;"><span class="pl-10"> We specialize in providing top-notch repair
                         services with unparalleled</span>
                     speed and affordability. Our expert team ensures your equipment is up and running swiftly, whether
                     you need a quick fix or a major overhaul. Our services include computer sales and service, building
