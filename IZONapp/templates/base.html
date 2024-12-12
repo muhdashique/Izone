@@ -54,58 +54,69 @@
       font-weight: bold;
       border-bottom: 2px solid #011689;
     }
+
     @media screen and (max-width: 768px) {
-      .contactdetails{
+      .contactdetails {
         display: none;
       }
-  
-  }
 
-  /* login */
-  .menu-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #011689; /* Blue background */
-    color: white; /* Text color */
-    text-decoration: none; /* Remove underline */
-    border-radius: 5px; /* Rounded corners */
-    font-size: 16px; /* Font size */
-    font-weight: bold; /* Bold text */
-    transition: background-color 0.3s ease; /* Smooth transition */
-  }
+    }
 
-  /* Add hover effect */
-  .menu-button:hover {
-    background-color: #011689; /* Darker blue on hover */
-  }
-  .COLOR{
-    color:  #011689;
-  }
-
-  /* Apply styles for large screen sizes */
-  @media (min-width: 1024px) {
+    /* login */
     .menu-button {
-      font-size: 18px; /* Larger font size on large screens */
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #011689;
+      /* Blue background */
+      color: white;
+      /* Text color */
+      text-decoration: none;
+      /* Remove underline */
+      border-radius: 5px;
+      /* Rounded corners */
+      font-size: 16px;
+      /* Font size */
+      font-weight: bold;
+      /* Bold text */
+      transition: background-color 0.3s ease;
+      /* Smooth transition */
     }
-  }
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
+
+    /* Add hover effect */
+    .menu-button:hover {
+      background-color: #011689;
+      /* Darker blue on hover */
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+
+    .COLOR {
+      color: #011689;
     }
-  }
 
-  .menu-button {
-    animation: fadeIn 1s ease-out; /* Add fade-in animation */
-  
-  }
+    /* Apply styles for large screen sizes */
+    @media (min-width: 1024px) {
+      .menu-button {
+        font-size: 18px;
+        /* Larger font size on large screens */
+      }
+    }
 
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
 
-  
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .menu-button {
+      animation: fadeIn 1s ease-out;
+      /* Add fade-in animation */
+
+    }
   </style>
 </head>
 
@@ -116,44 +127,49 @@
       <div class="flex justify-between items-center py-4">
         <!-- Logo -->
         <a href="{% url 'home' %}">
-          <img src="{% static 'images/IZONE LOGO.png' %}" alt="IZONE Logo" 
-               class="object-contain" 
-               style="width: 100px; height: auto;">
-      </a>
-      
+          <img src="{% static 'images/IZONE LOGO.png' %}" alt="IZONE Logo" class="object-contain"
+            style="width: 100px; height: auto;">
+        </a>
 
         <!-- Desktop Menu -->
         <div class="hidden lg:flex space-x-8">
-          <a href="{% url 'home' %}" 
-             class="hover-highlight text-gray-600 {% if request.resolver_match.url_name == 'home' %}active-link{% endif %}" style="color: #011689;">
-             Home
+          <a href="{% url 'home' %}"
+            class="hover-highlight text-gray-600 {% if request.resolver_match.url_name == 'home' %}active-link{% endif %}"
+            style="color: #011689;">
+            Home
           </a>
-          <a href="/about/" 
-             class="hover-highlight text-gray-600 {% if request.path == '/about/' %}active-link{% endif %}" style="color: #011689;">
-             About
+          <a href="/about/"
+            class="hover-highlight text-gray-600 {% if request.path == '/about/' %}active-link{% endif %}"
+            style="color: #011689;">
+            About
           </a>
-          <a href="/product_details/" 
-             class="hover-highlight text-gray-600 {% if request.path == '/product_details/' %}active-link{% endif %}" style="color: #011689;">
-             Products
+          <a href="/product_details/"
+            class="hover-highlight text-gray-600 {% if request.path == '/product_details/' %}active-link{% endif %}"
+            style="color: #011689;">
+            Products
           </a>
-          <a href="/service/" 
-             class="hover-highlight text-gray-600 {% if request.path == '/service/' %}active-link{% endif %}" style="color: #011689;">
-             Services
+          <a href="/service/"
+            class="hover-highlight text-gray-600 {% if request.path == '/service/' %}active-link{% endif %}"
+            style="color: #011689;">
+            Services
           </a>
-          <a href="/careers/" 
-             class="hover-highlight text-gray-600 {% if request.path == '/careers/' %}active-link{% endif %}" style="color: #011689;">
-             Career
+          <a href="/careers/"
+            class="hover-highlight text-gray-600 {% if request.path == '/careers/' %}active-link{% endif %}"
+            style="color: #011689;">
+            Career
           </a>
-          <a href="/contactus/" 
-             class="hover-highlight text-gray-600 {% if request.path == '/contactus/' %}active-link{% endif %}" style="color: #011689;">
-             Contact Us
+          <a href="/contactus/"
+            class="hover-highlight text-gray-600 {% if request.path == '/contactus/' %}active-link{% endif %}"
+            style="color: #011689;">
+            Contact Us
           </a>
         </div>
 
         <!-- Contact Details (Desktop Only) -->
         <div class="contactdetails">
           <a href="mailto:
-          izoneitstore@gmail.com" style="color: #011689;"><i class="fas fa-envelope mr-2"></i>izoneitstore@gmail.com</a> <br>
+            izoneitstore@gmail.com" style="color: #011689;"><i
+              class="fas fa-envelope mr-2"></i>izoneitstore@gmail.com</a> <br>
           <a href="tel:+919080706050" style="color: #011689;"><i class="fa-solid fa-phone"></i>+91 9037 668 664</a>
         </div>
 
@@ -162,26 +178,23 @@
           <div class="flex justify-end">
             {% if request.user.is_authenticated %}
             <a href="{% url 'logout' %}" class="lg:inline-block menu-button">Logout</a>
-        
+
             {% else %}
-              <a href="{% url 'login' %}" class="lg:inline-block menu-button">Login</a>
+            <a href="{% url 'login' %}" class="lg:inline-block menu-button">Login</a>
             {% endif %}
-</div>
-{% if request.user.is_authenticated %}
-<div>
-  <a href="{% url 'add_product' %}" class="lg:inline-block menu-button">
-    <i class="fa-solid fa-plus"></i> 
-</a>
-
-  
-    {% endif %}
-</div>
-
+          </div>
+          {% if request.user.is_authenticated %}
+          <div>
+            <a href="{% url 'add_product' %}" class="lg:inline-block menu-button">
+              <i class="fa-solid fa-plus"></i>
+            </a>
+            {% endif %}
+          </div>
 
           <!-- Mobile Menu Button -->
           <button1 id="mobile-menu-button" class="lg:hidden text-gray-600 text-xl">
             <i class="fa-solid fa-bars"></i>
-          </button>
+            </button>
         </div>
       </div>
     </div>
@@ -190,39 +203,36 @@
     <div id="mobile-menu" class="hidden bg-white shadow-lg lg:hidden">
       <ul class="flex flex-col space-y-2 py-4 px-6">
         <li>
-          <a href="{% url 'home' %}" 
-             class="{% if request.resolver_match.url_name == 'home' %}active-link{% else %}text-gray-600{% endif %}">
-             Home
+          <a href="{% url 'home' %}"
+            class="{% if request.resolver_match.url_name == 'home' %}active-link{% else %}text-gray-600{% endif %}">
+            Home
           </a>
         </li>
         <li>
-          <a href="/about/" 
-             class="{% if request.path == '/about/' %}active-link{% else %}text-gray-600{% endif %}">
-             About
+          <a href="/about/" class="{% if request.path == '/about/' %}active-link{% else %}text-gray-600{% endif %}">
+            About
           </a>
         </li>
         <li>
-          <a href="/product_details/" 
-             class="{% if request.path == '/product_details/' %}active-link{% else %}text-gray-600{% endif %}">
-             Products
+          <a href="/product_details/"
+            class="{% if request.path == '/product_details/' %}active-link{% else %}text-gray-600{% endif %}">
+            Products
           </a>
         </li>
         <li>
-          <a href="/service/" 
-             class="{% if request.path == '/service/' %}active-link{% else %}text-gray-600{% endif %}">
-             Services
+          <a href="/service/" class="{% if request.path == '/service/' %}active-link{% else %}text-gray-600{% endif %}">
+            Services
           </a>
         </li>
         <li>
-          <a href="/careers/" 
-             class="{% if request.path == '/careers/' %}active-link{% else %}text-gray-600{% endif %}">
-             Career
+          <a href="/careers/" class="{% if request.path == '/careers/' %}active-link{% else %}text-gray-600{% endif %}">
+            Career
           </a>
         </li>
         <li>
-          <a href="/contactus/" 
-             class="{% if request.path == '/contactus/' %}active-link{% else %}text-gray-600{% endif %}">
-             Contact Us
+          <a href="/contactus/"
+            class="{% if request.path == '/contactus/' %}active-link{% else %}text-gray-600{% endif %}">
+            Contact Us
           </a>
         </li>
       </ul>
@@ -245,92 +255,103 @@
     });
   </script>
 </body>
- <!-- this is footer section -->
- <footer class="bg-white flex flex-col items-center w-full" style="width: 100%;">
+<!-- this is footer section -->
+<footer class="bg-white flex flex-col items-center w-full" style="width: 100%;">
   <div class="mx-auto max-w-screen-xl px-4 lg:px-8 pb-7 w-full">
-      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center">
-          <!-- Logo -->
-          <div class="text-teal-600 mb-5 sm:mb-0">
-              <img src="{% static 'images/IZONE LOGO.png' %}" alt="Image"
-                  class="h-auto w-24 object-contain mix-blend-multiply">
-          </div>
-          <!-- Social Media Icons -->
-          <div class="flex justify-center gap-4 items-center text-lg">
-            <a href="mailto:izoneitstore@gmail.com" class="orange-icon" style="color: #011689;">
-              <i class="fas fa-envelope"></i>
-            </a>
-            <a href="https://www.instagram.com/your_username" class="orange-icon" style="color: #011689;">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
-            <a href="https://wa.me/1234567890" class="orange-icon" style="color: #011689;">
-                <i class="fa-brands fa-whatsapp"></i>
-            </a>
-            <a href="https://www.facebook.com/yourpage" class="orange-icon" style="color: #011689;">
-                <i class="fa-brands fa-facebook"></i>
-            </a>
-            <a href="https://www.twitter.com/your_username" class="orange-icon" style="color: #011689;">
-              <i class="fa-brands fa-twitter"></i>
-          </a>
-          <a href="https://www.yourwebsite.com" class="orange-icon" style="color: #011689;">
-                <i class="fa-solid fa-globe"></i>
-            </a>
-        </div>
-        
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+      <!-- Logo -->
+      <div class="text-teal-600 mb-5 sm:mb-0">
+        <img src="{% static 'images/IZONE LOGO.png' %}" alt="Image"
+          class="h-auto w-24 object-contain mix-blend-multiply">
+      </div>
+      <!-- Social Media Icons -->
+      <div class="flex justify-center gap-4 items-center text-lg">
+        <a href="mailto:izoneitstore@gmail.com" class="orange-icon" style="color: #011689;">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.instagram.com/your_username" class="orange-icon" style="color: #011689;">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/1234567890" class="orange-icon" style="color: #011689;">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="https://www.facebook.com/yourpage" class="orange-icon" style="color: #011689;">
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="https://www.twitter.com/your_username" class="orange-icon" style="color: #011689;">
+          <i class="fa-brands fa-twitter"></i>
+        </a>
+        <a href="https://www.yourwebsite.com" class="orange-icon" style="color: #011689;">
+          <i class="fa-solid fa-globe"></i>
+        </a>
       </div>
 
-      <!-- Links Grid -->
-      <div class="grid grid-cols-1 gap-8 border-t border-gray-100 sm:grid-cols-2 lg:grid-cols-4 pt-5 mt-5">
-        <div class="footer-about">
-          <p class="font-medium_text-gray-900" style="text-align: justify; color: #011689;"><span style="font-weight: bold;"><span style="font-weight: bold;">IZONE IT STORE</span></p><br>
-          <p style="color: #011689;">Welcome to IZONE IT STORE, your one-stop destination for IT needs, offering top-quality hardware, software solutions, and accessories with exceptional service.</p>
-      </div>
-          <div>
-             <h2 class="font-medium text-gray-900" style="color: #011689 "><span style="font-weight: bold;">Company</span></h2>
-              <ul class="mt-4 space-y-3 text-sm">
-                  <li><a href="{% url 'home' %}" class="COLOR transition hover:text-teal-500">Home</a></li>
-                  <li><a href="/about/" class="COLOR transition hover:text-teal-500">About</a></li>
-                  <li><a href="/product_details/" class="COLOR transition hover:text-teal-500">Products</a></li>
-                  <li><a href="/service/" class="COLOR transition hover:text-teal-500">Service</a></li>
-                  <li><a href="/careers/" class="COLOR transition hover:text-teal-500">Career</a></li>
-              </ul>
-          </div>
-          <div>
-             <h2 class="font-medium text-gray-900" style="color: #011689;"><span style="font-weight: bold;">Sevices</span></h2>
-              <ul class="mt-4 space-y-3 text-sm">
-                <li><a href="#fast_service" class="COLOR transition hover:text-teal-500">Fast Service</a></li>
-                <li><a href="#" class="COLOR transition hover:text-teal-500">Secure Payments</a></li>
-                <li><a href="#" class="COLOR transition hover:text-teal-500">Expert Team</a></li>
-                <li><a href="#" class="COLOR transition hover:text-teal-500">Affordable Pricing</a></li>
-                <li><a href="#" class="COLOR transition hover:text-teal-500">Award-Winning Service</a></li>
-            </ul>
-          </div>
-          <div>
-              <h2 class="font-medium text-gray-900" style="color: #011689;"><span style="font-weight: bold;"> Connect with us</span></h2>
-              <ul class="mt-4 space-y-3 text-sm">
-                  <li> <a href="#" class="COLOR transition hover:text-teal-500"> <i class="fas fa-store mr-2"></i> IZONE IT STORE</a></li>
-                  <li>
-                    <a href="#" class="COLOR transition hover:text-teal-500">
-                      <i class="fas fa-map-marker-alt mr-2"></i>
-                      1st FLOOR SMART BUILDING,
-                      MANNUR VALAVU,
-                      KOZHIKODE -673328
-                      KERALA
-                    </a>
-                  </li>
-                  
-                  <li>
-                    <a href="#" class="COLOR transition hover:text-teal-500"><i class="fa-solid fa-phone"></i> +91 9037 668 664</a></li>
-                  
-                  <li><a href="#" class="COLOR transition hover:text-teal-500"><i class="fa-solid fa-phone"></i>+91 9037 668 665</a></li>
-                  <li>
-                    <a href="mailto:izoneitstore@gmail.com" class="COLOR transition hover:text-teal-500"><i class="fas fa-envelope mr-2"></i> izoneitstore@gmail.com</a></li>
-                  
-              </ul>
-          </div>
-      </div>
+    </div>
 
-      <!-- Footer Bottom -->
-      <p class="text-xs text-gray-500 text-center pt-5 mt-5">&copy; 2022. Izone It Store. All rights reserved.</p>
+    <!-- Links Grid -->
+    <div class="grid grid-cols-1 gap-8 border-t border-gray-100 sm:grid-cols-2 lg:grid-cols-4 pt-5 mt-5">
+      <div class="footer-about">
+        <p class="font-medium_text-gray-900" style="text-align: justify; color: #011689;"><span
+            style="font-weight: bold;"><span style="font-weight: bold;">IZONE IT STORE</span></p><br>
+        <p style="color: #011689;">Welcome to IZONE IT STORE, your one-stop destination for IT needs, offering
+          top-quality hardware, software solutions, and accessories with exceptional service.</p>
+      </div>
+      <div>
+        <h2 class="font-medium text-gray-900" style="color: #011689 "><span style="font-weight: bold;">Company</span>
+        </h2>
+        <ul class="mt-4 space-y-3 text-sm">
+          <li><a href="{% url 'home' %}" class="COLOR transition hover:text-teal-500">Home</a></li>
+          <li><a href="/about/" class="COLOR transition hover:text-teal-500">About</a></li>
+          <li><a href="/product_details/" class="COLOR transition hover:text-teal-500">Products</a></li>
+          <li><a href="/service/" class="COLOR transition hover:text-teal-500">Service</a></li>
+          <li><a href="/careers/" class="COLOR transition hover:text-teal-500">Career</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-medium text-gray-900" style="color: #011689;"><span style="font-weight: bold;">Sevices</span>
+        </h2>
+        <ul class="mt-4 space-y-3 text-sm">
+          <li><a href="#fast_service" class="COLOR transition hover:text-teal-500">Fast Service</a></li>
+          <li><a href="#" class="COLOR transition hover:text-teal-500">Secure Payments</a></li>
+          <li><a href="#" class="COLOR transition hover:text-teal-500">Expert Team</a></li>
+          <li><a href="#" class="COLOR transition hover:text-teal-500">Affordable Pricing</a></li>
+          <li><a href="#" class="COLOR transition hover:text-teal-500">Award-Winning Service</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-medium text-gray-900" style="color: #011689;"><span style="font-weight: bold;"> Connect with
+            us</span></h2>
+        <ul class="mt-4 space-y-3 text-sm">
+          <li> <a href="#" class="COLOR transition hover:text-teal-500"> <i class="fas fa-store mr-2"></i> IZONE IT
+              STORE</a></li>
+          <li>
+            <a href="#" class="COLOR transition hover:text-teal-500">
+              <i class="fas fa-map-marker-alt mr-2"></i>
+              1st FLOOR SMART BUILDING,
+              MANNUR VALAVU,
+              KOZHIKODE -673328
+              KERALA
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="COLOR transition hover:text-teal-500"><i class="fa-solid fa-phone"></i> +91 9037 668
+              664</a>
+          </li>
+
+          <li><a href="#" class="COLOR transition hover:text-teal-500"><i class="fa-solid fa-phone"></i>+91 9037 668
+              665</a></li>
+          <li>
+            <a href="mailto:izoneitstore@gmail.com" class="COLOR transition hover:text-teal-500"><i
+                class="fas fa-envelope mr-2"></i> izoneitstore@gmail.com</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <p class="text-xs text-gray-500 text-center pt-5 mt-5">&copy; 2022. Izone It Store. All rights reserved.</p>
   </div>
 </footer>
 

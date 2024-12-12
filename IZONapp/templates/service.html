@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Page Title</title>
     <link rel="shortcut icon" href="{% static 'images/IZONE LOGO.png' %}" type="image/x-icon">
+  <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
         * {
             margin: 0;
@@ -221,6 +223,9 @@
             
             .about-content {
                 padding-right: 0;
+            }
+            .hero{
+                height: 100vh;
             }
         }
        
@@ -630,7 +635,7 @@
     </div>
         <div class="hero-content">
             
-            <h1>Professional Computer Hardware Services</h1>
+            <h1 class="leading-tight">Professional Computer Hardware Services</h1>
            <p style="width: 100%;max-width: 1200px;padding: 20px;"> We specialize in delivering expert solutions for all your computer hardware needs, offering repairs, upgrades, and expert advice to keep your systems running smoothly. With a focus on professionalism and reliability, you can trust us to provide high-quality service tailored to your specific requirements.</p>
             <!-- <a href="#about" class="btn">REQUEST A QUOTE</a>  -->
         </div>
@@ -675,15 +680,13 @@
         font-size: 2.5rem; /* Adjust font size */
         font-weight: 700; /* Bold text */
         text-align: center; /* Center alignment */
-        text-transform: uppercase; /* Uppercase text */
-        letter-spacing: 2px; /* Add spacing between letters */
-        margin-bottom: 1rem; /* Space below the heading */
+        text-transform: uppercase;
         ">
         SERVICES
         </h1>
 
         
-    <div class="container">
+    <div class="">
         <div class="services-grid">
             <!-- Computer and Hardware -->
             <div class="service-card">

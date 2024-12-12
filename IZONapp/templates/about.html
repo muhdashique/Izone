@@ -798,8 +798,8 @@
             </video>
         </div>
         <div class="hero-content">
-            <h1>We are a Leading Company.</h1>
-            <p>Discover who we are and what drives us. Together, we create meaningful connections and lasting impact..
+            <h1 class="leading-tight">We are a Leading Company.</h1>
+            <p class="text-sm">Discover who we are and what drives us. Together, we create meaningful connections and lasting impact..
             </p>
             <!-- <a href="#about" class="btn">REQUEST A QUOTE</a>  -->
 
@@ -811,21 +811,21 @@
         <br>
 
         <div class="flex justify-center items-center max-w-[1400px] mx-auto">
-            <div class="flex justify-center items-center gap-10">
-
-                <div class="stat-item justify-center text-3xl md:text-[100px] items-center flex flex-col items-center gap-5 font-bold">
+            <div class="grid grid-cols-1 plce-items-center md:flex md:flex-wrap justify-center items-center md:gap-10">
+                <div
+                    class="stat-item justify-center text-[50px] md:text-[100px] items-center flex flex-col items-center md:gap-5 font-bold">
                     <div class="stat-number  font-bold" data-target="10" data-suffix="+">0</div>
                     <div class="stat-label">Years of Experience</div>
                 </div>
-                <div class="stat-item text-3xl md:text-[100px] font-bold items-center flex flex-col items-center gap-5">
+                <div class="stat-item text-[50px] md:text-[100px] font-bold items-center flex flex-col items-center md:gap-5">
                     <div class="stat-number" data-target="30" data-suffix="+">0</div>
                     <div class="stat-label">Skilled Professionals</div>
                 </div>
-                <div class="stat-item text-3xl md:text-[100px] font-bold items-center flex flex-col items-center gap-5">
+                <div class="stat-item text-[50px] md:text-[100px] font-bold items-center flex flex-col items-center md:gap-5">
                     <div class="stat-number" data-target="100" data-suffix="%">0</div>
                     <div class="stat-label">Customer Satisfaction</div>
                 </div>
-                <div class="stat-item items-center flex flex-col items-center gap-5 text-3xl md:text-[100px] font-bold">
+                <div class="stat-item items-center flex flex-col items-center md:gap-5 text-[50px] md:text-[100px] font-bold">
                     <div class="stat-number" data-target="1000" data-suffix="+">0</div>
                     <div class="stat-label">Clients World Wide</div>
                 </div>
@@ -833,26 +833,23 @@
         </div>
     </div>
 
-    <br>
-    <br>
-    <br>
-
-
-
-
+    
     <div class="container">
         <!-- Mission Section -->
         <div class="mission-section">
             <div class="mission-image">
                 <div class="image-container">
-                    <img src="{% static 'images\visionog.jpg' %}" alt="Modern Office Space" class="md:w-[50%] rounded-3xl overflow-hidden">
+                    <img src="{% static 'images\visionog.jpg' %}" alt="Modern Office Space"
+                        class="md:w-[50%] rounded-3xl overflow-hidden">
                     <div class="image-overlay"> </div>
                 </div>
             </div>
             <div class="mission-content">
-                <h1 style="color: #011689;" class="leading-tight"><strong> Mission: Helping Millions of Organizations Grow Better</strong>
+                <h1 style="color: #011689;" class="leading-tight font-bold text-center"> Mission: Helping Millions of Organizations
+                        Grow Better
                 </h1>
-                <p style="text-align: justify;" class="font-medium tracking-tight text-sm"><span class="pl-10">We believe not just in growing bigger, but in growing better.And growing</span>
+                <p style="text-align: justify;" class="font-medium tracking-tight text-sm"><span class="pl-10">We
+                        believe not just in growing bigger, but in growing better.And growing</span>
                     better means aligning the success of your own business with the success of your customers. Win-win!
                 </p>
             </div>
@@ -861,29 +858,32 @@
         <!-- Story Section -->
         <div class="story-section mb-10">
             <div class="story-content">
-                <h1 style="color: #011689;" class="leading-tight"><strong>A Glimpse Into Us</strong></h1>
-                <p style="text-align: justify;" class="leading-tight tracking-tight font-medium"><span class="pl-10">In 2020, our founders    recognized a fundamental shift in how businesses</span>
+                <h1 style="color: #011689;" class="leading-tight text-center"><strong>A Glimpse Into Us</strong></h1>
+                <p style="text-align: justify;" class="leading-tight tracking-tight font-medium"><span class="pl-10">In
+                        2020, our founders recognized a fundamental shift in how businesses</span>
                     operate and grow. They saw that traditional methods weren't keeping pace with the digital
                     transformation, and customers wanted a more integrated, seamless experience.</p>
-                <p style="text-align: justify;"><span class="pl-10">Today, we've grown into a comprehensive platform that helps businesses</span>
+                <p style="text-align: justify;"><span class="pl-10">Today, we've grown into a comprehensive platform
+                        that helps businesses</span>
                     thrive in the digital age. Led by our innovative team, we continue to develop cutting-edge solutions
                     that empower organizations to grow better through technology and customer-centric approaches.</p>
             </div>
             <div class="story-image">
                 <div class="image-container">
-                    <img src="{% static 'images\mission.jpg' %}" alt="Team Collaboration" class="md:w-[50%] rounded-3xl overflow-hidden">
+                    <img src="{% static 'images\mission.jpg' %}" alt="Team Collaboration"
+                        class="md:w-[50%] rounded-3xl overflow-hidden">
                     <div class="image-overlay"></div>
                 </div>
             </div>
         </div>
     </div>
     <section class="bathroom-section">
-        <div class="bathroom-image"></div>
         <div class="container">
             <!-- Main Story Card -->
             <div class="story-card">
-                <h1 style="color: #011689;"><strong>What We Do</strong></h1>
-                <p style="text-align: justify;"><span class="pl-10"> We specialize in providing top-notch repair services with unparalleled</span>
+                <h1 style="color: #011689;text-align: center;"><strong>What We Do</strong></h1>
+                <p style="text-align: justify;"><span class="pl-10"> We specialize in providing top-notch repair
+                        services with unparalleled</span>
                     speed and affordability. Our expert team ensures your equipment is up and running swiftly, whether
                     you need a quick fix or a major overhaul. Our services include computer sales and service, building
                     servers and workstations, networking and CCTV installation, as well as EPABX and biometric
