@@ -357,7 +357,7 @@ def contact_form_view(request):
                     f"Message:\n{message}"
                 ),
                 from_email='your_email@gmail.com',
-                recipient_list=['muhammedashique8281@gmail.com'],
+                recipient_list=['izoneitstore@gmail.com'],
                 fail_silently=False,
             )
             

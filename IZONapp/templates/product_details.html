@@ -267,14 +267,14 @@
                                     <i class="fa-solid fa-indian-rupee-sign"></i> {{ product.price }}
                                 </div>
                             </div>
-                            <div style="display: flex;justify-content: center;align-items: center;gap: 10px;background-color: #4FCE5D;color: #fff;border-radius: 10px;" class="px-3 py-2 text-[10px] lg:text-sm">
-                                <a href="https://wa.me/8129139506?text=Hi, I'm interested in {{ product.name }}.%0A
-                                     *Product Name*: *{{ product.name }}*
-                                     Description: {{ product.description }}
-                                     Price: ₹{{ product.price }}" 
-                                   style="display: flex;justify-content: center;align-items: center;gap: 10px;" class="Whatsapp" target="_blank">
+                            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; background-color: #4FCE5D; color: #fff; border-radius: 10px;" class="px-3 py-2 text-[10px] lg:text-sm">
+                                <a href="https://wa.me/8129139506?text=Hi%2C%20I'm%20interested%20in%20{{ product.name }}.%0A%0A*Product%20Name*%3A%20*{{ product.name }}*%0A*Description*%3A%20{{ product.description }}%0A*Price*%3A%20%E2%82%B9{{ product.price }}" 
+                                   style="display: flex; justify-content: center; align-items: center; gap: 10px;" class="Whatsapp" target="_blank">
                                     <i class="fa-brands fa-whatsapp"></i>
-                                    <span>Whatsapp</span>
+                                    <span>WhatsApp</span>
+                                </a>
+                            </div>
+                            
                                 </a>
                             </div>
                             {% if request.user.is_authenticated %}
