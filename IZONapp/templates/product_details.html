@@ -268,7 +268,14 @@
                                 </div>
                             </div>
                             <div style="display: flex; justify-content: center; align-items: center; gap: 10px; background-color: #4FCE5D; color: #fff; border-radius: 10px;" class="px-3 py-2 text-[10px] lg:text-sm">
+<<<<<<< HEAD
                                 <a href="https://wa.me/8129139506?text=Hi%2C%20I'm%20interested%20in%20{{ product.name }}.%0A%0A*Product%20Name*%3A%20*{{ product.name }}*%0A*Description*%3A%20{{ product.description }}%0A*Price*%3A%20%E2%82%B9{{ product.price }}" 
+=======
+                                <a href="https://wa.me/9656104131?text=Hi, I'm interested in {{ product.name }}.%0A
+                                     *Product Name*: *{{ product.name }}*%0A
+                                     *Description*: {{ product.description }}%0A
+                                     *Price*: ₹{{ product.price }}" 
+>>>>>>> b6548e9928a0d046e79e4432649488a9bf4df92c
                                    style="display: flex; justify-content: center; align-items: center; gap: 10px;" class="Whatsapp" target="_blank">
                                     <i class="fa-brands fa-whatsapp"></i>
                                     <span>WhatsApp</span>
@@ -277,6 +284,7 @@
                             
                                 </a>
                             </div>
+                            
                             {% if request.user.is_authenticated %}
                             <form method="POST" class="Delete" action="{% url 'delete_product' product.id %}" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');">
                                 {% csrf_token %}
